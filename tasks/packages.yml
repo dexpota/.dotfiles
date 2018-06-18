@@ -3,3 +3,4 @@
   with_items:
     - vim
     - git
+    - inotify-tools
