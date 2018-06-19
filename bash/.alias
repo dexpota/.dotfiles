@@ -1,0 +1,8 @@
+# List in short format, human-readable and colorful
+alias ls="ls -hF --color=auto"
+# List in long format, include all files
+alias l="ls -la"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
