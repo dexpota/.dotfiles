@@ -1,8 +1,13 @@
 # List in short format, human-readable and colorful
-alias ls="ls -hF --color=auto"
-# List in long format, include all files
-alias l="ls -la"
+alias ls="ls -h --color=auto"
+# List in long format
+alias l="ls -l"
+# List in long format and shows almost all files.
+alias ll='ls -lA'
 
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+
+# Infect vim with a pathogen
+alias infect="[ -d ~/.vim/bundle ] && git clone "
