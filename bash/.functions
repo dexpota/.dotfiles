@@ -1,0 +1,4 @@
+function git-infect-pathogen() {
+	target="$(git rev-parse --show-toplevel)/.vim/bundle/"
+	[ -f "$target" ] && git submodule add $1 $2
+}
