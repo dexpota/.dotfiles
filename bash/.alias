@@ -9,5 +9,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-# Infect vim with a pathogen
-alias infect="[ -d ~/.vim/bundle ] && git clone "
+# The life is better with some colors
+alias grep="grep --color=auto "
+
+# Let less understand a colorful life
+alias less="less -R "
