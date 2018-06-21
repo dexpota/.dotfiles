@@ -6,5 +6,5 @@ function git-infect-pathogen() {
 
 # Infect vim with a pathogen
 function infect() {
-	[ -d "~/.vim/bundle" ] && git clone $1 "~/.vim/bundle"
+	[ -d "~/.vim/bundle" ] && git clone $1 ~/.vim/bundle
 }
