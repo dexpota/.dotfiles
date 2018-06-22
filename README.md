@@ -2,12 +2,12 @@
 
 Installation and usage.
 
-'''bash
+```bash
 git clone git@github.com:dexpota/.dotfiles.git ~/.dotfiles 
-'''
+```
 
 
-'''bash
+```bash
 # An example showing how to install git's configuration files.
 cd ~/.dotfiles && stow git
-'''
+```
