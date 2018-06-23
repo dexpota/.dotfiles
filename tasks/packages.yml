@@ -5,4 +5,7 @@
     - git
     - inotify-tools
     - stow
+    # Gnome color picker
     - gpick
+    # A simple PDF viewer
+    - zathura 
