@@ -1,6 +1,16 @@
+# Infect a git repository with a vim plugin, this command is supposed to work with a .dotfiles
+# repository
+#
+# $1 - The git repository's URL.
+# $2 - The local directory where to clone the repository as a submodule.
+# 
+# Examples
+# 
+#	git-infect-pathogen https://github.com/vim-airline/vim-airline vim-airline
+#
 function git-infect-pathogen() {
 	target="$(git rev-parse --show-toplevel)/.vim/bundle/"
-	[ -f "$target" ] && git submodule add $1 $2
+	[ -f "$target" ] && git submodule add $1 "${target}${2}"
 }
 
 
