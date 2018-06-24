@@ -10,6 +10,10 @@ set nocompatible
 " Pathogen infection
 execute pathogen#infect()
 
+" You can enable loading the plugin files for specific file types with
+" this command. filetype detection will be switched on too.
+filetype plugin on
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -44,3 +48,6 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 colorscheme flattown
+
+set tabstop=4
+set shiftwidth=4
