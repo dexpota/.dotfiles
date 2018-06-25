@@ -10,4 +10,6 @@
     # A simple PDF viewer
     - zathura
     # Terminal file manager
-    - ranger 
+    - ranger
+    # This is used by ranger to highlight code inside the preview
+    - highlight 
