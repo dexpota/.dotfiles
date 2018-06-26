@@ -1,3 +1,5 @@
+# vim: set filetype=sh:
+
 # Infect a git repository with a vim plugin, this command is supposed to work with a .dotfiles
 # repository
 #
