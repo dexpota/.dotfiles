@@ -1,3 +1,5 @@
+# vim: set filetype=sh:
+
 # List in short format, human-readable and colorful
 alias ls="ls -h --color=auto"
 # List in long format
