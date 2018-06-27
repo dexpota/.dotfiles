@@ -3,12 +3,19 @@ if v:progname =~? "evim"
   finish
 endif
 
-" Use Vim settings, rather than Vi settings (much better!).
+" Do not include vi compatibility.
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
 " Pathogen infection
 execute pathogen#infect()
+
+" Display the unprintable characters.
+" set list
+" set listchars=tab:>-,trail:.,extends:#,nbsp:.
+
+" Display line number.
+set nu
 
 " You can enable loading the plugin files for specific file types with
 " this command. filetype detection will be switched on too.
@@ -51,3 +58,8 @@ colorscheme flattown
 
 set tabstop=4
 set shiftwidth=4
+
+" Key mappings
+
+" Toggle NERDTree
+map <leader>d :NERDTreeToggle<CR>
