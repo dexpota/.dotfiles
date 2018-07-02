@@ -12,4 +12,5 @@
     # Terminal file manager
     - ranger
     # This is used by ranger to highlight code inside the preview
-    - highlight 
+    - highlight
+    - neovim 
