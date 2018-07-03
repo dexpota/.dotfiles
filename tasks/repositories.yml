@@ -1,2 +1,5 @@
-- apt_repository:
-    repo: ppa:neovim-ppa/stable
+# Neovim
+- apt_repository: repo=ppa:neovim-ppa/stable
+
+# Kicad
+- apt_repository: repo=ppa:js-reynaud/kicad-4
