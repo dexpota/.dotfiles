@@ -1,4 +1,4 @@
-- name: Check if osync is already installed
+- name: Checking if osync is already installed
   shell: command osync.sh >/dev/null 2>&1
   register: osync_installed
   check_mode: no
@@ -6,7 +6,7 @@
   failed_when: false
   tags: osync
 
-- name: osync is installed
+- name: osync is already installed
   debug:
     var: osync_installed
   when: osync_installed.rc == 0 or osync_installed.rc == 128
@@ -28,17 +28,12 @@
   when: osync_installed.rc != 0 and osync_installed.rc != 128
   tags: osync
 
-- name: osync_git variable
-  debug:
-    var: osync_git
-  tags: osync
-
-- name: Installing osync.
+- name: Installing osync
   shell: ./install.sh chdir=/tmp/osync
   tags: osync
   when: osync_git.skipped is not defined and osync_git.failed == false
 
-- name: Removing osync git repository
+- name: Removing osync temp files
   file:
     state: absent
     path: /tmp/osync
