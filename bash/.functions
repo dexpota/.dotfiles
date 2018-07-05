@@ -33,3 +33,13 @@ function infect() {
 function spellcheck() {
 	aspell -a < <(echo "$1")
 }
+
+function android-screen-capture() {
+	filename="$(mktemp -u -p "./").mp4"
+	
+	echo "Press CTRL+C to stop recording."
+	adb shell screenrecord "/sdcard/$filename"
+	adb pull "/sdcard/$filename"
+
+	echo "Recording saved as $filename"
+}
