@@ -1,5 +1,10 @@
 # vim: set filetype=sh:
 
+if [ -z "$LS_COLORS" ] ; then
+	# if LS_COLORS is empty or not set ls will not output colors
+	echo "Warning LS_COLORS is not set; ls, grep, fgrep and egrep will not be colorful."
+fi
+
 # List in short format, human-readable and colorful
 alias ls="ls -h --color=auto"
 # List in long format
@@ -12,7 +17,12 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # The life is better with some colors
-alias grep="grep --color=auto "
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
 
 # Let less understand a colorful life
 alias less="less -R "
+
+# Add an "alert" alias that notify when a command ends.
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
