@@ -59,7 +59,14 @@ colorscheme flattown
 set tabstop=4
 set shiftwidth=4
 
-" Key mappings
-
 " Toggle NERDTree
 map <leader>d :NERDTreeToggle<CR>
+
+" Code folding
+set foldmethod=indent
+set foldlevel=99
+" Use space to fold code instead of za
+nnoremap <space> za
+" Shows the docstrings for folded code
+let g:SimpylFold_docstring_preview=1
+
