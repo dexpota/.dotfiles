@@ -5,8 +5,9 @@
       apt: update_cache=yes
       changed_when: False
   tasks:
-    - include: tasks/repositories.yml
-    - include: tasks/packages.yml
-    - include: tasks/osync.yml
-    - include: tasks/pathogen.yml
-    - include: tasks/youcompleteme.yml
+    - include: ./tasks/repositories.yml
+    - include: ./tasks/packages.yml
+    - include: ./tasks/osync.yml
+    - include: ./tasks/pathogen.yml
+    - include: ./tasks/youcompleteme.yml
+    - include: ./tasks/pip.yml

@@ -7,3 +7,9 @@
 [submodule "vim/.vim/bundle/YouCompleteMe"]
 	path = vim/.vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "vim/.vim/bundle/syntastic"]
+	path = vim/.vim/bundle/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
+[submodule "vim/.vim/bundle/vim-flake8"]
+	path = vim/.vim/bundle/vim-flake8
+	url = https://github.com/nvie/vim-flake8.git
