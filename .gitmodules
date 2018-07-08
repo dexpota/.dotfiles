@@ -13,3 +13,9 @@
 [submodule "vim/.vim/bundle/vim-flake8"]
 	path = vim/.vim/bundle/vim-flake8
 	url = https://github.com/nvie/vim-flake8.git
+[submodule "vim/.vim/bundle/vim-nerdtree-tabs"]
+	path = vim/.vim/bundle/vim-nerdtree-tabs
+	url = https://github.com/jistr/vim-nerdtree-tabs.git
+[submodule "vim/.vim/bundle/SimpylFold"]
+	path = vim/.vim/bundle/SimpylFold
+	url = https://github.com/tmhedberg/SimpylFold.git
