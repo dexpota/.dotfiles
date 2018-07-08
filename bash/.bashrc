@@ -33,7 +33,7 @@ if [ -x $(command -v dircolors) ]; then
 fi
 
 # Sourcing bash's dotfiles
-for dotfile in "$DOTFILES_DIRECTORY"/.{alias,function}
+for dotfile in "$DOTFILES_DIRECTORY"/.{prompt,alias,functions}
 do
 	if [ -f "$dotfile" ]
 	then
