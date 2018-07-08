@@ -59,3 +59,9 @@ function to-gif() {
 
 	convert -fuzz 5% -delay 12.5 -layers OptimizeTransparency -loop 0 $directory/out%06d.png output.gif
 }
+
+function git-find-all() {
+	find . -name .git -type d -prune | while read directory ; do
+		git -C $directory remote -v
+	done
+}
