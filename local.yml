@@ -9,3 +9,4 @@
     - include: tasks/packages.yml
     - include: tasks/osync.yml
     - include: tasks/pathogen.yml
+    - include: tasks/youcompleteme.yml

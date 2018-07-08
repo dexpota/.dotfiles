@@ -17,3 +17,8 @@
     - neovim 
     # EDA electronic design automation software
     - kicad
+    # Dependencies for YouCompleteMe
+    - build-essential
+    - cmake
+    - python-dev
+    - python3-dev
