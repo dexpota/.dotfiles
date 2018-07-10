@@ -4,6 +4,18 @@ case $- in
 	*) return;;
 esac
 
+# Check for color capabilities
+# https://unix.stackexchange.com/a/198949
+colour=0
+if tput Co > /dev/null 2>&1
+then
+    test "`tput Co`" -gt 2 && colour=1
+elif tput colors > /dev/null 2>&1
+then
+    test "`tput colors`" -gt 2 && colour=1
+fi
+
+
 # History's options
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
