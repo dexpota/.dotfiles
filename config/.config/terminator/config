@@ -1,0 +1,19 @@
+[global_config]
+  borderless = True
+  title_transmit_bg_color = "#c800bb"
+  window_state = maximise
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_image = None
+    font = Source Code Variable Bold 12
+    use_system_font = False
