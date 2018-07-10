@@ -71,5 +71,5 @@ function git-find-all() {
 #	wget -i < <(get_latest_release adobe-fonts/source-code-pro )
 function get_latest_release() {
 	curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
-	| jq -r '.assets[] | select(.name | test(".+otf")).browser_download_url')
+		jq -r '.assets[] | select(.name | test(".+otf")).browser_download_url)'
 }
