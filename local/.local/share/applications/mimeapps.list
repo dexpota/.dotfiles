@@ -1,0 +1,35 @@
+
+[Default Applications]
+text/html=stride.desktop
+x-scheme-handler/atlassianstride=stride.desktop
+
+# Documents
+application/pdf=zathura.desktop
+
+# Images
+image/png=feh.desktop
+image/bmp=feh.desktop
+image/gif=feh.desktop
+image/jpeg=feh.desktop
+image/jpg=feh.desktop
+image/pjpeg=feh.desktop
+image/png=feh.desktop
+image/svg+xml=feh.desktop
+image/tiff=feh.desktop
+image/vnd.djvu=feh.desktop
+image/vnd.rn-realpix=feh.desktop
+image/x-bmp=feh.desktop
+image/x-bzeps=feh.desktop
+image/x-eps=feh.desktop
+image/x-gray=feh.desktop
+image/x-gzeps=feh.desktop
+image/x-icb=feh.desktop
+image/x-ico=feh.desktop
+image/x-png=feh.desktop
+image/x-portable-anymap=feh.desktop
+image/x-portable-bitmap=feh.desktop
+image/x-portable-graymap=feh.desktop
+image/x-portable-pixmap=feh.desktop
+image/x-psd=feh.desktop
+image/x-xbitmap=feh.desktop
+image/x-xpixmap=feh.desktop
