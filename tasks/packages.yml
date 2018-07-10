@@ -22,3 +22,7 @@
     - cmake
     - python-dev
     - python3-dev
+    # A simple image viewer
+    - feh
+    - gimp
+    - neofetch

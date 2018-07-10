@@ -5,3 +5,7 @@
 # Kicad
 - name: Adding kicad's PPA
   apt_repository: repo=ppa:js-reynaud/kicad-4
+
+# neofetch
+- name: Adding neofetch's PPA
+  apt_repository: repo=ppa:dawidd0811/neofetch
