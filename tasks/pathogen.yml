@@ -1,7 +1,14 @@
 - name: Creating directories for pathogen installation
-  shell: mkdir -p ~/.vim/autoload ~/.vim/bundle
+  file: path={{item}} state=directory
+  with_items:
+    - "~/.vim/autoload"
+    - "~/.vim/bundle"
+  become: no
   tags: pathogen
 
 - name: Downloading and installing pathogen
-  shell: curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+  get_url:
+    url: https://tpo.pe/pathogen.vim
+    dest: ~/.vim/autoload/pathogen.vim
+  become: no
   tags: pathogen
