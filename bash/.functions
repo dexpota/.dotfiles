@@ -11,7 +11,7 @@
 #	git-infect-pathogen https://github.com/vim-airline/vim-airline vim-airline
 #
 function git-infect-pathogen() {
-	target="$(git rev-parse --show-toplevel)/.vim/bundle/"
+	local target="$(git rev-parse --show-toplevel)/.vim/bundle/"
 	[ -f "$target" ] && git submodule add $1 "${target}${2}"
 }
 
@@ -35,7 +35,7 @@ function spellcheck() {
 }
 
 function android-screen-capture() {
-	filename="$(mktemp -u -p "./").mp4"
+	local filename="$(mktemp -u -p "./").mp4"
 	
 	echo "Press CTRL+C to stop recording."
 	adb shell screenrecord "/sdcard/$filename"
@@ -45,9 +45,9 @@ function android-screen-capture() {
 }
 
 function to-gif() {
-	directory="$(mktemp -d)"
-	frames_filenames_fmt="$directory/out%06d.png"
-	videofile="$1"
+	local directory="$(mktemp -d)"
+	local frames_filenames_fmt="$directory/out%06d.png"
+	local videofile="$1"
 
 	if [ -x "$(command -v avconv)" ]; then
 		avconv -i "$videofile" -vf scale=320:-1:flags=lanczos,fps=8 "frames_filenames_fmt"
