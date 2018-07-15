@@ -1,5 +1,5 @@
-- name: Install packages
-  apt: name={{item}}
+- name: Installing packages
+  package: name={{item}}
   with_items:
     - vim
     - git
@@ -18,11 +18,27 @@
     # EDA electronic design automation software
     - kicad
     # Dependencies for YouCompleteMe
-    - build-essential
+    # - build-essential
     - cmake
-    - python-dev
-    - python3-dev
+    # - python-dev
+    # - python3-dev
     # A simple image viewer
     - feh
     - gimp
     - neofetch
+
+- name: Installing arch packages
+  package: name={{item}}
+  with_items:
+    - python3
+    - python2
+    - base-devel
+  when: ansible_distribution == 'Archlinux'
+
+- name: Installing ubuntu or debian packages
+  package: name={{item}}
+  with_items:
+    - build-essential
+    - python-dev
+    - python3-dev
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

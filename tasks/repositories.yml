@@ -1,11 +1,14 @@
 # Neovim
 - name: Adding neovim's PPA
   apt_repository: repo=ppa:neovim-ppa/stable
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 # Kicad
 - name: Adding kicad's PPA
   apt_repository: repo=ppa:js-reynaud/kicad-4
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 # neofetch
 - name: Adding neofetch's PPA
   apt_repository: repo=ppa:dawidd0811/neofetch
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
