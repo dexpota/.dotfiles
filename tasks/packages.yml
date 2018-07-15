@@ -32,6 +32,8 @@
   with_items:
     - python3
     - python2
+    - python2-pip
+    - python-pip
     - base-devel
   when: ansible_distribution == 'Archlinux'
 

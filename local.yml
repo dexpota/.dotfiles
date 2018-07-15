@@ -9,5 +9,5 @@
     - include: ./tasks/packages.yml
     - include: ./tasks/osync.yml
     - include: ./tasks/pathogen.yml
-    - include: ./tasks/youcompleteme.yml
     - include: ./tasks/pip.yml
+    - include: ./tasks/youcompleteme.yml
