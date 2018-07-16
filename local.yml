@@ -10,5 +10,6 @@
     - include: ./tasks/osync.yml
     - include: ./tasks/pathogen.yml
     - include: ./tasks/pip.yml
+    - include: ./tasks/rust.yml
 # TODO move this task elsewhere
 #    - include: ./tasks/youcompleteme.yml
