@@ -38,7 +38,7 @@ DOTFILES_DIRECTORY="$HOME"
 # if dircolors command exists we let it generate the bash code to initialize LS_COLORS variable.
 if [ -x $(command -v dircolors) ]; then
 	# if the ".dircolors" directory exists we load the colors from it, otherwise dircolors uses its predefined database
-	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" | eval "$(dircolors -b)"
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
 # Sourcing bash's dotfiles
