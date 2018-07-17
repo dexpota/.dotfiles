@@ -12,3 +12,6 @@ ycm:
 
 vim: ycm git-submodule
 	stow vim
+
+bash:
+	stow bash
