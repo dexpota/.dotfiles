@@ -1,3 +1,6 @@
+GIT_AUTHORNAME ?= $(shell bash -c 'read -p "- What is your github author name? " name; echo $$name')
+GIT_AUTHOREMAIL ?= $(shell bash -c 'read -p "- What is your github author email? " email; echo $$email')
+
 all:
 	@echo "Please specify one target."
 
@@ -15,3 +18,7 @@ vim: ycm git-submodule
 
 bash:
 	stow bash
+
+git:
+	sed -e "s/AUTHORNAME/${GIT_AUTHORNAME}/g" -e "s/AUTHOREMAIL/${GIT_AUTHOREMAIL}/g" git/.gitconfig.example > git/.gitconfig
+	stow git
