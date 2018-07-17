@@ -1,0 +1,2 @@
+# This directory is create by Ansible when installing pathogen.
+./vim/.vim/autoload
