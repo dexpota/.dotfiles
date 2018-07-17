@@ -17,7 +17,7 @@ RST="${ESC}[0m"
 TERMINAL_TITLE='\[\e]2;\u@\h\a\]'
 
 if [ $has_color = 1 ]; then
-	PROMPT="${BOLD}${YELLOW}\u${LGRAY}@${CYAN}\h${LGRAY} ${MAGENTA}\w ${LGRAY}>${RST}"
+	PROMPT="${BOLD}${YELLOW}\u${LGRAY}@${CYAN}\h${LGRAY} ${MAGENTA}\w ${LGRAY}>${RST} "
 else
 	PROMPT="${debian_chroot:+($debian_chroot)}\u@\h:\w\$"
 fi
