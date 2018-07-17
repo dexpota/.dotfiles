@@ -8,6 +8,7 @@
     - include: ./tasks/repositories.yml
     - include: ./tasks/packages.yml
     - include: ./tasks/osync.yml
+    - include: ./tasks/bash.yml
     - include: ./tasks/vim.yml
     - include: ./tasks/pathogen.yml
     - include: ./tasks/pip.yml
