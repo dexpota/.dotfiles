@@ -5,10 +5,19 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+# https://misc.flogisoft.com/bash/tip_colors_and_formatting
+ESC="\e"
+BOLD="${ESC}[1m"
+YELLOW="${ESC}[33m"
+MAGENTA="${ESC}[35m"
+CYAN="${ESC}[36m"
+LGRAY="${ESC}[37m"
+RST="${ESC}[0m"
+
 TERMINAL_TITLE='\[\e]2;\u@\h\a\]'
 
 if [ $has_color = 1 ]; then
-	PROMPT="\[\e[01;33m\]\u\[\e[0m\]\[\e[00;37m\]@\[\e[0m\]\[\e[01;36m\]\h\[\e[0m\]\[\e[00;37m\] \t \[\e[0m\]\[\e[01;35m\]\w\[\e[0m\]\[\e[01;37m\] > \[\e[0m\]"
+	PROMPT="${BOLD}${YELLOW}\u${LGRAY}@${CYAN}\h${LGRAY} ${MAGENTA}\w ${LGRAY}>${RST}"
 else
 	PROMPT="${debian_chroot:+($debian_chroot)}\u@\h:\w\$"
 fi
