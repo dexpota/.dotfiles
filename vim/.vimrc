@@ -6,6 +6,11 @@ endif
 " Do not include vi compatibility.
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+" This option is set by default for Vim running in nocompatible mode, but some
+" notable distributions of Vim disable this option in the system vimrc for
+" security reason.
+" Disable modeline
+set nomodeline
 
 " Pathogen infection
 execute pathogen#infect()
