@@ -1,21 +1,29 @@
 [submodule "vim/.vim/bundle/colorschemes"]
 	path = vim/.vim/bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
+	ignore = dirty
 [submodule "vim/.vim/bundle/vim-airline"]
 	path = vim/.vim/bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline
+	ignore = dirty
 [submodule "vim/.vim/bundle/YouCompleteMe"]
 	path = vim/.vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+	ignore = dirty
 [submodule "vim/.vim/bundle/syntastic"]
 	path = vim/.vim/bundle/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
+	ignore = dirty
 [submodule "vim/.vim/bundle/vim-flake8"]
 	path = vim/.vim/bundle/vim-flake8
 	url = https://github.com/nvie/vim-flake8.git
+	ignore = dirty
 [submodule "vim/.vim/bundle/vim-nerdtree-tabs"]
 	path = vim/.vim/bundle/vim-nerdtree-tabs
 	url = https://github.com/jistr/vim-nerdtree-tabs.git
+	ignore = dirty
 [submodule "vim/.vim/bundle/SimpylFold"]
 	path = vim/.vim/bundle/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
+	ignore = dirty
+
