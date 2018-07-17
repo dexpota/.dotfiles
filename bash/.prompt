@@ -7,12 +7,12 @@ fi
 
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting
 ESC="\e"
-BOLD="${ESC}[1m"
-YELLOW="${ESC}[33m"
-MAGENTA="${ESC}[35m"
-CYAN="${ESC}[36m"
-LGRAY="${ESC}[37m"
-RST="${ESC}[0m"
+BOLD="\[${ESC}[1m\]"
+YELLOW="\[${ESC}[33m\]"
+MAGENTA="\[${ESC}[35m\]"
+CYAN="\[${ESC}[36m\]"
+LGRAY="\[${ESC}[37m\]"
+RST="\[${ESC}[0m\]"
 
 TERMINAL_TITLE='\[\e]2;\u@\h\a\]'
 
