@@ -31,12 +31,12 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[ -x "$(command -v lesspipe)" ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 DOTFILES_DIRECTORY="$HOME"
 
 # if dircolors command exists we let it generate the bash code to initialize LS_COLORS variable.
-if [ -x $(command -v dircolors) ]; then
+if [ -x "$(command -v dircolors > /dev/null 2>&1)" ]; then
 	# if the ".dircolors" directory exists we load the colors from it, otherwise dircolors uses its predefined database
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
