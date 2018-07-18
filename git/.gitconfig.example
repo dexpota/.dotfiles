@@ -1,5 +1,8 @@
 [core]
-    editor=vim
+    editor = vim
+
+[color]
+	ui = auto
 
 [alias]
 	st = status
