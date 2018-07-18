@@ -14,3 +14,9 @@
 [user]
 	email = AUTHOREMAIL
 	name = AUTHORNAME
+
+[push]
+	# Defines the action git push should take if no refspec is given on the command line, 
+	# no refspec is configured in the remote, and no refspec is implied by any of the 
+	# options given on the command line.
+	default = simple
