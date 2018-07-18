@@ -3,6 +3,10 @@
 
 [alias]
 	st = status
+	# delete a local branch
+	dbranch = branch -d
+	# create a new branch and check it out
+	bcheckout = checkout -b
 
 # todo make this configurable https://github.com/holman/dotfiles/blob/80b2bd57e9c594dc7c783989801ee51930068d59/script/bootstrap#L46
 [user]
