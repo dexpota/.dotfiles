@@ -60,3 +60,8 @@ if ! shopt -oq posix; then
 		. /etc/bash_completion
 	fi
 fi
+
+# These are cheat's options
+# cheat is a simple program used to print cheatsheet on terminal
+export CHEATCOLORS=true
+export CHEAT_EDITOR=vim
