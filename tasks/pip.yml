@@ -1,3 +1,7 @@
 - name: Installing flake8
   pip:
-    name: flake8
+    name: "{{ item }}"
+  with_items:
+    - flake8
+    - cheat
+  tags: pip
