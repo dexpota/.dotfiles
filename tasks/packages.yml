@@ -27,6 +27,7 @@
     - gimp
     - neofetch
     - jq
+    - unzip
 
 - name: Installing arch packages
   package: name={{item}}
