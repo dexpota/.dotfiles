@@ -26,6 +26,7 @@
     - feh
     - gimp
     - neofetch
+    - jq
 
 - name: Installing arch packages
   package: name={{item}}
