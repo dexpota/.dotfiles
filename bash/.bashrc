@@ -1,7 +1,8 @@
 # If not running interactively, don't do anything
 case $- in
 	*i*) ;;
-	*) return;;
+	*)	. ~/.functions # source all functions
+		return;;
 esac
 
 # Check for color capabilities

@@ -74,3 +74,5 @@ function get-latest-release() {
 	curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
 		jq -r ".assets[] | select(.name | test(\"$2\")) | .browser_download_url"
 }
+
+export -f get-latest-release
