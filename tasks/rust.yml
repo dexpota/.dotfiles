@@ -1,2 +1,11 @@
+- name: Checking if rust is installed
+  shell: command -v rustc >/dev/null 2>&1
+  register: rustc
+  ignore_errors: yes
+  no_log: true
+  tags: rust
+
 - name: "Installing rust"
-  shell: curl -sf -L https://static.rust-lang.org/rustup.sh | sh 
+  shell: curl -sf -L https://static.rust-lang.org/rustup.sh | sh
+  when: rustc.failed
+  tags: rust
