@@ -29,7 +29,13 @@ function retrieve-github {
 	echo "${zips[0]}"
 }
 
+# enable null glob
+shopt -s nullglob
+
 android_studio=(~/.AndroidStudio*)
+if [ ! -z "$android_studio" ] ; then
+	install-plugin $android_studio retrieve-github halirutan/IntelliJ-Key-Promoter-X
+fi
 
-install-plugin $android_studio retrieve-github halirutan/IntelliJ-Key-Promoter-X
-
+# disable null glob
+shopt -u nullglob
