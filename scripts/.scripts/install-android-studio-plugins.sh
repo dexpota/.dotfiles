@@ -33,9 +33,15 @@ function retrieve-github {
 shopt -s nullglob
 
 android_studio=(~/.AndroidStudio*)
-if [ ! -z "$android_studio" ] ; then
-	install-plugin $android_studio retrieve-github halirutan/IntelliJ-Key-Promoter-X
+#if [ ! -z "$android_studio" ] ; then
+#	install-plugin $android_studio retrieve-github halirutan/IntelliJ-Key-Promoter-X
+#fi
+
+pycharm=(~/.PyCharm*)
+if [ ! -z "$pycharm" ] ; then
+	install-plugin $pycharm retrieve-github halirutan/IntelliJ-Key-Promoter-X
 fi
+
 
 # disable null glob
 shopt -u nullglob
