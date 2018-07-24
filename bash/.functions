@@ -10,7 +10,7 @@
 # 
 #	git-infect-pathogen https://github.com/vim-airline/vim-airline vim-airline
 #
-function git-infect-pathogen() {
+function git_infect_pathogen() {
 	local target="$(git rev-parse --show-toplevel)/.vim/bundle/"
 	[ -f "$target" ] && git submodule add $1 "${target}${2}"
 }
@@ -34,7 +34,7 @@ function spellcheck() {
 	aspell -a < <(echo "$1")
 }
 
-function android-screen-capture() {
+function android_screen_capture() {
 	local filename="$(mktemp -u -p "./").mp4"
 	
 	echo "Press CTRL+C to stop recording."
@@ -44,7 +44,7 @@ function android-screen-capture() {
 	echo "Recording saved as $filename"
 }
 
-function to-gif() {
+function to_gif() {
 	local directory="$(mktemp -d)"
 	local frames_filenames_fmt="$directory/out%06d.png"
 	local videofile="$1"
@@ -60,7 +60,7 @@ function to-gif() {
 	convert -fuzz 5% -delay 12.5 -layers OptimizeTransparency -loop 0 $directory/out%06d.png output.gif
 }
 
-function git-find-all() {
+function git_find_all() {
 	find . -name .git -type d -prune | while read directory ; do
 		git -C $directory remote -v
 	done
@@ -70,9 +70,9 @@ function git-find-all() {
 # 	get_latest_release adobe-fonts/source-code-pro
 #	wget -i <(get_latest_release adobe-fonts/source-code-pro  ".+otf")
 #
-function get-latest-release() {
+function get_latest_release() {
 	curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
 		jq -r ".assets[] | select(.name | test(\"$2\")) | .browser_download_url"
 }
 
-export -f get-latest-release
+export -f get_latest_release
