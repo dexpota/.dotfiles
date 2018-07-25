@@ -28,6 +28,8 @@
     - neofetch
     - jq
     - unzip
+    # with i3
+    - compton
 
 - name: Installing arch packages
   package: name={{item}}
@@ -37,6 +39,8 @@
     - python2-pip
     - python-pip
     - base-devel
+    # with i3
+    - compton
   when: ansible_distribution == 'Archlinux'
 
 - name: Installing ubuntu or debian packages
