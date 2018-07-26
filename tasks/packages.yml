@@ -30,6 +30,8 @@
     - unzip
     # with i3
     - compton
+    # manage your tasks
+    - taskwarrior
 
 - name: Installing arch packages
   package: name={{item}}
@@ -41,6 +43,10 @@
     - base-devel
     # with i3
     - compton
+    # manage your task
+    - task
+    # keeps track of how much time each task takes
+    - timew
   when: ansible_distribution == 'Archlinux'
 
 - name: Installing ubuntu or debian packages
