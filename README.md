@@ -17,8 +17,16 @@ sudo apt-get update && sudo apt-get install ansible
 git clone git@github.com:dexpota/.dotfiles.git ~/.dotfiles 
 ```
 
-
 ```bash
 # An example showing how to install git's configuration files.
 cd ~/.dotfiles && stow git
+```
+
+### vim
+
+```bash
+cd ~/.dotfiles
+ansible-playbook local.yml --tags=pathogen,vim
+make ycm
+stow vim
 ```
