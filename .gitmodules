@@ -27,3 +27,6 @@
 	url = https://github.com/tmhedberg/SimpylFold.git
 	ignore = dirty
 
+[submodule "vim/.vim/bundle/vim-markdown-preview"]
+	path = vim/.vim/bundle/vim-markdown-preview
+	url = https://github.com/JamshedVesuna/vim-markdown-preview.git

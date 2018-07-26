@@ -79,3 +79,6 @@ nnoremap <space> za
 " Shows the docstrings for folded code
 let g:SimpylFold_docstring_preview=1
 
+" Markdown preview for github files
+let vim_markdown_preview_github=1
+

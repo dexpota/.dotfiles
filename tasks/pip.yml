@@ -1,7 +1,9 @@
-- name: Installing flake8
+- name: Installing pip packages
   pip:
     name: "{{ item }}"
   with_items:
     - flake8
     - cheat
+    # render markdown file
+    - grip
   tags: pip
