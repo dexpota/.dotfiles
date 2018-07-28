@@ -20,5 +20,5 @@ bash:
 	stow bash
 
 git:
-	sed -e "s/AUTHORNAME/${GIT_AUTHORNAME}/g" -e "s/AUTHOREMAIL/${GIT_AUTHOREMAIL}/g" git/.gitconfig.example > git/.gitconfig
+	sed -e "s/AUTHORNAME/${GIT_AUTHORNAME}/g" -e "s/AUTHOREMAIL/${GIT_AUTHOREMAIL}/g" git/.gitconfig.local.example > git/.gitconfig.local
 	stow git

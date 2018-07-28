@@ -1,3 +1,7 @@
+# Local/private config goes in the include
+[include]
+	path = ~/.gitconfig.local
+
 [core]
     editor = vim
 
@@ -10,10 +14,6 @@
 	dbranch = branch -d
 	# create a new branch and check it out
 	bcheckout = checkout -b
-
-[user]
-	email = AUTHOREMAIL
-	name = AUTHORNAME
 
 [push]
 	# Defines the action git push should take if no refspec is given on the command line, 

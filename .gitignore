@@ -4,4 +4,4 @@ vim/.vim/backup/
 vim/.vim/swp
 
 # git configuration file is generated
-git/.gitconfig
+git/.gitconfig.local
