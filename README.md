@@ -22,6 +22,12 @@ git clone git@github.com:dexpota/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles && stow git
 ```
 
+### git
+
+```bash
+make -B git
+```
+
 ### vim
 
 ```bash
