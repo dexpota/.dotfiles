@@ -76,3 +76,9 @@ function get_latest_release() {
 }
 
 export -f get_latest_release
+
+function gi() { 
+	curl -L -s https://www.gitignore.io/api/$@
+}
+
+export -f gi
