@@ -9,8 +9,20 @@ set nocompatible
 " This option is set by default for Vim running in nocompatible mode, but some
 " notable distributions of Vim disable this option in the system vimrc for
 " security reason.
+
 " Disable modeline
 set nomodeline
+
+" Automatic reloading of .vimrc
+autocmd! bufwritepost .vimrc source %
+
+" Copy & paste with right click
+set clipboard=unnamed
+" In paste mode the text is pasted without modify the indentation
+set pastetoggle=<F2>
+
+" Rebind <Leader> key
+" set mapleader="'"
 
 " Pathogen infection
 execute pathogen#infect()
@@ -21,6 +33,8 @@ execute pathogen#infect()
 
 " Display line number.
 set nu
+" Highlight column 80
+set colorcolumn=80
 
 " You can enable loading the plugin files for specific file types with
 " this command. filetype detection will be switched on too.
@@ -82,3 +96,6 @@ let g:SimpylFold_docstring_preview=1
 " Markdown preview for github files
 let vim_markdown_preview_github=1
 
+" Easy indentation of code blocks
+vnoremap < <gv
+vnoremap > >gv

@@ -30,3 +30,9 @@
 [submodule "vim/.vim/bundle/vim-markdown-preview"]
 	path = vim/.vim/bundle/vim-markdown-preview
 	url = https://github.com/JamshedVesuna/vim-markdown-preview.git
+[submodule "vim/.vim/bundle/python-mode"]
+	path = vim/.vim/bundle/python-mode
+	url = https://github.com/python-mode/python-mode.git
+[submodule "vim/.vim/bundle/ctrlp.vim"]
+	path = vim/.vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
