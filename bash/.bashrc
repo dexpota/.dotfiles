@@ -72,3 +72,6 @@ fi
 # cheat is a simple program used to print cheatsheet on terminal
 export CHEATCOLORS=true
 export CHEAT_EDITOR=vim
+
+PATH=$PATH:$HOME/.scripts
+export PATH
