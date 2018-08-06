@@ -1,6 +1,7 @@
 [global_config]
   borderless = True
-  title_transmit_bg_color = "#c800bb"
+  suppress_multiple_term_dialog = True
+  title_transmit_bg_color = "#403f3c"
   window_state = maximise
 [keybindings]
 [layouts]
@@ -14,6 +15,8 @@
 [plugins]
 [profiles]
   [[default]]
+    background_color = "#300a24"
     background_image = None
     font = Source Code Variable Bold 12
+    foreground_color = "#ffffff"
     use_system_font = False
