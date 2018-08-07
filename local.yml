@@ -12,3 +12,5 @@
     - include: ./tasks/pathogen.yml
     - include: ./tasks/pip.yml
     - include: ./tasks/rust.yml
+    - include: ./tasks/syncthing.yml
+

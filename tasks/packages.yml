@@ -32,6 +32,7 @@
     - compton
     # manage your tasks
     - taskwarrior
+    - syncthing
 
 - name: Installing arch packages
   package: name={{item}}

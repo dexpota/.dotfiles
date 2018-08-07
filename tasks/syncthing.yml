@@ -1,0 +1,14 @@
+- name: Adding syncthing's signing key
+  apt_key:
+    url: https://syncthing.net/release-key.txt 
+    state: present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  tags: syncthing
+
+- name: Add syncthing's repository
+  apt_repository:
+    repo: deb https://apt.syncthing.net/ syncthing candidate
+    state: present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  tags: syncthing
+
