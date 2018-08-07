@@ -82,3 +82,16 @@ function gi() {
 }
 
 export -f gi
+
+# allows to source zshrc twice
+export CRONTABCMD=$(which crontab)
+function crontab() {
+	if [[ $@ == "-e" ]]; then
+		vim ~/".crontab" && [ -e ~/".crontab" ] && $CRONTABCMD ~/".crontab"
+	else
+		$CRONTABCMD $@
+	fi
+}
+
+export -f crontab
+
