@@ -1,0 +1,7 @@
+- name: Installing gem  packages
+  gem:
+    name: "{{ item }}"
+  with_items:
+    - jekyll
+    - bundler
+  tags: gem

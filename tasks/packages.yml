@@ -33,6 +33,7 @@
     # manage your tasks
     - taskwarrior
     - syncthing
+    - ruby
 
 - name: Installing arch packages
   package: name={{item}}
