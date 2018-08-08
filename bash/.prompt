@@ -20,12 +20,41 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 	REMOTE_TAG="(ssh)"
 fi
 
+function short_prompt() {
+	echo "${REMOTE_TAG} ${BOLD}${YELLOW}\u${LGRAY}@${CYAN}\h${LGRAY} ${LGRAY}>${RST} "
+}
+
+function expanded_prompt() {
+	echo "${REMOTE_TAG} ${BOLD}${YELLOW}\u${LGRAY}@${CYAN}\h${LGRAY} ${MAGENTA}\w ${LGRAY}>${RST} "
+}
+
+function prompt_prompt() {
+	local expanded=${PROMPT@P}
+	local prompt_length=$(echo ${expanded//[$'\001'$'\002']} | sed 's/\x1b\[[0-9;]*m//g' | wc -m)
+	local width=$(tput cols)
+	local percentage=$(expr $prompt_length \* 100 / $width)
+
+	if [ $percentage -gt 50 ]; then
+		local prompt="$(short_prompt)"
+		echo "${prompt@P}"
+	else
+		local prompt="$(expanded_prompt)"
+		echo "${prompt@P}"
+	fi
+}
+
+
+export -f prompt_prompt
+export -f short_prompt
+export -f expanded_prompt
+
 if [ $has_color = 1 ]; then
 	PROMPT="${REMOTE_TAG} ${BOLD}${YELLOW}\u${LGRAY}@${CYAN}\h${LGRAY} ${MAGENTA}\w ${LGRAY}>${RST} "
 else
 	PROMPT="${debian_chroot:+($debian_chroot)}\u@\h:\w\$"
 fi
 
-PS1="${TERMINAL_TITLE}${PROMPT}"
+#PS1="${TERMINAL_TITLE}${PROMPT}"
+PS1="\$(prompt_prompt)"
 
 unset color_prompt
