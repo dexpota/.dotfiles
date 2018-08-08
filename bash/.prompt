@@ -17,29 +17,30 @@ RST="\[${ESC}[0m\]"
 TERMINAL_TITLE='\[\e]2;\u@\h\a\]'
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-	REMOTE_TAG="(ssh)"
+	REMOTE_TAG="(ssh) "
 fi
 
 function short_prompt() {
-	echo "${REMOTE_TAG} ${BOLD}${YELLOW}\u${LGRAY}@${CYAN}\h${LGRAY} ${LGRAY}>${RST} "
+	echo "${REMOTE_TAG}${BOLD}${YELLOW}\\u${LGRAY}@${CYAN}\h${LGRAY} ${LGRAY}>${RST} "
 }
 
 function expanded_prompt() {
-	echo "${REMOTE_TAG} ${BOLD}${YELLOW}\u${LGRAY}@${CYAN}\h${LGRAY} ${MAGENTA}\w ${LGRAY}>${RST} "
+	echo "${REMOTE_TAG}${BOLD}${YELLOW}\\u${LGRAY}@${CYAN}\h${LGRAY} ${MAGENTA}\w ${LGRAY}>${RST} "
 }
 
 function prompt_prompt() {
-	local expanded=${PROMPT@P}
+	local x=$(PROMPT_COMMAND="" PS1="$PS1" "$BASH" --norc -i </dev/null 2>&1 | sed -n '${s/^\(.*\)exit$/\1/p;}')
+	local expanded="$x"
 	local prompt_length=$(echo ${expanded//[$'\001'$'\002']} | sed 's/\x1b\[[0-9;]*m//g' | wc -m)
 	local width=$(tput cols)
 	local percentage=$(expr $prompt_length \* 100 / $width)
 
 	if [ $percentage -gt 50 ]; then
 		local prompt="$(short_prompt)"
-		echo "${prompt@P}"
+		PS1="${prompt}"
 	else
 		local prompt="$(expanded_prompt)"
-		echo "${prompt@P}"
+		PS1=${prompt}
 	fi
 }
 
@@ -54,7 +55,7 @@ else
 	PROMPT="${debian_chroot:+($debian_chroot)}\u@\h:\w\$"
 fi
 
-#PS1="${TERMINAL_TITLE}${PROMPT}"
-PS1="\$(prompt_prompt)"
+PS1="${PROMPT}"
+PROMPT_COMMAND=prompt_prompt
 
 unset color_prompt
