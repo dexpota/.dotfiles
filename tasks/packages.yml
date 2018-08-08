@@ -49,6 +49,7 @@
     - task
     # keeps track of how much time each task takes
     - timew
+    - cronie
   when: ansible_distribution == 'Archlinux'
 
 - name: Installing ubuntu or debian packages
@@ -57,4 +58,5 @@
     - build-essential
     - python-dev
     - python3-dev
+    - ruby-dev
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
