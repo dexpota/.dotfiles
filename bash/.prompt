@@ -29,18 +29,17 @@ function expanded_prompt() {
 }
 
 function prompt_prompt() {
-	local x=$(PROMPT_COMMAND="" PS1="$PS1" "$BASH" --norc -i </dev/null 2>&1 | sed -n '${s/^\(.*\)exit$/\1/p;}')
-	local expanded="$x"
+	local e_prompt="$(expanded_prompt)"
+	local expanded=$(PROMPT_COMMAND="" PS1="$e_prompt" "$BASH" --norc -i </dev/null 2>&1 | sed -n '${s/^\(.*\)exit$/\1/p;}')
 	local prompt_length=$(echo ${expanded//[$'\001'$'\002']} | sed 's/\x1b\[[0-9;]*m//g' | wc -m)
 	local width=$(tput cols)
 	local percentage=$(expr $prompt_length \* 100 / $width)
-
+	
 	if [ $percentage -gt 50 ]; then
 		local prompt="$(short_prompt)"
 		PS1="${prompt}"
 	else
-		local prompt="$(expanded_prompt)"
-		PS1=${prompt}
+		PS1="${e_prompt}"
 	fi
 }
 
