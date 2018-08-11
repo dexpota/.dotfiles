@@ -49,7 +49,7 @@ if [ -x "$(command -v dircolors > /dev/null 2>&1)" ]; then
 fi
 
 # Sourcing bash's dotfiles
-for dotfile in "$DOTFILES_DIRECTORY"/.{prompt,alias,functions}
+for dotfile in "$DOTFILES_DIRECTORY"/.bash/.{prompt.sh,alias.sh,functions.sh}
 do
 	if [ -f "$dotfile" ]
 	then
