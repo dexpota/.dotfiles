@@ -74,4 +74,6 @@ export CHEATCOLORS=true
 export CHEAT_EDITOR=vim
 
 PATH=$PATH:$HOME/.scripts
+PATH=$PATH:$HOME/.git-commands
+
 export PATH
