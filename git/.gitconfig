@@ -15,6 +15,8 @@
 	dbranch = branch -d
 	# create a new branch and check it out
 	bcheckout = checkout -b
+	# shallow clone of repositor# shallow clone of repositoryy
+	shallow = clone --depth=1
 
 [push]
 	# Defines the action git push should take if no refspec is given on the command line, 
