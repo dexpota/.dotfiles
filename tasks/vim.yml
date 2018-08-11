@@ -3,5 +3,6 @@
   with_items:
     - "~/.vim/backup"
     - "~/.vim/swp"
+    - "~/.vim/undo"
   become: no
   tags: vim

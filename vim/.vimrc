@@ -50,9 +50,10 @@ else
   set undofile		" keep an undo file (undo changes after closing)
 endif
 set history=50		" keep 50 lines of command line history
-" Set backup and swap directory
+" Set backup, swap and undo directory
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
+set undodir=~/.vim/undo//
 
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
