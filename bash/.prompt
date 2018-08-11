@@ -21,7 +21,8 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 fi
 
 function short_prompt() {
-	echo "${REMOTE_TAG}${BOLD}${YELLOW}\\u${LGRAY}@${CYAN}\h${LGRAY} ${LGRAY}>${RST} "
+	local result=${PWD##*/}
+	echo "${REMOTE_TAG}${BOLD}${YELLOW}\\u${LGRAY}@${CYAN}\h${LGRAY} ${MAGENTA}⋯ ${result} ${LGRAY}>${RST} "
 }
 
 function expanded_prompt() {
