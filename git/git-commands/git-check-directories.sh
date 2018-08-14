@@ -49,6 +49,12 @@ if [[ -d "$directory" ]]; then
 			printf "[${YELLOW}%s${RST}]" "Local changes not committed"
 		fi
 
+		git diff origin/master..HEAD --quiet --exit-code
+		commit_not_pushed=$?
+		if [[ $commit_not_pushed -ne 0 ]]; then
+			printf "[${YELLOW}%s${RST}]" "Local commit not pushed."
+		fi
+
 		if [[ $staged_not_commited -ne 1 && $unstaged_changes -ne 1 ]]; then
 			printf "[${GREEN}%s${RST}]" "Everything up-to-date"
 		fi
