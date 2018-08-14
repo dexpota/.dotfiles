@@ -5,7 +5,10 @@ usage() {
 git check-directories
 
 Usage: 
-	check-directories <directory>
+	check-directories <directory> [--all]
+
+Options:
+	-a --all  Check all directories.
 
 Arguments:
 	directory is the root where to start searching for git repositories.
@@ -20,6 +23,10 @@ fi
 
 # processing arguments
 eval "$(docopts -h "$(usage)" : "$@")"
+
+if $all; then
+	GLOBIGNORE=".:.."
+fi
 
 if [[ -d "$directory" ]]; then
 	cd "$directory"
