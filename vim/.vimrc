@@ -100,3 +100,8 @@ let vim_markdown_preview_github=1
 " Easy indentation of code blocks
 vnoremap < <gv
 vnoremap > >gv
+
+" Disable bracketed paste,
+" This solve an issue with vim and terminator
+" see @https://unix.stackexchange.com/a/400717
+set t_BE=

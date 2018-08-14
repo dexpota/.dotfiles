@@ -48,6 +48,10 @@ if [ -x "$(command -v dircolors > /dev/null 2>&1)" ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
+if [ -f $DOTFILES_DIRECTORY/.bash/colors.sh ]; then
+	. $DOTFILES_DIRECTORY/.bash/colors.sh
+fi
+
 # Sourcing bash's dotfiles
 for dotfile in "$DOTFILES_DIRECTORY"/.bash/{prompt,aliases,functions}.sh
 do
@@ -68,12 +72,17 @@ if ! shopt -oq posix; then
 	fi
 fi
 
+export EDITOR=vim
+
 # These are cheat's options
 # cheat is a simple program used to print cheatsheet on terminal
 export CHEATCOLORS=true
 export CHEAT_EDITOR=vim
 
+export GOPATH=$HOME/.go
+
 PATH=$PATH:$HOME/.scripts
 PATH=$PATH:$HOME/.git-commands
+PATH=$PATH:$GOPATH/bin
 
 export PATH

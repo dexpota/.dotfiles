@@ -5,15 +5,6 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# https://misc.flogisoft.com/bash/tip_colors_and_formatting
-ESC="\e"
-BOLD="\[${ESC}[1m\]"
-YELLOW="\[${ESC}[33m\]"
-MAGENTA="\[${ESC}[35m\]"
-CYAN="\[${ESC}[36m\]"
-LGRAY="\[${ESC}[37m\]"
-RST="\[${ESC}[0m\]"
-
 TERMINAL_TITLE='\[\e]2;\u@\h\a\]'
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
@@ -22,11 +13,11 @@ fi
 
 function short_prompt() {
 	local result=${PWD##*/}
-	echo "${REMOTE_TAG}${BOLD}${YELLOW}\\u${LGRAY}@${CYAN}\h${LGRAY} ${MAGENTA}⋯ ${result} ${LGRAY}>${RST} "
+	echo "${REMOTE_TAG}${P_BOLD}${P_YELLOW}\\u${P_LGRAY}@${P_CYAN}\h${P_LGRAY} ${P_MAGENTA}⋯ ${result} ${P_LGRAY}>${P_RST} "
 }
 
 function expanded_prompt() {
-	echo "${REMOTE_TAG}${BOLD}${YELLOW}\\u${LGRAY}@${CYAN}\h${LGRAY} ${MAGENTA}\w ${LGRAY}>${RST} "
+	echo "${REMOTE_TAG}${P_BOLD}${P_YELLOW}\\u${P_LGRAY}@${P_CYAN}\h${P_LGRAY} ${P_MAGENTA}\w ${P_LGRAY}>${P_RST} "
 }
 
 function prompt_prompt() {
@@ -49,13 +40,6 @@ export -f prompt_prompt
 export -f short_prompt
 export -f expanded_prompt
 
-if [ $has_color = 1 ]; then
-	PROMPT="${REMOTE_TAG} ${BOLD}${YELLOW}\u${LGRAY}@${CYAN}\h${LGRAY} ${MAGENTA}\w ${LGRAY}>${RST} "
-else
-	PROMPT="${debian_chroot:+($debian_chroot)}\u@\h:\w\$"
-fi
-
-PS1="${PROMPT}"
 PROMPT_COMMAND=prompt_prompt
 
 unset color_prompt
