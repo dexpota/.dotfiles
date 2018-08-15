@@ -53,7 +53,7 @@ if [ -f $DOTFILES_DIRECTORY/.bash/colors.sh ]; then
 fi
 
 # Sourcing bash's dotfiles
-for dotfile in "$DOTFILES_DIRECTORY"/.bash/{prompt,aliases,functions}.sh
+for dotfile in "$DOTFILES_DIRECTORY"/.bash/{prompt,aliases,functions,directories}.sh
 do
 	if [ -f "$dotfile" ]
 	then
