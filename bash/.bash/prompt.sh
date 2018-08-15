@@ -11,13 +11,20 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 	REMOTE_TAG="(ssh) "
 fi
 
+function venv() {
+	echo $VIRTUAL_ENV
+	if ! [ -z "$VIRTUAL_ENV" ]; then
+		echo "($(basename $VIRTUAL_ENV)) "
+	fi
+}
+
 function short_prompt() {
 	local result=${PWD##*/}
-	echo "${REMOTE_TAG}${P_BOLD}${P_YELLOW}\\u${P_LGRAY}@${P_CYAN}\h${P_LGRAY} ${P_MAGENTA}⋯ ${result} ${P_LGRAY}>${P_RST} "
+	echo "$(venv)${REMOTE_TAG}${P_BOLD}${P_YELLOW}\\u${P_LGRAY}@${P_CYAN}\h${P_LGRAY} ${P_MAGENTA}⋯ ${result} ${P_LGRAY}>${P_RST} "
 }
 
 function expanded_prompt() {
-	echo "${REMOTE_TAG}${P_BOLD}${P_YELLOW}\\u${P_LGRAY}@${P_CYAN}\h${P_LGRAY} ${P_MAGENTA}\w ${P_LGRAY}>${P_RST} "
+	echo "$(venv)${REMOTE_TAG}${P_BOLD}${P_YELLOW}\\u${P_LGRAY}@${P_CYAN}\h${P_LGRAY} ${P_MAGENTA}\w ${P_LGRAY}>${P_RST} "
 }
 
 function prompt_prompt() {
