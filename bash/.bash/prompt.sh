@@ -12,7 +12,6 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 fi
 
 function venv() {
-	echo $VIRTUAL_ENV
 	if ! [ -z "$VIRTUAL_ENV" ]; then
 		echo "($(basename $VIRTUAL_ENV)) "
 	fi
