@@ -95,3 +95,7 @@ function crontab() {
 
 export -f crontab
 
+# Copy to clipboard using x11 utility
+function clipcopy() {
+	xclip -sel c < $1
+}
