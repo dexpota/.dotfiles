@@ -97,6 +97,9 @@ let g:SimpylFold_docstring_preview=1
 " Markdown preview for github files
 let vim_markdown_preview_github=1
 
+let g:markdown_fenced_languages = ['rust=rust']
+
+
 " Disable bracketed paste,
 " This solve an issue with vim and terminator
 " see @https://unix.stackexchange.com/a/400717

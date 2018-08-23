@@ -99,3 +99,4 @@ export -f crontab
 function clipcopy() {
 	xclip -sel c < $1
 }
+export -f clipcopy
