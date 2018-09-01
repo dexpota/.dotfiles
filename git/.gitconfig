@@ -10,6 +10,8 @@
 	ui = auto
 
 [alias]
+	# commit all modified file and comment
+	cam = commit -am
 	st = status
 	# delete a local branch
 	dbranch = branch -d
