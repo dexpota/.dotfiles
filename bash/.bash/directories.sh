@@ -1,4 +1,5 @@
 alias gd="cd $HOME/developing"
+alias gdp="cd $HOME/developing/projects"
 alias gg="cd $HOME/github"
 alias gl="cd $HOME/learning"
 alias gdot="cd $HOME/.dotfiles"
