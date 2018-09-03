@@ -1,0 +1,16 @@
+- name: "Retrieving last release url of vagrant."
+  shell: curl -s https://releases.hashicorp.com/vagrant/index.json | jq --raw-output '.versions | with_entries(select(.key | test("-rc[0-9]+$") | not)) | to_entries | max_by(.key) | .value.builds[] | select(.arch == "x86_64") | select(.os == "debian") | .url'
+  check_mode: no  # We want this module to run in check mode too.
+  register: vagrant_url
+  tags: vagrant
+
+- debug:
+    msg: "Vagrant url {{ vagrant_url.stdout }}"
+  tags: vagrant
+  when: "vagrant_url.rc == 0"
+
+- name: "Installing vagrant."
+  tags: vagrant
+  apt:
+    deb: "{{vagrant_url.stdout}}"
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
