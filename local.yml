@@ -15,4 +15,4 @@
     - include: ./tasks/rust.yml
     - include: ./tasks/syncthing.yml
     - include: ./tasks/virtualization.yml
-
+    - include: ./tasks/virtualbox.yml

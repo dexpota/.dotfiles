@@ -1,0 +1,22 @@
+- name: "Adding VirtualBox keys"
+  apt_key:
+    url: "{{item}}" 
+    state: present
+  with_items:
+    - https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    - https://www.virtualbox.org/download/oracle_vbox.asc
+  tags: virtualbox 
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: "Adding VirtualBox repository"
+  apt_repository:
+    repo: deb http://download.virtualbox.org/virtualbox/debian {{ansible_distribution_release}} contrib
+    state: present
+  tags: virtualbox
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: "Installing VirtualBox"
+  apt:
+    name: virtualbox-5.2
+    state: present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
