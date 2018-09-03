@@ -1,0 +1,30 @@
+# List all attributes of dot language.
+import urllib2
+from BeautifulSoup import BeautifulSoup
+from pprint import pprint
+
+url = "http://www.graphviz.org/doc/info/attrs.html"
+soup = BeautifulSoup(urllib2.urlopen(url).read())
+
+attribute_names = []
+attribute_types = []
+
+for table in soup.findAll('table'):
+    rows = table.findAll('tr')
+    if len(rows) > 0:
+        first_row = rows[0]
+        first_row_columns = first_row.findAll("th")
+
+        if len(first_row_columns) > 0:
+            if first_row_columns[0].contents[0] == "Name" and first_row_columns[2].contents[0] == "Type":
+                for row in rows[1:]:
+                    attribute_names.append(row.findAll("td")[0].contents[0].text)
+                    attribute_types.append(row.findAll("td")[2].text)
+
+print dict(zip(attribute_names, attribute_types))
+type_function = dict(zip(set(attribute_types), [None]*len(attribute_types)))
+pprint(type_function)
+#for row in soup.findAll('table')[0].tbody.findAll('tr'):
+#    first_column = row.findAll('th')[0].contents
+#    third_column = row.findAll('td')[2].contents
+#    print first_column, third_column
