@@ -14,3 +14,10 @@
   shell: "git lfs install"
   tags: git-lfs
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: "Installing git-lfs from repository"
+  package: 
+    name: git-lfs
+    state: present
+  when: ansible_distribution == 'Archlinux'
+
