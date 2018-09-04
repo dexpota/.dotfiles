@@ -1,6 +1,8 @@
 - name: Installing packages
   package: name={{item}}
   with_items:
+    # Utility to parallelize shell commands
+    - parallel
     - vim
     - git
     - inotify-tools

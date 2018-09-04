@@ -36,7 +36,14 @@ alias less="less -R "
 # Add an "alert" alias that notify when a command ends.
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-alias grepall="grep . -R -n -A 2 -B 2 -I -e"
+# Issue: if a long line matches the pattern then it will be printed all and
+# will clutter the terminal, a possible fix is to use cut, but then it might
+# cut the result
+if [ -x "$(command -v parallel)" ]; then
+	alias grepall="find . -type f | parallel --no-notice -j+1 grep --color=always -n -H -A 2 -B 2 -I -e"
+else
+	alias grepall="grep . -R -n -A 2 -B 2 -I -e"
+fi
 
 # Git
 # Remove `+` and `-` from start of diff lines; just rely upon color.
