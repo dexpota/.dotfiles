@@ -19,5 +19,6 @@
   package: 
     name: git-lfs
     state: present
+  tags: git-lfs
   when: ansible_distribution == 'Archlinux'
 
