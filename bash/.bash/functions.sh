@@ -100,3 +100,10 @@ function clipcopy() {
 	xclip -sel c < $1
 }
 export -f clipcopy
+
+function taskscommit() {
+	# TODO check the result of commit and the result of push
+	[ -d "$HOME/.task" ] && git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" commit -am "Updating tasks."
+	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" push  
+}
+export -f taskscommit 
