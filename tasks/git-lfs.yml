@@ -1,0 +1,16 @@
+- name: "Adding git-lfs repository"
+  shell: "curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash"
+  tags: git-lfs
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: "Installing git-lfs from repository"
+  apt:
+    name: git-lfs
+    state: present
+  tags: git-lfs
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: "Initializing git-lfs"
+  shell: "git lfs install"
+  tags: git-lfs
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

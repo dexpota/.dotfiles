@@ -16,3 +16,4 @@
     - include: ./tasks/syncthing.yml
     - include: ./tasks/virtualization.yml
     - include: ./tasks/virtualbox.yml
+    - include: ./tasks/git-lfs.yml

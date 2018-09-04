@@ -25,3 +25,8 @@
 	# no refspec is configured in the remote, and no refspec is implied by any of the 
 	# options given on the command line.
 	default = simple
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
