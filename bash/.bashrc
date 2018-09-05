@@ -5,11 +5,6 @@ case $- in
 		return;;
 esac
 
-# GITHUB_ZEN_ENABLED=1
-# TODO to be improved
-if [ -v GITHUB_ZEN_ENABLED ]; then
-	[ -x "$(command -v curl)" ] && curl https://api.github.com/zen && echo ""
-fi
 
 # Check for color capabilities
 # https://unix.stackexchange.com/a/198949

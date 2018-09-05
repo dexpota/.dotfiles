@@ -55,3 +55,5 @@ alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C
 alias r="ranger"
 alias t="task"
 alias g="git"
+
+alias zen="command -v curl 1>/dev/null 2>&1 && curl https://api.github.com/zen && echo ''"
