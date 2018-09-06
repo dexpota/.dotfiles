@@ -31,6 +31,10 @@ bash: $(shell find ./bash/ -type f) ## Install bash configuration files
 fonts: ## Install system fonts into ~/.fonts 
 	stow fonts
 
+.PHONY: newsboat
+newsboat: ## Install newsboat configuration files.
+	stow newsboat
+
 .PHONY: git
 git: ## Install git configuration files
 	sed -e "s/AUTHORNAME/${GIT_AUTHORNAME}/g" -e "s/AUTHOREMAIL/${GIT_AUTHOREMAIL}/g" git/.gitconfig.local.example > git/.gitconfig.local

@@ -1,0 +1,26 @@
+# Basic onfiguration
+# documentation
+# https://newsboat.org/releases/2.12/docs/newsboat.html
+# see samples configuration files
+# http://moparx.com/configs/newsbeuter/
+# https://gist.github.com/anonymous/42d2f5956e7bc8ee1ebc
+
+auto-reload yes
+browser chromium-browser
+
+# Formatting and colorization
+
+#articlelist-format "%4i %f %D  %?T?|%-17T| ?%t"
+
+#highlight feedlist    "^  *[0-9]+  *N  "                    color156 default
+#highlight articlelist "^  *[0-9]+  *N  "                    color156 default
+
+# color <element> <fgcolor> <bgcolor> [<attributes> ...]
+# see @http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
+color background white default
+color listnormal white default 
+color listnormal_unread white default bold
+color listfocus default white
+color listfocus_unread white red standout bold
+color info white red bold 
+
