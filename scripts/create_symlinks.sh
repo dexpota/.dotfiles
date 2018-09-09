@@ -10,6 +10,8 @@ fi
 	find ./ -type f -print0 | while IFS= read -r -d $'\0' line; do
 		filename=$(basename "$line")
 		
+		[[ ! -x "$filename" ]] && chmod +x "$filename"
+
 		(
 			cd .scripts \
 				&& [ ! -f "${filename%.*}" ] \
