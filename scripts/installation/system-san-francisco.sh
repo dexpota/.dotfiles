@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-{
-	cd ~/.fonts 
-	gh-curl-repo AppleDesignResources/SanFranciscoFont ".*\.otf" . 
-}
+if [ ! -d ~/.fonts ]; then
+	mkdir ~/.fonts
+fi
+
+cd ~/.fonts
+gh-curl-repo AppleDesignResources/SanFranciscoFont ".*\.otf" .
