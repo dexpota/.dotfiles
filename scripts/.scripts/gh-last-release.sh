@@ -29,5 +29,5 @@ if [[ $response_code == 200 ]]; then
 	
 	repository_name=$(basename $1)
 	target_filename="${repository_name}_${name}.tar"
-	(cd $target_directory; curl -L $tarball_url > $target_filename)
+	(cd $target_directory; curl -L $tarball_url > "$target_filename")
 fi
