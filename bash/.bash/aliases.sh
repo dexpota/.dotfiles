@@ -33,6 +33,12 @@ alias egrep="egrep --color=auto"
 # Let less understand a colorful life
 alias less="less -R "
 
+# Humanize df and du
+alias df="df -h"
+alias du="du -h"
+# Summarized version of su
+alias dus="du -s"
+
 # Add an "alert" alias that notify when a command ends.
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
