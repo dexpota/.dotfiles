@@ -6,4 +6,6 @@
     - cheat
     # render markdown file
     - grip
+    # pipenv environment switcher
+    - pipenv-pipes
   tags: pip
