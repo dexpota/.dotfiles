@@ -8,4 +8,6 @@
     - grip
     # pipenv environment switcher
     - pipenv-pipes
+    # useful commands to works with virtualenv
+    - virtualenvwrapper
   tags: pip

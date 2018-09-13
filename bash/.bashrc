@@ -81,3 +81,7 @@ PATH=$PATH:$HOME/.git-commands
 PATH=$PATH:$GOPATH/bin
 
 export PATH
+
+# virtualenvwrapper setup
+export WORKON_HOME=~/.virtualenvs
+[ -f /usr/local/bin/virtualenvwrapper.sh ]source /usr/local/bin/virtualenvwrapper.sh
