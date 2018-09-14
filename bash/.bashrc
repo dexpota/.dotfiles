@@ -84,4 +84,4 @@ export PATH
 
 # virtualenvwrapper setup
 export WORKON_HOME=~/.virtualenvs
-[ -f /usr/local/bin/virtualenvwrapper.sh ]source /usr/local/bin/virtualenvwrapper.sh
+[ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
