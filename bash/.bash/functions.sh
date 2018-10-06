@@ -50,14 +50,15 @@ function to_gif() {
 	local videofile="$1"
 
 	if [ -x "$(command -v avconv)" ]; then
-		avconv -i "$videofile" -vf scale=320:-1:flags=lanczos,fps=8 "frames_filenames_fmt"
+		avconv -i "$videofile" -vf scale=320:-1:flags=lanczos,fps=8 "$frames_filenames_fmt"
+	elif [ -x "$(command -v ffmpeg)" ]; then
+		ffmpeg -i "$videofile" -vf "scale=480:-1" -r 8 "$frames_filenames_fmt"
+	else
+		echo "Both of avconv and ffmpeg are missing."
+		return
 	fi
 
-	if [ -x "$(command -v ffmpeg)" ]; then
-		ffmpeg -i "$videofile" -vf "scale=480:-1" -r 8 "frames_filenames_fmt"
-	fi
-
-	convert -fuzz 5% -delay 12.5 -layers OptimizeTransparency -loop 0 $directory/out%06d.png output.gif
+	convert -fuzz 5% -delay 12.5 -layers OptimizeTransparency -loop 0 $directory/out*.png output.gif
 }
 
 function git_find_all() {
