@@ -52,7 +52,7 @@ function to_gif() {
 	if [ -x "$(command -v avconv)" ]; then
 		avconv -i "$videofile" -vf scale=320:-1:flags=lanczos,fps=8 "$frames_filenames_fmt"
 	elif [ -x "$(command -v ffmpeg)" ]; then
-		ffmpeg -i "$videofile" -vf "scale=480:-1" -r 8 "$frames_filenames_fmt"
+		ffmpeg -i "$videofile" -vf "scale=1280:-1" -r 8 "$frames_filenames_fmt"
 	else
 		echo "Both of avconv and ffmpeg are missing."
 		return
@@ -103,8 +103,38 @@ function clipcopy() {
 export -f clipcopy
 
 function taskscommit() {
-	# TODO check the result of commit and the result of push
-	[ -d "$HOME/.task" ] && git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" commit -am "Updating tasks."
-	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" push  
+	if [ ! -d "$HOME/.task" ]; then
+		echo "~/.task is missing"
+		return
+	fi
+	
+	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" commit -am "Updating tasks."
+	local retval=$?
+	if [ $retval -neq 0 ]; then
+		echo "git commit failed"
+		return
+	fi
+
+	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" push 
+	local retval=$?
+	if [ $retval -neq 0 ]; then
+		echo "git push failed"
+		return
+	fi
 }
 export -f taskscommit 
+
+function taskspull() {
+	if [ ! -d "$HOME/.task" ]; then
+		echo "~/.task is missing"
+		return
+	fi
+	
+	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" pull
+	local retval=$?
+	if [ $retval -neq 0 ]; then
+		echo "git pull failed"
+		return
+	fi
+}
+export -f taskspull
