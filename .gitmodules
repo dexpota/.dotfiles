@@ -45,3 +45,6 @@
 [submodule "vim/.vim/bundle/vim-markdown"]
 	path = vim/.vim/bundle/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "vim/.vim/bundle/kotlin-vim"]
+	path = vim/.vim/bundle/kotlin-vim
+	url = https://github.com/udalov/kotlin-vim
