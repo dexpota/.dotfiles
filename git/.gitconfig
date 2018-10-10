@@ -30,3 +30,6 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[http]
+	# post buffer size in bytes
+	postBuffer = 256288000
