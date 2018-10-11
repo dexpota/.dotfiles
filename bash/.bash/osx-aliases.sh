@@ -1,1 +1,1 @@
-command -v ghead && alias head=ghead 
+command -v ghead 1>/dev/null 2>&1 && alias head=ghead
