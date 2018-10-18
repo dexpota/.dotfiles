@@ -1,7 +1,7 @@
 - name: Installing pip packages
   pip:
     name: "{{ item }}"
-    extra_args: --user
+    executable: pip3
   with_items:
     # command line utility to check your python style
     - flake8
@@ -15,4 +15,6 @@
     - pipenv-pipes
     # useful commands to works with virtualenv
     - virtualenvwrapper
+    # command line utility to automatically check your code
+    - coala-bears
   tags: pip
