@@ -38,6 +38,7 @@
     - taskwarrior
     - syncthing
     - ruby
+  tags: packages
 
 - name: Installing arch packages
   package: name={{item}}
@@ -55,6 +56,7 @@
     - timew
     - cronie
   when: ansible_distribution == 'Archlinux'
+  tags: packages
 
 - name: Installing ubuntu or debian packages
   package: name={{item}}
@@ -64,3 +66,4 @@
     - python3-dev
     - ruby-dev
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  tags: packages
