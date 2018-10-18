@@ -1,4 +1,4 @@
-- name: Downloading and installing LS_COLORS files 
+- name: Downloading and installing LS_COLORS files
   get_url:
     url: https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS
     dest: ~/.dircolors

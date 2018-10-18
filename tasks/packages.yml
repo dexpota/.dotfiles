@@ -19,7 +19,7 @@
     # This is used by ranger to highlight code inside the preview
     - highlight
     # A new vim
-    - neovim 
+    - neovim
     # EDA electronic design automation software
     - kicad
     # Dependencies for YouCompleteMe

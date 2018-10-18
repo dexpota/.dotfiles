@@ -1,11 +1,11 @@
 - name: "Adding VirtualBox keys"
   apt_key:
-    url: "{{item}}" 
+    url: "{{item}}"
     state: present
   with_items:
     - https://www.virtualbox.org/download/oracle_vbox_2016.asc
     - https://www.virtualbox.org/download/oracle_vbox.asc
-  tags: virtualbox 
+  tags: virtualbox
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: "Adding VirtualBox repository"

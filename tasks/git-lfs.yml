@@ -16,7 +16,7 @@
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: "Installing git-lfs from repository"
-  package: 
+  package:
     name: git-lfs
     state: present
   tags: git-lfs
