@@ -1,0 +1,4 @@
+[cli]
+bears = SpaceConsistencyBear
+files = tasks/*.yml
+use_spaces = True
