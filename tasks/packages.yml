@@ -36,8 +36,8 @@
     - compton
     # manage your tasks
     - taskwarrior
-    - syncthing
     - ruby
+  become: yes
   tags: packages
 
 - name: Installing arch packages
@@ -56,6 +56,7 @@
     - timew
     - cronie
   when: ansible_distribution == 'Archlinux'
+  become: yes
   tags: packages
 
 - name: Installing ubuntu or debian packages
@@ -64,6 +65,9 @@
     - build-essential
     - python-dev
     - python3-dev
+    - python-pip
+    - python3-pip
     - ruby-dev
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  become: yes
   tags: packages
