@@ -1,6 +1,7 @@
 - name: Installing packages
   package: name={{item}}
   with_items:
+    - blender
     # Music Player
     - cmus
     # Utility to parallelize shell commands
