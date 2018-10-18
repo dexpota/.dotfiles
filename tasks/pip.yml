@@ -1,11 +1,16 @@
 - name: Installing pip packages
   pip:
     name: "{{ item }}"
+    extra_args: --user
   with_items:
+    # command line utility to check your python style
     - flake8
+    # command line utility to manage cheat sheets
     - cheat
     # render markdown file
     - grip
+    # manage python environments
+    - pipenv
     # pipenv environment switcher
     - pipenv-pipes
     # useful commands to works with virtualenv
