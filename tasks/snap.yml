@@ -1,0 +1,8 @@
+- name: Installing snap packages
+  command: snap install {{item}} --classic 
+  with_items:
+    - pycharm-professional
+    - android-studio
+    - intellij-idea-ultimate
+  become: yes
+  tags: snap-packages
