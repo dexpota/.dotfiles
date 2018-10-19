@@ -1,5 +1,7 @@
 # .dotfiles
 
+> One repo to rule your machine.
+
 This repository is a collection of configuration files and Ansible tasks I use
 to setup my machine. These files are mainly targeted to work with Ubuntu and
 Arch. Although these configurations are tailored for me, you can still find
