@@ -7,11 +7,16 @@ some inspiration in them.
 
 ## Prerequisites
 
-Ansible(at least 2.5.5), Make, git
+To start using the configurations in this repository you will need: ansible (at
+least 2.5.5), make and git. The following instructions shows how to install
+them on Ubuntu.
 
 ```bash
+# installing ansible
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update && sudo apt-get install ansible
+# installing git and make
+sudo apt-get install git make
 ```
 
 ## Installation and usage.
