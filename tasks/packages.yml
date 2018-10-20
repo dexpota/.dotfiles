@@ -1,7 +1,9 @@
 - name: Installing packages
   package: name={{item}}
   with_items:
+    # package manager
     - snap
+    - curl
     - blender
     # Music Player
     - cmus
