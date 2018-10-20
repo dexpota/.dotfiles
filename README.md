@@ -45,6 +45,5 @@ make git
 ```bash
 cd ~/.dotfiles
 ansible-playbook local.yml --tags=pathogen,vim
-make ycm
-stow vim
+make vim
 ```

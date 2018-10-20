@@ -2,7 +2,6 @@
   file: path={{item}} state=directory
   with_items:
     - "~/.vim/autoload"
-    - "~/.vim/bundle"
   become: no
   tags: pathogen
 
