@@ -1,0 +1,26 @@
+- name: "Creating temp filename"
+  tempfile:
+    state: directory 
+  register: filename
+  tags: mendeley
+
+- debug:
+    msg: "filename {{filename.path}}"
+  tags: mendeley 
+
+- name: "Retrieving last release of mendeley."
+  get_url:
+    url: https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
+    dest: "{{filename.path}}/mendeley.deb" 
+  tags: always, mendeley
+  register: ret
+
+- debug:
+    msg: "filename {{ret}}"
+  tags: mendeley 
+
+- name: "Installing mendeley."
+  apt:
+    deb: "{{filename.path}}/mendeley.deb"
+  tags: mendeley 
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

@@ -1,6 +1,8 @@
 - name: Installing packages
   package: name={{item}}
   with_items:
+    # manage your library
+    - calibre
     # package manager
     - snap
     - curl
