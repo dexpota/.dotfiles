@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 case $- in
 	*i*) ;;
-	*)	. ~/.functions # source all functions
+	*)	. ~/.bash/functions.sh # source all functions
 		return;;
 esac
 
