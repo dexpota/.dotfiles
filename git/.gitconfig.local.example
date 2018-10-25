@@ -1,4 +1,6 @@
+[includeIf "gitdir:WORKINGDIR"]
+    path = ~/.gitconfig.work
+
 [user]
 	email = AUTHOREMAIL
 	name = AUTHORNAME
-
