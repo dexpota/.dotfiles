@@ -138,3 +138,13 @@ function taskspull() {
 	fi
 }
 export -f taskspull
+
+function taskstatus() {
+	if [ ! -d "$HOME/.task" ]; then
+		echo "~/.task is missing"
+		return
+	fi
+	
+	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" status 
+}
+export -f taskstatus 
