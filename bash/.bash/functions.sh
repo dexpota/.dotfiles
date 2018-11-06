@@ -110,14 +110,14 @@ function taskscommit() {
 	
 	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" commit -am "Updating tasks."
 	local retval=$?
-	if [ $retval -neq 0 ]; then
+	if [ "$retval" -ne 0 ]; then
 		echo "git commit failed"
 		return
 	fi
 
 	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" push 
 	local retval=$?
-	if [ $retval -neq 0 ]; then
+	if [ "$retval" -ne 0 ]; then
 		echo "git push failed"
 		return
 	fi
@@ -132,7 +132,7 @@ function taskspull() {
 	
 	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" pull
 	local retval=$?
-	if [ $retval -neq 0 ]; then
+	if [ "$retval" -ne 0 ]; then
 		echo "git pull failed"
 		return
 	fi
