@@ -34,7 +34,7 @@ function spellcheck() {
 	aspell -a < <(echo "$1")
 }
 
-function android_screen_capture() {
+function android_screen_record() {
 	local filename="$(mktemp -u -p "./").mp4"
 	
 	echo "Press CTRL+C to stop recording."
@@ -42,6 +42,15 @@ function android_screen_capture() {
 	adb pull "/sdcard/$filename"
 
 	echo "Recording saved as $filename"
+}
+
+function android_screen_capture() {
+	local filename="$(mktemp -u -p './').png"
+
+	adb shell screencap -p "/sdcard/$filename"
+	adb pull "/sdcard/$filename"
+
+	echo "Capture saved as $filename"
 }
 
 function to_gif() {
