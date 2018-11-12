@@ -71,6 +71,9 @@ if ! shopt -oq posix; then
 	fi
 fi
 
+export ANDROID_SDK=~/Library/Android/sdk
+export ANDROID_SDK_PLATFORM_TOOLS=$ANDROID_SDK/platform-tools
+
 export EDITOR=vim
 
 # These are cheat's options
@@ -83,9 +86,10 @@ export GOPATH=$HOME/.go
 PATH=$PATH:$HOME/.scripts
 PATH=$PATH:$HOME/.git-commands
 PATH=$PATH:$GOPATH/bin
-
+PATH=$PATH:$ANDROID_SDK_PLATFORM_TOOLS
 export PATH
 
 # virtualenvwrapper setup
 export WORKON_HOME=~/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
