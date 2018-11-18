@@ -91,5 +91,8 @@ export PATH
 
 # virtualenvwrapper setup
 export WORKON_HOME=~/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	# use brew python	
+	export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+fi
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
