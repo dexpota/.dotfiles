@@ -157,3 +157,26 @@ function taskstatus() {
 	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" status 
 }
 export -f taskstatus 
+
+function resize_and_crop(){
+	# $1 input image
+	# $3 output image
+	# $2 size
+
+	local input="$1"
+	local output="$3"
+	local size="$2"
+	convert "$input" -resize "${size}^" -gravity center -crop "${size}+0+0" +repage "$output"
+}
+
+function resize_and_fit(){
+	# $1 input image
+	# $3 output image
+	# $2 size
+	# $4 backgroud
+
+	local input="$1"
+	local output="$3"
+	local size="$2"
+	convert "$input" -resize "${size}" -gravity center -extent "${size}" -background "$color" "$output"
+}
