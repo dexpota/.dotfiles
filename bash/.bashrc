@@ -91,8 +91,18 @@ export PATH
 
 # virtualenvwrapper setup
 export WORKON_HOME=~/.virtualenvs
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	# use brew python	
-	export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+
+VIRTUALENVWRAPPER_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
+if [[ -f "$VIRTUALENVWRAPPER_SCRIPT" ]]; then 
+	
+	if [[ -z "$VIRTUALENVWRAPPER_PYTHON" ]]; then
+		# This slow down the startup of the console
+		if python2 -c "import virtualenvwrapper" 1>/dev/null 2>&1; then
+			VIRTUALENVWRAPPER_PYTHON=$(which python2)
+		elif python3 -c "import virtualenvwrapper" 1>/dev/null 2>&1; then
+			VIRTUALENVWRAPPER_PYTHON=$(which python3)
+		fi
+	fi
+	
+	source $VIRTUALENVWRAPPER_SCRIPT 
 fi
-[ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
