@@ -24,8 +24,11 @@ fi
 eval "$(docopts -h "$(usage)" : "$@")"
 
 if [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1 ; then 
-	# TODO test this function
-	git rm $(git check-ignore --no-index $(git ls-files))	
+	files=$(git check-ignore --no-index $(git ls-files))
+	if [ $? -eq 0 ]; then
+		git rm $files >/dev/null
+		git status -s | awk '{print $2}' | sort
+	fi
 else
 	echo "Current directory is not a git repository."
 	exit 1
