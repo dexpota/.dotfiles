@@ -28,5 +28,5 @@ if [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1 ; then
 	git rm $(git check-ignore --no-index $(git ls-files))	
 else
 	echo "Current directory is not a git repository."
-	return 1
+	exit 1
 fi
