@@ -180,8 +180,3 @@ function resize_and_fit(){
 	local size="$2"
 	convert "$input" -resize "${size}" -gravity center -extent "${size}" -background "$color" "$output"
 }
-
-function git_remove_tracked_ignored() {
-	# TODO test this function
-	git rm $(git check-ignore $(git ls-files))
-}
