@@ -42,3 +42,13 @@ teardown() {
 	[ "${lines[2]}" = "subdirectory/.ignore" ]
 	[ "${lines[3]}" = "subdirectory/ignore" ]
 }
+
+
+@test "testing modified files are being deleted" {
+	echo "something" >> ".ignore"
+	run git-purge-ignored
+	[ "${lines[0]}" = ".hidden/goo" ]
+	[ "${lines[1]}" = ".ignore" ]
+	[ "${lines[2]}" = "subdirectory/.ignore" ]
+	[ "${lines[3]}" = "subdirectory/ignore" ]
+}
