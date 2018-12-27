@@ -48,3 +48,6 @@
 [submodule "vim/.vim/bundle/kotlin-vim"]
 	path = vim/.vim/bundle/kotlin-vim
 	url = https://github.com/udalov/kotlin-vim
+[submodule "vim/.vim/bundle/tabular"]
+	path = vim/.vim/bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
