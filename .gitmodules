@@ -51,3 +51,6 @@
 [submodule "vim/.vim/bundle/tabular"]
 	path = vim/.vim/bundle/tabular
 	url = git://github.com/godlygeek/tabular.git
+[submodule "config/.config/kitty/kitty-themes"]
+	path = config/.config/kitty/kitty-themes
+	url = https://github.com/dexpota/kitty-themes
