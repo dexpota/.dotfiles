@@ -8,12 +8,12 @@ esac
 
 # Check for color capabilities
 # https://unix.stackexchange.com/a/198949
-has_color=0
-if tput Co > /dev/null 2>&1 ; then
-    test "`tput Co`" -gt 2 && has_color=1
-elif tput colors > /dev/null 2>&1 ; then
-    test "`tput colors`" -gt 2 && has_color=1
-fi
+#has_color=0
+#if tput Co > /dev/null 2>&1 ; then
+    #test "`tput Co`" -gt 2 && has_color=1
+#elif tput colors > /dev/null 2>&1 ; then
+    #test "`tput colors`" -gt 2 && has_color=1
+#fi
 
 # History's options
 # don't put duplicate lines or lines starting with space in the history.
