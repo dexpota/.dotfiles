@@ -43,9 +43,9 @@ DOTFILES_DIRECTORY="$HOME"
 #	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 #fi
 
-if [ -f $DOTFILES_DIRECTORY/.bash/colors.sh ]; then
-	. $DOTFILES_DIRECTORY/.bash/colors.sh
-fi
+#if [ -f $DOTFILES_DIRECTORY/.bash/colors.sh ]; then
+#	. $DOTFILES_DIRECTORY/.bash/colors.sh
+#fi
 
 # Sourcing bash's dotfiles
 for dotfile in "$DOTFILES_DIRECTORY"/.bash/{prompt,aliases,functions,directories}.sh
