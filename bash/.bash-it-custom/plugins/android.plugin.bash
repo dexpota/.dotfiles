@@ -1,5 +1,24 @@
 #!/usr/bin/env bash
 
+function android_screen_record() {
+	local filename="$(mktemp -u -p "./").mp4"
+	
+	echo "Press CTRL+C to stop recording."
+	adb shell screenrecord "/sdcard/$filename"
+	adb pull "/sdcard/$filename"
+
+	echo "Recording saved as $filename"
+}
+
+function android_screen_capture() {
+	local filename="$(mktemp -u -p './').png"
+
+	adb shell screencap -p "/sdcard/$filename"
+	adb pull "/sdcard/$filename"
+
+	echo "Capture saved as $filename"
+}
+
 function _get_android_sdk_root {
 	case "$(uname -s)" in
 		Darwin)
