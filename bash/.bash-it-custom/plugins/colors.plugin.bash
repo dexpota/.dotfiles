@@ -2,14 +2,14 @@
 
 # Check for color capabilities
 # https://unix.stackexchange.com/a/198949
-has_color=0
+has_color=false
 if tput Co > /dev/null 2>&1 ; then
-    test "`tput Co`" -gt 2 && has_color=1
+    test "`tput Co`" -gt 2 && has_color=true
 elif tput colors > /dev/null 2>&1 ; then
-    test "`tput colors`" -gt 2 && has_color=1
+    test "`tput colors`" -gt 2 && has_color=true
 fi
 
-[ has_color ] && return
+[ "$has_color" = false ] && return
 
 # for more information visit
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting
