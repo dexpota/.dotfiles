@@ -60,7 +60,7 @@ export P_BOLD="\[${BOLD}\]"
 export P_RST="\[${RST}\]"
 
 function format() {
-	local text=$1; shift	
+	local text=$1; shift
 
 	local formatting=""
 	for tag in "$@"; do
