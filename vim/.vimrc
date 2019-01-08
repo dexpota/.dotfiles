@@ -116,3 +116,5 @@ source ~/.vim/commands.vim
 " incorrect background rendering when using a color theme with a
 " background color.
 let &t_ut=''
+
+let &showbreak='↳ '
