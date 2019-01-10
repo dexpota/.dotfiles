@@ -180,3 +180,7 @@ function resize_and_fit(){
 	local size="$2"
 	convert "$input" -resize "${size}" -gravity center -extent "${size}" -background "$color" "$output"
 }
+
+function rgb2hex() {
+	printf "#%02x%02x%02x" $(bc <<< $1*255/1) $(bc <<< $2*255/1) $(bc <<< $3*255/1)
+}

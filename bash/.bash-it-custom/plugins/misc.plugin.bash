@@ -29,3 +29,7 @@ function clipcopy() {
 	xclip -sel c < $1
 }
 export -f clipcopy
+
+function rgb2hex() {
+	printf "#%02x%02x%02x" $(bc <<< $1*255/1) $(bc <<< $2*255/1) $(bc <<< $3*255/1)
+}
