@@ -184,3 +184,8 @@ function resize_and_fit(){
 function rgb2hex() {
 	printf "#%02x%02x%02x" $(bc <<< $1*255/1) $(bc <<< $2*255/1) $(bc <<< $3*255/1)
 }
+
+function dirdiff() {
+	find $1 -type f -print0 | sort -z | xargs -r0 md5sum > list.txt
+	find $2 -type f -print0 | sort -z | xargs -r0 md5sum > list.txt
+}
