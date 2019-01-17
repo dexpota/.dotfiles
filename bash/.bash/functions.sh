@@ -5,9 +5,9 @@
 #
 # $1 - The git repository's URL.
 # $2 - The local directory where to clone the repository as a submodule.
-# 
+#
 # Examples
-# 
+#
 #	git-infect-pathogen https://github.com/vim-airline/vim-airline vim-airline
 #
 function git_infect_pathogen() {
@@ -36,7 +36,7 @@ function spellcheck() {
 
 function android_screen_record() {
 	local filename="$(mktemp -u -p "./").mp4"
-	
+
 	echo "Press CTRL+C to stop recording."
 	adb shell screenrecord "/sdcard/$filename"
 	adb pull "/sdcard/$filename"
@@ -76,8 +76,8 @@ function git_find_all() {
 	done
 }
 
-# Examples 
-# 	get_latest_release adobe-fonts/source-code-pro
+# Examples
+#	get_latest_release adobe-fonts/source-code-pro
 #	wget -i <(get_latest_release adobe-fonts/source-code-pro  ".+otf")
 #
 function get_latest_release() {
@@ -87,7 +87,7 @@ function get_latest_release() {
 
 export -f get_latest_release
 
-function gi() { 
+function gi() {
 	curl -L -s https://www.gitignore.io/api/$@
 }
 
@@ -116,7 +116,7 @@ function taskscommit() {
 		echo "~/.task is missing"
 		return
 	fi
-	
+
 	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" commit -am "Updating tasks."
 	local retval=$?
 	if [ "$retval" -ne 0 ]; then
@@ -124,21 +124,21 @@ function taskscommit() {
 		return
 	fi
 
-	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" push 
+	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" push
 	local retval=$?
 	if [ "$retval" -ne 0 ]; then
 		echo "git push failed"
 		return
 	fi
 }
-export -f taskscommit 
+export -f taskscommit
 
 function taskspull() {
 	if [ ! -d "$HOME/.task" ]; then
 		echo "~/.task is missing"
 		return
 	fi
-	
+
 	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" pull
 	local retval=$?
 	if [ "$retval" -ne 0 ]; then
@@ -153,10 +153,10 @@ function taskstatus() {
 		echo "~/.task is missing"
 		return
 	fi
-	
-	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" status 
+
+	git --git-dir "$HOME/.task/.git" --work-tree="$HOME/.task/" status
 }
-export -f taskstatus 
+export -f taskstatus
 
 function resize_and_crop(){
 	# $1 input image
@@ -182,7 +182,18 @@ function resize_and_fit(){
 }
 
 function rgb2hex() {
-	printf "#%02x%02x%02x" $(bc <<< $1*255/1) $(bc <<< $2*255/1) $(bc <<< $3*255/1)
+	obase=16;
+	case "$1" in
+		-8)
+			printf "#%02x%02x%02x" "$2" "$3" "$4"
+			;;
+		-f) # end argument parsing
+			red=`bc <<< "$2*255/1"`
+			green=`bc <<< "$3*255/1"`
+			blue=`bc <<< "$4*255/1"`
+			printf "#%02x%02x%02x" "$red" "$green" "$blue"
+			;;
+	esac
 }
 
 function dirdiff() {
