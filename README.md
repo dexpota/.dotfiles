@@ -37,6 +37,16 @@ configurations file with this command.
 # An example showing how to install git's configuration files.
 make git
 ```
+
+## Try the configuration with Vagrant
+
+You can try out this configuration by using a virtual machine easily thanks to Vagrant. Follow these steps to create the virtual machine:
+
+1. Create a directory where the Vagrant files will be saved;
+2. Choose a box and create the Vagrant configuration file `vagrant init ubuntu/bionic64`;
+3. Start the virtual machine `vagrant up`;
+4. Log-on to the machine `vagrant ssh`;
+
 ## Todo
 
 - **vim**: Check vim installation to make it easier, now to install vim
