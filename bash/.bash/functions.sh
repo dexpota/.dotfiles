@@ -200,3 +200,7 @@ function dirdiff() {
 	find $1 -type f -print0 | sort -z | xargs -r0 md5sum > list.txt
 	find $2 -type f -print0 | sort -z | xargs -r0 md5sum > list.txt
 }
+
+function android_debug_key_info() {
+	keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+}
