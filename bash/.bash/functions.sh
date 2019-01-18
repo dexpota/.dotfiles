@@ -204,3 +204,5 @@ function dirdiff() {
 function android_debug_key_info() {
 	keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
 }
+
+export -f android_debug_key_info
