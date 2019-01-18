@@ -1,4 +1,6 @@
 #!/bin/bash
+# Install this script inside /lib/systemd/system-sleep/, if you want to find
+# out more see the man page for systemd-sleep
 # see https://askubuntu.com/a/1030154/853462
 
 PROGNAME=$(basename "$0")
