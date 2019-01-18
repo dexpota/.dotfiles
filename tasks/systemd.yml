@@ -1,3 +1,10 @@
+- name: Checking if sky2 module is installed 
+  shell: lsmod | grep sky2
+  register: result 
+  failed_when: result.rc != 0
+
 - name: Installing systemd-suspend scripts
   copy: src=./system/sky2-refresh.sh dest=/lib/systemd/system-sleep/
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when:
+    - ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    - result is succeeded
