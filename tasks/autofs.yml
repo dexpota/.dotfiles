@@ -1,0 +1,9 @@
+- name: Generating auto.fs configuration.
+  template:
+    src: ../system/auto.template.j2
+    dest: "/etc/{{item.filename}}"
+    mode: 0640
+  with_items:
+    - "{{autofs_configuration}}"
+  when:
+    - "autofs_mappings is defined"
