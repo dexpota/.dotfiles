@@ -6,4 +6,6 @@ SHELL := env PATH=$(PATH) /bin/bash
 all:
 	@echo "${PATH}"
 	system-san-francisco.sh
-	@echo "Hello fonts!"
+	source-code-pro.sh
+	# TODO to be done
+	# nerd-fonts.sh

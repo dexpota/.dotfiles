@@ -37,6 +37,7 @@ git: ## Install git configuration files
 	sed -e "s/AUTHORNAME/${GIT_AUTHORNAME}/g" -e "s/AUTHOREMAIL/${GIT_AUTHOREMAIL}/g" git/.gitconfig.local.example > git/.gitconfig.local
 	stow git
 
+# Requires jq and parallel installed
 .PHONY: fonts
 fonts: ## Install system fonts into ~/.fonts
 	+$(MAKE) -C fonts
