@@ -12,7 +12,7 @@
   get_url:
     url: https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
     dest: "{{filename.path}}/mendeley.deb" 
-  tags: always, mendeley
+  tags: mendeley
   register: ret
 
 - debug:

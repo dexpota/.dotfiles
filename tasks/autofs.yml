@@ -6,4 +6,5 @@
   with_items:
     - "{{autofs_configuration}}"
   when:
-    - "autofs_mappings is defined"
+    - "autofs_configuration is defined"
+  tags: "autofs"

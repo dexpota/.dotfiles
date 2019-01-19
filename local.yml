@@ -19,3 +19,4 @@
     - include: ./tasks/virtualbox.yml
     - include: ./tasks/git-lfs.yml
     - include: ./tasks/mendeley.yml
+    - include: ./tasks/autofs.yml
