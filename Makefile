@@ -41,3 +41,7 @@ git: ## Install git configuration files
 .PHONY: fonts
 fonts: ## Install system fonts into ~/.fonts
 	+$(MAKE) -C fonts
+
+.PHONY: stardict
+stardict: ## Install dictionaries for stardict
+	wget -c http://download.huzheng.org/dict.org/stardict-dictd_www.dict.org_gcide-2.4.2.tar.bz2  -O - | tar -xz -C ~/.stardict/dic/

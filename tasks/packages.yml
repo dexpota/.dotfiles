@@ -1,6 +1,8 @@
 - name: Installing packages
   package: name={{item}}
   with_items:
+    # stardict, command line dictionary
+    - sdcv
     # manage your library
     - calibre
     # package manager

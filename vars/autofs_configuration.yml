@@ -7,7 +7,7 @@ autofs_configuration:
         options: "-fstype=nfs"
         location: "//192.168.1.1/server"
   - filename: auto.server1
-    mounts: 
+    mounts:
       - key: example
         options: "-fstype=nfs"
         location: "//192.168.1.1/server"
