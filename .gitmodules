@@ -54,3 +54,12 @@
 [submodule "config/.config/kitty/kitty-themes"]
 	path = config/.config/kitty/kitty-themes
 	url = https://github.com/dexpota/kitty-themes
+[submodule "vim/.vim/bundle/goyo"]
+	path = vim/.vim/bundle/goyo
+	url = https://github.com/junegunn/goyo.vim.git
+[submodule "vim/.vim/bundle/vim-pencil"]
+	path = vim/.vim/bundle/vim-pencil
+	url = https://github.com/reedes/vim-pencil.git
+[submodule "vim/.vim/bundle/vim-surround"]
+	path = vim/.vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
