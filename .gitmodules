@@ -63,3 +63,9 @@
 [submodule "vim/.vim/bundle/vim-surround"]
 	path = vim/.vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/.vim/bundle/auto-pairs"]
+	path = vim/.vim/bundle/auto-pairs
+	url = git://github.com/jiangmiao/auto-pairs.git
+[submodule "vim/.vim/bundle/nerdcommenter"]
+	path = vim/.vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
