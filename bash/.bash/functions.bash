@@ -209,6 +209,7 @@ export -f android_debug_key_info
 
 function git_submodule_is_updated() {
 	git submodule --quiet foreach '''
+git fetch --quiet
 tracked_branch=$(git rev-parse --abbrev-ref HEAD)
 if [ $(git rev-parse origin/$tracked_branch) = $(git rev-parse $tracked_branch) ]; then
 	echo $name updated
