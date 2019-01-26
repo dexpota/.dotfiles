@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 case $- in
 	*i*) ;;
-	*)	. ~/.bash/functions.sh # source all functions
+	*)	. ~/.bash/functions.bash # source all functions
 		return;;
 esac
 
@@ -46,6 +46,8 @@ fi
 if [ -f $DOTFILES_DIRECTORY/.bash/colors.sh ]; then
 	. $DOTFILES_DIRECTORY/.bash/colors.sh
 fi
+
+. ${DOTFILES_DIRECTORY}/.bash/functions.bash
 
 # Sourcing bash's dotfiles
 for dotfile in "$DOTFILES_DIRECTORY"/.bash/{prompt,aliases,functions,directories}.sh
