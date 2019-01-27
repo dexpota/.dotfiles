@@ -63,3 +63,5 @@ alias t="task"
 alias g="git"
 
 alias zen="command -v curl 1>/dev/null 2>&1 && curl https://api.github.com/zen && echo ''"
+
+alias dirsize="du -hs"
