@@ -8,7 +8,7 @@ fi
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then 
 	# GNU `ls`
-	colorflag="--color"
+	colorflag="--color=auto"
 else
 	# macOS `ls`
 	colorflag="-G"
