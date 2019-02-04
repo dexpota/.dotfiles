@@ -105,12 +105,6 @@ function crontab() {
 
 export -f crontab
 
-# Copy to clipboard using x11 utility
-function clipcopy() {
-	xclip -sel c < $1
-}
-export -f clipcopy
-
 function taskscommit() {
 	if [ ! -d "$HOME/.task" ]; then
 		echo "~/.task is missing"
@@ -231,6 +225,8 @@ elif [[ "$OSTYPE" == "darwin*" ]]; then
 	alias clippaste='pbpaste'
 fi
 
+# Copy and paste from and to the clipboard.
+# inspired by: https://stackoverflow.com/a/53973493/9942979
 function clipboard() {
 	if [ -p /dev/stdin ]; then
 		clipcopy
