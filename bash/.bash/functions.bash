@@ -220,3 +220,21 @@ fi
 }
 
 export -f git_submodule_is_updated
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+	if [[ -x $(command -v xclip)  ]]; then
+		alias clipcopy='xclip -selection clipboard -in'
+		alias clippaste='xclip -selection clipboard -out'
+	fi
+elif [[ "$OSTYPE" == "darwin*" ]]; then
+	alias clipcopy='pbcopy'
+	alias clippaste='pbpaste'
+fi
+
+function clipboard() {
+	if [ -p /dev/stdin ]; then
+		clipcopy
+	else
+		clippaste
+	fi
+}
