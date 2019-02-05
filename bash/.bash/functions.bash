@@ -220,7 +220,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 		alias clipcopy='xclip -selection clipboard -in'
 		alias clippaste='xclip -selection clipboard -out'
 	fi
-elif [[ "$OSTYPE" == "darwin*" ]]; then
+elif [[ "$OSTYPE" == "darwin"* ]]; then
 	alias clipcopy='pbcopy'
 	alias clippaste='pbpaste'
 fi
