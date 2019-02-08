@@ -5,9 +5,11 @@ usage() {
 gh-last-release
 
 Usage:
-	gh-last-release <github_path> [<target_directory>] [options]
+	gh-last-release <github_path> [<target_directory>] [options] [-z|-t]
 
 Options:
+	-z,--zip  Download the zip compressed release
+	-t,--tar  Download the tar compressed release
 	-v,--verbose  Output more information
 	-d,--debug  Enable debug mode, output even more informations
 EOU
@@ -50,14 +52,25 @@ if [[ $response_code == 200 ]]; then
 	# extracting tag_name from response
 	tag=`jq -r ".tag_name" <<< $response_body`
 
-	# extracting tarball url
-	tarball_url=$(echo "$response_body" | jq -r ".tarball_url")
+	if [ $tar == true ]; then
+		# extracting tarball url
+		release_url=$(echo "$response_body" | jq -r ".tarball_url")
+		extension="tgz"
+	elif [ $zip == true ]; then
+		# extracting zipball url
+		release_url=$(echo "$response_body" | jq -r ".zipball_url")
+		extension="zip"
+	else
+		# extracting tarball url
+		release_url=$(echo "$response_body" | jq -r ".tarball_url")
+		extension="tgz"
+	fi
 
 	# computing the output filename
 	# Alternative: to retrieve the filename it is possible to search for
 	# Content-Disposition header inside the server response, run this command:
 	# curl --head -L $tarball_url
-	filename=${github_path/\//.}.$tag.tgz
+	filename=${github_path/\//.}.$tag.$extension
 
 	if [ -z $target_directory ]; then
 		target_directory=$PWD
@@ -69,5 +82,5 @@ if [[ $response_code == 200 ]]; then
 	fi
 
 	# downloading the archive
-	curl $silent -L $tarball_url > "$target_directory/$filename"
+	curl $silent -L $release_url > "$target_directory/$filename"
 fi
