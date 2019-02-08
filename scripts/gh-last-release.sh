@@ -5,7 +5,7 @@ usage() {
 gh-last-release
 
 Usage:
-	gh-last-release <github_path> <target_directory> [options]
+	gh-last-release <github_path> [<target_directory>] [options]
 
 Options:
 	-v,--verbose  Output more information
@@ -46,10 +46,6 @@ response=$(curl -w '\n%{http_code}' $silent -o - $github_api_endpoint)
 response_body=$(echo "$response" | head -n -1)
 response_code=$(echo "$response" | tail -1)
 
-# TODO target_directory should be optional and if not set should be the current
-# one
-# target_directory="."
-
 if [[ $response_code == 200 ]]; then
 	# extracting tag_name from response
 	tag=`jq -r ".tag_name" <<< $response_body`
@@ -62,6 +58,10 @@ if [[ $response_code == 200 ]]; then
 	# Content-Disposition header inside the server response, run this command:
 	# curl --head -L $tarball_url
 	filename=${github_path/\//.}.$tag.tgz
+
+	if [ -z $target_directory ]; then
+		target_directory=$PWD
+	fi
 
 	if verbose; then
 		echo "Downloading tarball release from"
