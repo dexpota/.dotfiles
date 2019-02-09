@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#
+# @author 		Fabrizio Destro
+# @copyright	Copyright 2018, Fabrizio Destro
+# @license
+#  This work is licensed under the terms of the MIT license.
+#  For a copy, see <https://opensource.org/licenses/MIT>.
 
 # Script il cui obiettivo è quello di generare le varie versioni delle risorse
 # necessarie nello sviluppo Android.

@@ -1,3 +1,11 @@
+#!/usr/bin/env bash
+#
+# @author 		Fabrizio Destro
+# @copyright	Copyright 2018, Fabrizio Destro
+# @license
+#  This work is licensed under the terms of the MIT license.
+#  For a copy, see <https://opensource.org/licenses/MIT>.
+
 hash_list="$1/hashes.txt"
 filterd_list="$1/filtered.txt"
 duplicated_list="$1/duplicates.txt"

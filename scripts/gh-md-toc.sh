@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#
+# @author 		Fabrizio Destro
+# @copyright	Copyright 2018, Fabrizio Destro
+# @license
+#  This work is licensed under the terms of the MIT license.
+#  For a copy, see <https://opensource.org/licenses/MIT>.
 
 #
 # Steps:
