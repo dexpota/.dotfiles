@@ -115,10 +115,40 @@ main() {
 		echo
 	fi
 
+	declare -A dpi_factors
+	dpi_factors[ldpi]=0.75
+	dpi_factors[mdpi]=1.00
+	dpi_factors[hdpi]=1.50
+	dpi_factors[xhdpi]=2.00
+	dpi_factors[xxhdpi]=3.00
+	dpi_factors[xxxhdpi]=4.00
+
+	local input_dpi
 	if $ldpi; then
-		logverbose "Generating resources for image file @ ldpi"
+		input_dpi=ldpi
+	elif $mdpi; then
+		input_dpi=mdpi
+	elif $hdpi; then
+		input_dpi=hdpi
+	elif $xhdpi; then
+		input_dpi=xhdpi
+	elif $xxhdpi; then
+		input_dpi=xxhdpi
+	elif $xxxhdpi; then
+		input_dpi=xxxhdpi
 	fi
 
+	logverbose "Generating resources for image file @ $input_dpi"
+
+	local input_dpi_factor=${dpi_factors[$input_dpi]}
+
+	local dpis=(ldpi mdpi hdpi xhdpi xxhdpi xxxhdpi)
+
+	for dpi in "${dpis[@]}"
+	do
+		local dpi_factor=${dpi_factors[$dpi]}
+		echo $dpi_factor $input_dpi_factor `bc -l <<< $dpi_factor/$input_dpi_factor`
+	done
 }
 
 # check if script is being executed
