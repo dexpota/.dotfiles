@@ -8,10 +8,11 @@
 
 usage() {
 	cat << EOU
-gh-last-release
+gh-last-release downloads the source code of the latests release for a given
+github repository by using GitHub's API v3.
 
 Usage:
-	gh-last-release <github_path> [<target_directory>] [options] [-z|-t]
+	gh-last-release <github_repository> [<target_directory>] [options] [-z|-t]
 
 Options:
 	-z,--zip  Download the zip compressed release
@@ -37,11 +38,11 @@ main() {
 	fi
 
 	# Removing longest match of slashes from the front
-	github_path=${github_path##+(/)}
+	github_repository=${github_repository##+(/)}
 	# Removing longest match of slashes from the back
-	github_path=${github_path%%+(/)}
+	github_repository=${github_repository%%+(/)}
 
-	github_api_endpoint="https://api.github.com/repos/$github_path/releases/latest"
+	github_api_endpoint="https://api.github.com/repos/$github_repository/releases/latest"
 
 	if verbose; then
 		echo "Retrieving last release information from"
@@ -76,7 +77,7 @@ main() {
 		# Alternative: to retrieve the filename it is possible to search for
 		# Content-Disposition header inside the server response, run this command:
 		# curl --head -L $tarball_url
-		filename=${github_path/\//.}.$tag.$extension
+		filename=${github_repository/\//.}.$tag.$extension
 
 		if [ -z $target_directory ]; then
 			target_directory=$PWD
