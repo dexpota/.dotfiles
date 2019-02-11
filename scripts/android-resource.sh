@@ -20,9 +20,6 @@
 
 # MILESTONE
 #
-# TODO creare una versione dello script che dato un file in ingresso generi i
-# vari file scalati in uscita
-#
 # TODO aggiungere profili per tipologie di immagini, ad esempio un'icon con
 # risoluzione di 1024x1024 non ha molto senso
 
@@ -107,6 +104,11 @@ main() {
 	configure
 	initialize
 
+	if [ ! -f "$drawable" ]; then
+		echo "$drawable is not a valid file."
+		exit -1
+	fi
+
 	if verbose; then
 		echo "Verbose mode..."
 		echo
@@ -114,6 +116,8 @@ main() {
 		echo "Debug mode..."
 		echo
 	fi
+
+	local filename=`basename "$drawable"`
 
 	declare -A dpi_factors
 	dpi_factors[ldpi]=0.75
@@ -141,13 +145,21 @@ main() {
 	logverbose "Generating resources for image file @ $input_dpi"
 
 	local input_dpi_factor=${dpi_factors[$input_dpi]}
-
 	local dpis=(ldpi mdpi hdpi xhdpi xxhdpi xxxhdpi)
 
 	for dpi in "${dpis[@]}"
 	do
+		local target_directory="drawable-$dpi"
+		[ ! -d $target_directory ] && mkdir "drawable-$dpi"
+
 		local dpi_factor=${dpi_factors[$dpi]}
-		echo $dpi_factor $input_dpi_factor `bc -l <<< $dpi_factor/$input_dpi_factor`
+
+		local scaling_factor=`bc -l <<< $dpi_factor/$input_dpi_factor*100`
+
+		logverbose "Scaling image using a factor of $scaling_factor%"
+		logverbose "Saving file into $target_directory/$filename"
+
+		convert "$drawable" -scale "$scaling_factor%" "$target_directory/$filename"
 	done
 }
 

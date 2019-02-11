@@ -2,7 +2,7 @@
 
 RCS
 .+,v
-	     
+
 CVS
 \.\#.+       # CVS conflict files / emacs lock files
 \.cvsignore
@@ -23,4 +23,3 @@ _darcs
 
 
 ^\/[^.]+.*
-
