@@ -117,3 +117,7 @@ source ~/.vim/tabbing.vim
 let &t_ut=''
 
 let &showbreak='↳ '
+
+if has("clipboard")
+	set clipboard=unnamedplus
+endif
