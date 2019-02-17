@@ -10,6 +10,8 @@
 	ui = auto
 
 [alias]
+	# list all branches, local and remotes
+	lb = branch -v -a
 	# commit all modified file and comment
 	cam = commit -am
 	st = status
@@ -21,8 +23,8 @@
 	shallow = clone --depth=1
 
 [push]
-	# Defines the action git push should take if no refspec is given on the command line, 
-	# no refspec is configured in the remote, and no refspec is implied by any of the 
+	# Defines the action git push should take if no refspec is given on the command line,
+	# no refspec is configured in the remote, and no refspec is implied by any of the
 	# options given on the command line.
 	default = simple
 [filter "lfs"]
