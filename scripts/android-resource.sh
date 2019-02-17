@@ -3,25 +3,15 @@
 # @author 		Fabrizio Destro
 # @copyright	Copyright 2018, Fabrizio Destro
 # @license
-#  This work is licensed under the terms of the MIT license.
-#  For a copy, see <https://opensource.org/licenses/MIT>.
+#	This work is licensed under the terms of the MIT license.
+#	For a copy, see <https://opensource.org/licenses/MIT>.
+# @description
+#	This script generates scaled versions, of the given image, to be used as
+#	Android resources for different screen densities.
 
-# Script il cui obiettivo è quello di generare le varie versioni delle risorse
-# necessarie nello sviluppo Android.
-
-# In android le risorse sono organizzare in una cartella dedicata chiamata res.
-
-# L'utente da in input un file immagine e vuole generare differenti versioni
-# dell'immagine, in una prima versione si generino solamente le versioni per le
-# varie densità di pixels.
-
-# L'utente deve specificare per quale densità la risorsa è stata create, il
-# programma crea poi le varie versioni per le densità mancanti
-
-# MILESTONE
-#
-# TODO aggiungere profili per tipologie di immagini, ad esempio un'icon con
-# risoluzione di 1024x1024 non ha molto senso
+# TODO add image type profiles. Let's say you give in input an image file that
+# must be used as icon, if you specify its usage the script can decide if the
+# resolution is too high for its usage and change it according to some profile.
 
 # Configuration
 configure() {
@@ -37,6 +27,13 @@ configure() {
 usage() {
 	cat << EOU
 android-resource
+	This script generates scaled versions, of the given image, to be used as
+	Android resources for different screen densities.
+
+	The user gives in input a png, jpg, gif or 9.png file, and specifiy the
+	logical bucket it belongs to. This script will then generates scaled
+	versions of this image for missing buckets or the buckets specified in input
+	--generate-dpi
 
 Usage:
 	android-generate-resources <drawable> (--ldpi | --mdpi | --hdpi | --xhdpi | --xxhdpi | --xxxhdpi) [--generate-dpi=<dpis>] [options]
