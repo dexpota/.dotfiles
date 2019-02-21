@@ -262,6 +262,10 @@ urldecode() {
 JAVA_HOME_PATH="/usr/libexec/java_home"
 JAVA_HOME_PATH_VERSION="-v"
 
+function list-java-versions() {
+	update-java-alternatives --list | grep java | tr -s '  ' | cut -d '  ' -f3
+}
+
 function select-java() {
 	export JAVA_HOME=$($JAVA_HOME_PATH $JAVA_HOME_PATH_VERSION $1)
 }
