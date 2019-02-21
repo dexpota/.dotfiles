@@ -258,3 +258,18 @@ urldecode() {
     local url_encoded="${1//+/ }"
     printf '%b' "${url_encoded//%/\\x}"
 }
+
+JAVA_HOME_PATH="/usr/libexec/java_home"
+JAVA_HOME_PATH_VERSION="-v"
+
+function select-java() {
+	export JAVA_HOME=$($JAVA_HOME_PATH $JAVA_HOME_PATH_VERSION $1)
+}
+
+function j8() {
+	select-java 1.8
+}
+
+function j9() {
+	select-java 1.9
+}
