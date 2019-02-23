@@ -107,7 +107,6 @@ let g:markdown_fenced_languages = ['rust=rust', 'latex=tex']
 set t_BE=
 
 source ~/.vim/mapping.vim
-source ~/.vim/tabbing.vim
 
 " vim hardcodes background color erase even if the terminfo file does
 " not contain bce (not to mention that libvte based terminals
