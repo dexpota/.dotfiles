@@ -277,3 +277,7 @@ function j8() {
 function j9() {
 	select-java 1.9
 }
+
+function swagger-list-schemas() {
+	jq -r ".components.schemas | keys | .[]" 
+}
