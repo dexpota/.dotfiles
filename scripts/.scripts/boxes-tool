@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+filepath="$1"
+
+start_line_no=$2
+end_line_no=$3
+
+echo $end_line_no
+
+sed -n "${start_line_no},${end_line_no}p" "$filepath" | boxes
+commented_text="$(sed -n "${start_line_no},${end_line_no}p" "$filepath" | boxes)"
+
+echo gsed "${start_line_no},${end_line_no}c $commented_text" "$filepath"
