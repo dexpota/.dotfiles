@@ -44,20 +44,20 @@ filetype plugin on
 set backspace=indent,eol,start
 
 if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
+  set nobackup      " do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file (restore to previous version)
-  set undofile		" keep an undo file (undo changes after closing)
+  set backup        " keep a backup file (restore to previous version)
+  set undofile      " keep an undo file (undo changes after closing)
 endif
-set history=50		" keep 50 lines of command line history
+set history=50      " keep 50 lines of command line history
 " Set backup, swap and undo directory
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 set undodir=~/.vim/undo//
 
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set ruler       " show the cursor position all the time
+set showcmd     " display incomplete commands
+set incsearch       " do incremental searching
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -118,7 +118,7 @@ let &t_ut=''
 let &showbreak='↳ '
 
 if has("clipboard")
-	set clipboard=unnamedplus
+  set clipboard=unnamedplus
 endif
 
 ""Automatically deletes all trailing whitespace on save.
