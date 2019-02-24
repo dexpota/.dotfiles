@@ -120,3 +120,6 @@ let &showbreak='↳ '
 if has("clipboard")
 	set clipboard=unnamedplus
 endif
+
+""Automatically deletes all trailing whitespace on save.
+autocmd BufWritePre * %s/\s\+$//e
