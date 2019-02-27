@@ -12,7 +12,7 @@ gh-last-release-asset download the specified asset belonging to the last
 release of a given github repository.
 
 Usage:
-    gh-last-release-assets <github_repository> <asset> <target_directory>
+    gh-last-release-assets <github_repository> <asset> [<target_directory>]
 EOU
 }
 
