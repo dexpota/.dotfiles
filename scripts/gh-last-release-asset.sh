@@ -19,18 +19,18 @@ EOU
 main() {
     github_api_endpoint="https://api.github.com/repos/$github_repository/releases/latest"
 
-	if [ -z $target_directory ]; then
-		target_directory=$PWD
-	fi
+    if [ -z $target_directory ]; then
+        target_directory=$PWD
+    fi
 
-	curl -s "$github_api_endpoint" \
+    curl -s "$github_api_endpoint" \
         | jq -r ".assets[].browser_download_url" \
         | grep "$asset" \
         | wget -i - --directory-prefix=$target_directory
 
 }
 
-# check if script is being executed
+#check if script is being executed
 if [[ $_ == $0 ]]; then
     eval "$(docopts -h "$(usage)" : "$@")"
     main
