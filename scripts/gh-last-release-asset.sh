@@ -19,10 +19,14 @@ EOU
 main() {
     github_api_endpoint="https://api.github.com/repos/$github_repository/releases/latest"
 
-    curl -s "$github_api_endpoint" \
+	if [ -z $target_directory ]; then
+		target_directory=$PWD
+	fi
+
+	curl -s "$github_api_endpoint" \
         | jq -r ".assets[].browser_download_url" \
         | grep "$asset" \
-        | wget -i -
+        | wget -i - --directory-prefix=$target_directory
 
 }
 
