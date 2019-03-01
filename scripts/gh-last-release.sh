@@ -52,6 +52,12 @@ main() {
 
 	response=$(curl -w '\n%{http_code}' $silent -o - $github_api_endpoint)
 
+	if verbose; then
+		echo "Response from the server"
+		echo "$response"
+		echo
+	fi
+
 	response_body=$(echo "$response" | head -n -1)
 	response_code=$(echo "$response" | tail -1)
 
