@@ -10,20 +10,36 @@
 
 usage() {
 	cat << EOU
-todo-hunt
+tags-hunt
 
 Usage:
-	todo-hunt <directory> [options]
+	tags-hunt <directory> [options]
 
 Options:
-	-v,--verbose  Output more information
-	-d,--debug  Enable debug mode, output even more informations
+	-t,--todo  Search for TODO tags.
+	-b,--bug  Search for BUG tags.
+	-f,--fix-me  Search for FIXME tags.
+	-h,--hack  Search for HACK tags.
+	-u,--undone  Search for UNDONE tags.
+	-v,--verbose  Output more informations.
+	-d,--debug  Enable debug mode, output even more informations.
 EOU
 }
 
 
 verbose() {
 	[ $verbose = "true" ]
+}
+
+search() {
+	local tag="$1"
+	local result=$(grep -n "$tag" "$filename")
+
+	if [ ! -z "$result" ]; then
+		printf "%s\n" "$filename"
+		#printf "\t%.10s\n" "$result"
+		echo "$result" |  sed "s/^\(.\{0,${columns}\}\).*$/  \1/"
+	fi
 }
 
 main() {
@@ -33,14 +49,7 @@ main() {
 	find $directory \( -type d -name '*.[!.]*' \) -prune \
 		-or -type f -not -name '.*' -print0 | while read -d $'\0' filename
 	do
-		result=$(grep -n "TODO" "$filename")
-
-		if [ $? -eq 0 ]
-		then
-			printf "%s\n" "$filename"
-			#printf "\t%.10s\n" "$result"
-			echo "$result" |  sed "s/^\(.\{0,${columns}\}\).*$/  \1/"
-		fi
+		search TODO
 	done
 }
 
