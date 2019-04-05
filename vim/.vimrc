@@ -121,5 +121,14 @@ if has("clipboard")
   set clipboard=unnamedplus
 endif
 
-""Automatically deletes all trailing whitespace on save.
+"" Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
+
+"" Splits open at the bottom and right
+set splitbelow splitright
+
+"" Shortcuts for split navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
