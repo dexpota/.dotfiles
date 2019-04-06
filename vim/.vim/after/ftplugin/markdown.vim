@@ -6,6 +6,9 @@ setlocal shiftwidth=2
 " expand tab to spaces
 setlocal expandtab
 
+" Shortcut to toogle Goyo
+nnoremap <buffer> <leader>f :Goyo<CR>
+
 " Undo the commands defined by this plugin when the buffer changes its
 " filetype
 let b:undo_ftplugin = "

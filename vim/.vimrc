@@ -5,10 +5,15 @@
 ""   \_/ |_|_| |_| |_|_|  \___|
 ""
 
+let mapleader=" "
+
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
 endif
+
+" Autocompletition options.
+set wildmode=longest,list,full
 
 " Do not include vi compatibility.
 " This must be first, because it changes other options as a side effect.
@@ -27,9 +32,6 @@ autocmd! bufwritepost .vimrc source %
 set clipboard=unnamed
 " In paste mode the text is pasted without modify the indentation
 set pastetoggle=<F2>
-
-" Rebind <Leader> key
-" set mapleader="'"
 
 " Pathogen infection
 execute pathogen#infect()
