@@ -26,7 +26,7 @@ sudo apt-get install git make
 First you need to clone the repository in your home directory.
 
 ```bash
-git clone git@github.com:dexpota/.dotfiles.git ~/.dotfiles 
+git clone git@github.com:dexpota/.dotfiles.git ~/.dotfiles
 ```
 
 After cloning the repository you can install the configuration files for your
