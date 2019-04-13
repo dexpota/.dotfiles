@@ -190,6 +190,15 @@ function rgb2hex() {
     esac
 }
 
+function hex2rgb() {
+	#local hex=${1#\#}
+	hex=$1
+	local red=$((16#${hex:0:2}))
+	local green=$((16#${hex:2:2}))
+	local blue=$((16#${hex:4:2}))
+	echo $red "  " $green "  " $blue
+}
+
 function dirdiff() {
     find $1 -type f -print0 | sort -z | xargs -r0 md5sum > list.txt
     find $2 -type f -print0 | sort -z | xargs -r0 md5sum > list.txt
