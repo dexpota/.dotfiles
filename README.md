@@ -28,6 +28,11 @@ First you need to clone the repository in your home directory.
 ```bash
 git clone git@github.com:dexpota/.dotfiles.git ~/.dotfiles
 ```
+Then pull all submodules.
+
+```bash
+make git-submodule
+```
 
 After cloning the repository you can install the configuration files for your
 program by using the `make` utility. For example you can install `git`'s
