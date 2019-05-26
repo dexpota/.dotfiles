@@ -72,3 +72,5 @@ alias process="ps -aux"
 alias sstatus="sudo systemctl status"
 alias srestart="sudo systemctl restart"
 alias root="sudo su -"
+
+alias codecat="ccat --color=always"
