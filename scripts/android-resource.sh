@@ -15,7 +15,6 @@
 
 # Configuration
 configure() {
-	import_utilites=false
 	# exits the script if you try to use uninitialized variables
 	set -o nounset
 	# exits the script if any statement returns a non-true return value
@@ -45,7 +44,7 @@ EOU
 }
 
 verbose() {
-	[ $verbose = "true" ]
+	[ "${verbose:-}" = "true" ]
 }
 
 logverbose() {
@@ -55,27 +54,7 @@ logverbose() {
 }
 
 debug() {
-	[ $debug = "true" ]
-}
-
-import_utilities() {
-	# if we want to import common utilities
-	if [ "$import_utilites" == true ]; then
-
-		# if an env variable is not defined try a default location
-		if [ -z $SCRIPTING_UTILITIES ]; then
-			scripting_utilities=$HOME/.script/libs/utilities.sh
-		fi
-
-		# Source Scripting Utilities
-		if [ -f "$scripting_utilites" ]; then
-			source "$scripting_utilities"
-		else
-			echo "Scripting utilities not found!"
-			echo "$scripting_utilities doesn't seem to exists."
-			exit -1
-		fi
-	fi
+	[ "${debug:-}" = "true" ]
 }
 
 # This function will be called when the script exits or when one of TERM or
@@ -86,8 +65,6 @@ cleanup() {
 }
 
 initialize() {
-	import_utilities
-
 	# trap bad exits with the cleanup function
 	trap cleanup EXIT INT TERM
 
@@ -101,7 +78,7 @@ main() {
 	configure
 	initialize
 
-	if [ ! -f "$drawable" ]; then
+	if [ ! -f "${drawable:-}" ]; then
 		echo "$drawable is not a valid file."
 		exit -1
 	fi
@@ -114,44 +91,56 @@ main() {
 		echo
 	fi
 
-	local filename=`basename "$drawable"`
+	local filename
+	filename=$(basename "$drawable")
 
-	declare -A dpi_factors
-	dpi_factors[ldpi]=0.75
-	dpi_factors[mdpi]=1.00
-	dpi_factors[hdpi]=1.50
-	dpi_factors[xhdpi]=2.00
-	dpi_factors[xxhdpi]=3.00
-	dpi_factors[xxxhdpi]=4.00
+	declare -a dpi_factors
+	dpi_factors[0]=0.75
+	dpi_factors[1]=1.00
+	dpi_factors[2]=1.50
+	dpi_factors[3]=2.00
+	dpi_factors[4]=3.00
+	dpi_factors[5]=4.00
+
+	declare -a dpi_labels
+	dpi_labels[0]="ldpi"
+	dpi_labels[1]="mdpi"
+	dpi_labels[2]="hdpi"
+	dpi_labels[3]="xhdpi"
+	dpi_labels[4]="xxhdpi"
+	dpi_labels[5]="xxxhdpi"
 
 	local input_dpi
-	if $ldpi; then
-		input_dpi=ldpi
-	elif $mdpi; then
-		input_dpi=mdpi
-	elif $hdpi; then
-		input_dpi=hdpi
-	elif $xhdpi; then
-		input_dpi=xhdpi
-	elif $xxhdpi; then
-		input_dpi=xxhdpi
-	elif $xxxhdpi; then
-		input_dpi=xxxhdpi
+	if "${ldpi:-false}"; then 
+		input_dpi=0
+	elif "${mdpi:-false}"; then
+		input_dpi=1
+	elif "${hdpi:-false}"; then
+		input_dpi=2
+	elif "${xhdpi:-false}"; then
+		input_dpi=3
+	elif "${xxhdpi:-false}"; then
+		input_dpi=4
+	elif "${xxxhdpi:-false}"; then
+		input_dpi=5
 	fi
 
-	logverbose "Generating resources for image file @ $input_dpi"
+	logverbose "Generating resources for image file @ ${dpi_labels[$input_dpi]}"
 
 	local input_dpi_factor=${dpi_factors[$input_dpi]}
-	local dpis=(ldpi mdpi hdpi xhdpi xxhdpi xxxhdpi)
+	local dpis=(0 1 2 3 4 5)
 
 	for dpi in "${dpis[@]}"
 	do
-		local target_directory="drawable-$dpi"
-		[ ! -d $target_directory ] && mkdir "drawable-$dpi"
+		local target_directory="drawable-${dpi_labels[$dpi]}"
+		[ ! -d "$target_directory" ] && mkdir "$target_directory"
 
 		local dpi_factor=${dpi_factors[$dpi]}
 
-		local scaling_factor=`bc -l <<< $dpi_factor/$input_dpi_factor*100`
+		local scaling_factor
+		echo $dpi_factor
+		echo $input_dpi
+		scaling_factor=$(bc -l <<< $dpi_factor/$input_dpi_factor*100)
 
 		logverbose "Scaling image using a factor of $scaling_factor%"
 		logverbose "Saving file into $target_directory/$filename"
@@ -160,8 +149,5 @@ main() {
 	done
 }
 
-# check if script is being executed
-if [ "$0" =  "$BASH_SOURCE" ]; then
-	eval "$(docopts -h "$(usage)" : "$@")"
-	main
-fi
+eval "$(docopts -h "$(usage)" : "$@")"
+main
