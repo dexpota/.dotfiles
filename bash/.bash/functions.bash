@@ -298,3 +298,7 @@ function vstack() {
 function hstack() {
 	montage -tile 1x $@
 }
+
+function select-android-device() {
+	adb devices -l | sed -n "s/\stransport_id:\s*\(.*\)\s*/\1/p"
+}
