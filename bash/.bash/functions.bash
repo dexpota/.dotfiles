@@ -312,3 +312,15 @@ function android-dump-activities() {
 	local package=$1
 	adb shell dumpsys activity "$package"
 }
+
+function select-directory() {
+	while (( "$#" )); do
+		if [ -d "$1" ]; then
+			echo "$1"
+			return
+		fi
+		shift
+	done
+}
+
+export -f select-directory
