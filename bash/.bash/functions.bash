@@ -302,3 +302,13 @@ function hstack() {
 function select-android-device() {
 	adb devices -l | sed -n "s/\stransport_id:\s*\(.*\)\s*/\1/p"
 }
+
+function android-send-text() {
+	local text=$1
+	adb shell input text "$text"
+}
+
+function android-dump-activities() {
+	local package=$1
+	adb shell dumpsys activity "$package"
+}
