@@ -74,3 +74,5 @@ alias srestart="sudo systemctl restart"
 alias root="sudo su -"
 
 alias codecat="ccat --color=always"
+
+alias cheat="ls -1 ~/.cheat/ | pick -K | xargs ccat | less"
