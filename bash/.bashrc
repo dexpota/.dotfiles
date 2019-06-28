@@ -85,6 +85,7 @@ export CHEAT_EDITOR=vim
 
 export GOPATH=$HOME/.go
 
+PATH=/usr/local/bin:$PATH
 PATH=~.local/bin:$PATH
 PATH=$PATH:$HOME/.scripts
 PATH=$PATH:$HOME/.git-commands
