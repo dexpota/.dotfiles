@@ -6,7 +6,7 @@
 ""
 
 let mapleader=" "
-
+set encoding=utf-8
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish

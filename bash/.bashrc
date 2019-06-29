@@ -50,7 +50,7 @@ fi
 . ${DOTFILES_DIRECTORY}/.bash/functions.bash
 
 # Sourcing bash's dotfiles
-for dotfile in "$DOTFILES_DIRECTORY"/.bash/{prompt,aliases,functions,directories}.sh
+for dotfile in "$DOTFILES_DIRECTORY"/.bash/{aliases,functions,directories}.sh
 do
 	if [ -f "$dotfile" ]
 	then
@@ -97,8 +97,8 @@ export PATH
 export WORKON_HOME=~/.virtualenvs
 
 VIRTUALENVWRAPPER_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
-if [[ -f "$VIRTUALENVWRAPPER_SCRIPT" ]]; then 
-	
+if [[ -f "$VIRTUALENVWRAPPER_SCRIPT" ]]; then
+
 	if [[ -z "$VIRTUALENVWRAPPER_PYTHON" ]]; then
 		# This slow down the startup of the console
 		if python2 -c "import virtualenvwrapper" 1>/dev/null 2>&1; then
@@ -107,6 +107,8 @@ if [[ -f "$VIRTUALENVWRAPPER_SCRIPT" ]]; then
 			VIRTUALENVWRAPPER_PYTHON=$(which python3)
 		fi
 	fi
-	
-	source $VIRTUALENVWRAPPER_SCRIPT 
+
+	source $VIRTUALENVWRAPPER_SCRIPT
 fi
+
+source $HOME/.bash-powerline.sh
