@@ -1,8 +1,38 @@
 #!/usr/bin/env bash
 
+# @author 		Fabrizio Destro
+# @copyright	Copyright 2018, Fabrizio Destro
+# @license 		see repository's license
+
+configure() {
+	# exits the script if you try to use uninitialized variables
+	set -o nounset
+	# exits the script if any statement returns a non-true return value
+	# if you are willing to continue when a statement fails you can use this
+	# construct: command || true
+	set -o errexit
+}
+
+usage() {
+	cat << EOU
+gl-repo-backup
+	This script clone your repositories from gitlab and makes a backup archive.
+
+Usage:
+	gl-repo-backup <backup_target_directory> <archive_prefix>
+
+Options:
+	-v,--verbose  Output more information
+	-d,--debug  Enable debug mode, output even more informations
+EOU
+}
+
+configure
+eval "$(docopts -h "$(usage)" : "$@")"
+
 # read script arguments
-backup_directory=$1
-filename=$2
+backup_directory=${backup_target_directory:-}
+filename=${archive_prefix:-}
 
 config_file=~/.gitlab
 tar_filename=$filename-$(date +%F).tgz
@@ -14,12 +44,12 @@ if [ -f "$config_file" ]; then
 	. "$config_file"
 fi
 
-if [ -n "$GITLAB_TOKEN" ]; then
+if [ -n "${GITLAB_TOKEN:-}" ]; then
 	# if defined use env variable
 	token="$GITLAB_TOKEN"
 fi
 
-if [ -n "$GITLAB_API" ]; then
+if [ -n "${GITLAB_API:-}" ]; then
 	# if defined use env variable
 	api="$GITLAB_API"
 fi
@@ -60,5 +90,7 @@ tmp_directory=$(mktemp -d)
 
 	# create an archive
 	tar -cvzf "$backup_directory/$tar_filename" -- *
+
 )
 
+rm "$tmp_directory"
