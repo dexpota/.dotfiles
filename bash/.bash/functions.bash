@@ -322,5 +322,3 @@ function select-directory() {
 		shift
 	done
 }
-
-export -f select-directory
