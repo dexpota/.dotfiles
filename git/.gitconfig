@@ -1,37 +1,38 @@
 # Local/private config goes in the include
 [include]
-	path = ~/.gitconfig.local
+    path = ~/.gitconfig.local
 
 [core]
     editor = vim
-	excludesfile = ~/.gitignore.global
+    excludesfile = ~/.gitignore.global
 
 [color]
-	ui = auto
+    ui = auto
 
 [alias]
-	# list all branches, local and remotes
-	lb = branch -v -a
-	# commit all modified file and comment
-	cam = commit -am
-	st = status
-	# delete a local branch
-	dbranch = branch -d
-	# create a new branch and check it out
-	bcheckout = checkout -b
-	# shallow clone of repositor# shallow clone of repositoryy
-	shallow = clone --depth=1
+    # list all branches, local and remotes
+    lb = branch -v -a
+    # commit all modified file and comment
+    cam = commit -am
+    st = status
+    # delete a local branch
+    dbranch = branch -d
+    # create a new branch and check it out
+    bcheckout = checkout -b
+    # shallow clone of repositor# shallow clone of repositoryy
+    shallow = clone --depth=1
+    tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
 
 [push]
-	# Defines the action git push should take if no refspec is given on the command line,
-	# no refspec is configured in the remote, and no refspec is implied by any of the
-	# options given on the command line.
-	default = simple
+    # Defines the action git push should take if no refspec is given on the command line,
+    # no refspec is configured in the remote, and no refspec is implied by any of the
+    # options given on the command line.
+    default = simple
 [http]
-	# post buffer size in bytes
-	postBuffer = 256288000
+    # post buffer size in bytes
+    postBuffer = 256288000
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
