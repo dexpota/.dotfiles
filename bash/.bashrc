@@ -73,7 +73,7 @@ if ! shopt -oq posix; then
 	fi
 fi
 
-export ANDROID_SDK=$(select-directory ~/Library/Android/sdk ~/Android/Sdk)
+export ANDROID_SDK=$(select_directory ~/Library/Android/sdk ~/Android/Sdk)
 export ANDROID_SDK_PLATFORM_TOOLS=$ANDROID_SDK/platform-tools
 
 export EDITOR=vim
