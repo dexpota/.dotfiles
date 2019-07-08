@@ -127,7 +127,13 @@ let &t_ut=''
 let &showbreak='↳ '
 
 if has("clipboard")
-  set clipboard=unnamedplus
+  if has("macunix")
+    set clipboard=unnamed
+  elseif has("unix")
+    set clipboard=unnamedplus
+  else
+    set clipboard=unnamedplus
+  endif
 endif
 
 "" Automatically deletes all trailing whitespace on save.
