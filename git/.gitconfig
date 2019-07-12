@@ -22,6 +22,7 @@
     # shallow clone of repositor# shallow clone of repositoryy
     shallow = clone --depth=1
     tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
+	size = count-objects -vH
 
 [push]
     # Defines the action git push should take if no refspec is given on the command line,
