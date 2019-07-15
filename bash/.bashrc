@@ -112,3 +112,5 @@ if [[ -f "$VIRTUALENVWRAPPER_SCRIPT" ]]; then
 fi
 
 source $HOME/.bash-powerline.sh
+
+export LC_ALL=en_US
