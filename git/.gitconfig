@@ -22,7 +22,13 @@
     # shallow clone of repositor# shallow clone of repositoryy
     shallow = clone --depth=1
     tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
-	size = count-objects -vH
+    size = count-objects -vH
+    # commit and amend without modify the last commit message
+    amend=commit --amend --no-edit
+    # current branch
+    branch=symbolic-ref --short HEAD
+    # track upstream branch
+    up=push -u origin
 
 [push]
     # Defines the action git push should take if no refspec is given on the command line,
