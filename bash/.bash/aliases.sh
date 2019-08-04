@@ -76,3 +76,5 @@ alias root="sudo su -"
 alias codecat="ccat --color=always"
 
 alias cheat="ls -1 ~/.cheat/ | pick -K | xargs -I{} ccat ~/.cheat/{} --color=always | less"
+
+alias ff="find . -name "
