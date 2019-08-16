@@ -11,15 +11,15 @@
 
 [alias]
     b = branch
-	c = commit
-	pl = pull
-	ps = push
-	p = push
-	# unstage a file
-	unstage = reset HEAD
-	# undo the commit and keeps the changes
-	undo-commit = reset --soft
-	# list all branches, local and remotes
+    c = commit
+    pl = pull
+    ps = push
+    p = push
+    # unstage a file
+    unstage = reset HEAD
+    # undo the commit and keeps the changes
+    undo-commit = reset --soft
+    # list all branches, local and remotes
     lb = branch -v -a
     # commit all modified file and comment
     cam = commit -am
@@ -38,8 +38,8 @@
     branch=symbolic-ref --short HEAD
     # track upstream branch
     up=push -u origin
-	# custom command ignore, generate gitignore configuration file
-	i = ignore
+    # custom command ignore, generate gitignore configuration file
+    i = ignore
 
 [push]
     # Defines the action git push should take if no refspec is given on the command line,
