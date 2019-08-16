@@ -322,8 +322,3 @@ function select_directory() {
 		shift
 	done
 }
-
-function git-root() {
-	root=$(git rev-parse --show-toplevel)
-	cd $root
-}
