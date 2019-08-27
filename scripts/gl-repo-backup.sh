@@ -74,6 +74,8 @@ tmp_directory=$(mktemp -d)
 	{ printf "Backup directory doesn't exits.\n%s\n" "$backup_directory" \
 		&& exit 1; }
 
+backup_directory=$(realpath "$backup_directory")
+
 (
 	cd "$tmp_directory" || exit 1
 
