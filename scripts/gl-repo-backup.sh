@@ -29,6 +29,21 @@ Options:
 EOU
 }
 
+verify() {
+	ssh-keyscan "$api" >> gitlabKey
+
+	if grep -q "$key_ssh_rsa" gitlabKey && grep -q "$key_ecdsa" gitlabKey && grep -q "$key_ed25519" gitlabKey;
+	then
+		echo "[ OK ] All key verified"
+	else
+		exit 1
+	fi
+
+	mkdir -p ~/.ssh/
+
+	ssh-keyscan "$api" >> ~/.ssh/known_hosts
+}
+
 configure
 eval "$(docopts -h "$(usage)" : "$@")"
 
@@ -37,6 +52,7 @@ backup_directory=${backup_target_directory:-}
 filename=${archive_prefix:-}
 
 config_file=~/.gitlab
+
 tar_filename=$filename-$(date +%F).tgz
 
 # env variable > rc file
@@ -54,6 +70,33 @@ fi
 if [ -n "${GITLAB_API:-}" ]; then
 	# if defined use env variable
 	api="$GITLAB_API"
+fi
+
+if [ -n "${KEY_SSH_RSA:-}" ]; then
+	key_ssh_rsa=$KEY_SSH_RSA
+fi
+
+if [ -n "${KEY_ECDSA:-}" ]; then
+	key_ecdsa=$KEY_ECDSA
+fi
+
+if [ -n "${KEY_ED25519:-}" ]; then
+	key_ed25519=$KEY_ED25519
+fi
+
+if [ -z "$key_ssh_rsa" ]; then
+	echo "Gitlab's ssh key RSA is not defined."
+	exit 1
+fi
+
+if [ -z "$key_ecdsa" ]; then
+	echo "Gitlab's ssh key ECDSA is not defined."
+	exit 1
+fi
+
+if [ -z "$key_ed25519" ]; then
+	echo "Gitlab's ssh key ED25519 is not defined."
+	exit 1
 fi
 
 if [ -z "$token" ]; then
