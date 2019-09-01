@@ -80,3 +80,6 @@ alias cheat="ls -1 ~/.cheat/ | pick -K | xargs -I{} ccat ~/.cheat/{} --color=alw
 alias ff="find . -name "
 
 alias gr="git-root"
+
+# Choose a file to remove from staging
+alias iremove="git diff --name-only --cached | pick | xargs -I{} echo "$(git rev-parse --show-toplevel)/{}" | xargs git reset HEAD"
