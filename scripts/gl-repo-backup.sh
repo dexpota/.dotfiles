@@ -5,6 +5,8 @@
 # @license		see repository's license
 # @references
 # https://github.com/bertrandmartel/gitlab-backup
+# @todo
+# add support for impagination through the Link header
 
 configure() {
 	# exits the script if you try to use uninitialized variables
@@ -124,6 +126,7 @@ backup_directory=$(realpath "$backup_directory")
 (
 	cd "$tmp_directory" || exit 1
 
+	# TODO -D curl options save the headers to a file
 	# for each repository do a git clone
 	curl --header "PRIVATE-TOKEN: $token" "$api/$endpoint" |
 		jq -r ".[].ssh_url_to_repo" |
