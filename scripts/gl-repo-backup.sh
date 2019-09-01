@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-# @author 		Fabrizio Destro
+# @author		Fabrizio Destro
 # @copyright	Copyright 2018, Fabrizio Destro
-# @license 		see repository's license
+# @license		see repository's license
+# @references
+# https://github.com/bertrandmartel/gitlab-backup
 
 configure() {
 	# exits the script if you try to use uninitialized variables
