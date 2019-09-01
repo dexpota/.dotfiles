@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+filename="$1"
+shift
+
+links=$(
+    sed -nE -e "s/Link://" -e "s/[<>]//g" -e "s/rel=\"([^\"]*)\"/\1/gp" "$filename" \
+    | tr -s ',' '\n')
+
+while [ "$1" != "" ]; do
+    case $1 in
+        prev)
+            prev=$(echo "$links" | sed -n "/prev/p" | cut -d";" -f1)
+            echo "$prev"
+            ;;
+        next)
+            next=$(echo "$links" | sed -n "/prev/p" | cut -d";" -f1)
+            echo "$next"
+            ;;
+        first)
+            first=$(echo "$links" | sed -n "/prev/p" | cut -d";" -f1)
+            echo "$first"
+            ;;
+        last)
+            last=$(echo "$links" | sed -n "/prev/p" | cut -d";" -f1)
+            echo "$last"
+            ;;
+    esac
+    shift
+done
