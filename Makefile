@@ -29,12 +29,12 @@ vim: ycm git-submodule ## Install vim configuration files
 # this rule doesn't produce any files but it depends on files inside bash
 # directory
 bash: $(shell find ./bash/ -type f) ## Install bash configuration files
-       stow bash || echo "Remove all bash configuration files by running make bash-rm"
+	stow bash || echo "Remove all bash configuration files by running make bash-rm"
 
 .PHONY: bash-rm
 bash-rm:  ## Remove bash configuration files
-       @rm -f ~/.bashrc
-       @echo "All bash configuration files removed"
+	@rm -f ~/.bashrc
+	@echo "All bash configuration files removed"
 
 .PHONY: newsboat
 newsboat: ## Install newsboat configuration files.
