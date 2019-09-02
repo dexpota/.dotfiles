@@ -1,5 +1,3 @@
-GIT_AUTHORNAME ?= $(shell bash -c 'read -p "- What is your github author name? " name; echo $$name')
-GIT_AUTHOREMAIL ?= $(shell bash -c 'read -p "- What is your github author email? " email; echo $$email')
 MAKEFILE_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 .PHONY: help
@@ -42,7 +40,9 @@ newsboat: ## Install newsboat configuration files.
 
 .PHONY: git
 git: ## Install git configuration files
-	sed -e "s/AUTHORNAME/${GIT_AUTHORNAME}/g" -e "s/AUTHOREMAIL/${GIT_AUTHOREMAIL}/g" git/.gitconfig.local.example > git/.gitconfig.local
+	@test -n "$(GITHUB_AUTHOR_NAME)" || (echo "GITHUB_AUTHOR_NAME is undefined." && exit 1)
+	@test -n "$(GITHUB_AUTHOR_EMAIL)" || (echo "GITHUB_AUTHOR_EMAIL is undefined." && exit 1)
+	sed -e "s/AUTHORNAME/$(GITHUB_AUTHOR_NAME)/g" -e "s/AUTHOREMAIL/${GITHUB_AUTHOR_EMAIL}/g" git/.gitconfig.local.example > git/.gitconfig.local
 	stow git
 
 # Requires jq and parallel installed
