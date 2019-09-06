@@ -83,3 +83,6 @@ alias gr="git-root"
 
 # Choose a file to remove from staging
 alias iremove='git diff --name-only --cached | pick | xargs -I{} echo "$(git rev-parse --show-toplevel)/{}" | xargs git reset HEAD'
+
+# Remove an untracked file from repository
+alias iclean='git ls-files --other --exclude-standard | pick | xargs -I{} rm {}'
