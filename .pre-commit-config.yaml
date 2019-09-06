@@ -6,3 +6,11 @@ repos:
     hooks:
     -   id: trailing-whitespace
     -   id: end-of-file-fixer
+- repo: local
+  hooks:
+    - id: check-makefile
+      name: Check Makefile
+      description: Check if the Makefile is correctly formatted
+      language: script
+      types: ["makefile"]
+      entry: ./.hooks/check-makefile.sh
