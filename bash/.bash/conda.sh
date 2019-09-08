@@ -2,7 +2,7 @@
 # environment variable ENV_CONDA_ROOT to add conda. This script must be
 # sourced.
 
-if [ -z "$ENV_CONDA_ROOT" ]; then
+if [ ! -z "$ENV_CONDA_ROOT" ]; then
 	if __conda_setup=$("$ENV_CONDA_ROOT/bin/conda" 'shell.bash' 'hook' 2> /dev/null); then
 		eval "$__conda_setup"
 	else
