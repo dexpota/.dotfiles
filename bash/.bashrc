@@ -50,7 +50,7 @@ fi
 . ${DOTFILES_DIRECTORY}/.bash/functions.bash
 
 # Sourcing bash's dotfiles
-for dotfile in "$DOTFILES_DIRECTORY"/.bash/{aliases,functions,directories,conda}.sh
+for dotfile in "$DOTFILES_DIRECTORY"/.bash/{aliases,functions,directories,conda,env}.sh
 do
 	if [ -f "$dotfile" ]
 	then

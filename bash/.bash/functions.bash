@@ -322,3 +322,14 @@ function select_directory() {
 		shift
 	done
 }
+
+
+function load_env {
+	filename="$1"
+
+	set -o allexport
+	if  [ -f "$filename" ]; then
+		source "$filename"
+	fi
+	set +o allexport
+}
