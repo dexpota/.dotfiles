@@ -1,1 +1,1 @@
-load_env ".env"
+load_env "$HOME/.bash/.env"
