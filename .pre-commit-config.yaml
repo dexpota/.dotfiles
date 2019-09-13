@@ -13,9 +13,9 @@ repos:
     - id: script-must-have-extension
       name: Local policy is to use .sh or .bash extension for libraries.
       types: [shell, non-executable]
-    - id: script-must-not-have-extension
-      name: Local policy is not to use extension for executable scripts.
-      types: [shell, executable]
+# This is not correctly working
+#    - id: script-must-not-have-extension
+#      name: Local policy is not to use extension for executable scripts.
 - repo: local
   hooks:
     - id: check-makefile

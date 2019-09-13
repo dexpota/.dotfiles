@@ -19,7 +19,7 @@ eval "$(docopts -h "$(usage)" : "$@")"
 
 github_api_endpoint="https://api.github.com/repos/$github_path/contents/"
 
-response=$(curl -w '\n%{http_code}' -s -o - $github_api_endpoint) 
+response=$(curl -w '\n%{http_code}' -s -o - $github_api_endpoint)
 
 response_body=$(echo "$response" | head -n -1)
 response_code=$(echo "$response" | tail -1)
@@ -32,5 +32,5 @@ if [[ $response_code == 200 ]]; then
 	echo "$response_body" | \
 		jq -r ".[] | \"\(.path) \(.download_url)\"" | \
 		sed -n "/$regex/p" \
-		| parallel --colsep " " --no-notice -j+1 curl -L {2} -o {1}	
+		| parallel --colsep " " --no-notice -j+1 curl -L {2} -o {1}
 fi

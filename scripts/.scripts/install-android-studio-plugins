@@ -10,9 +10,9 @@ function install-plugin() {
 	for config_directory in "${directories[@]}"
 	do
 		local plugin_directory="${config_directory}/config/plugins/"
-  		
+
  		local zip=$($retrive_function $args)
-		
+
 		echo $zip
 
 		unzip -d ${plugin_directory} ${zip}

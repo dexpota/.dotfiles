@@ -111,7 +111,7 @@ main() {
 	dpi_labels[5]="xxxhdpi"
 
 	local input_dpi
-	if "${ldpi:-false}"; then 
+	if "${ldpi:-false}"; then
 		input_dpi=0
 	elif "${mdpi:-false}"; then
 		input_dpi=1

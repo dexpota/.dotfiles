@@ -31,7 +31,7 @@ shell_shortcuts="$HOME/.shortcuts"
 ranger_shortcuts="$HOME/.config/ranger/shortcuts.conf"
 
 # Remove
-rm -f "$shell_shortcuts" "$ranger_shortcuts" 
+rm -f "$shell_shortcuts" "$ranger_shortcuts"
 
 # Ensuring that output locations are properly sourced
 # (grep "source ~/.shortcuts"  "$shellrc")>/dev/null || echo "source ~/.shortcuts" >> "$shellrc"
