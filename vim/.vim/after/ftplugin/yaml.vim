@@ -12,6 +12,11 @@ setlocal foldmethod=indent
 " keep indentation when formatting with gq
 setlocal autoindent
 
+" navigation based on indentation
+" TODO check vim-indentwise is enabled
+map <C-k> <Plug>(IndentWisePreviousEqualIndent)
+map <C-j> <Plug>(IndentWiseNextEqualIndent)
+
 " Undo the commands defined by this plugin when the buffer changes its
 " filetype
 let b:undo_ftplugin = "
