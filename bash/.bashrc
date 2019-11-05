@@ -50,7 +50,7 @@ fi
 . ${DOTFILES_DIRECTORY}/.bash/functions.bash
 
 # Sourcing bash's dotfiles
-for dotfile in "$DOTFILES_DIRECTORY"/.bash/{env,aliases,functions,directories,conda}.sh
+for dotfile in "$DOTFILES_DIRECTORY"/.bash/{env,aliases,functions,directories}.sh
 do
 	if [ -f "$dotfile" ]
 	then
@@ -111,6 +111,14 @@ if [[ -f "$VIRTUALENVWRAPPER_SCRIPT" ]]; then
 	source $VIRTUALENVWRAPPER_SCRIPT
 fi
 
+conda_prompt_command() {
+	echo -n "$CONDA_PROMPT_MODIFIER "
+}
+
+PROMPT_COMMAND=conda_prompt_command
+
 source $HOME/.bash-powerline.sh
 
 export LC_ALL=en_US
+
+source "$DOTFILES_DIRECTORY"/.bash/conda.sh
