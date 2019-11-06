@@ -119,6 +119,6 @@ PROMPT_COMMAND=conda_prompt_command
 
 source $HOME/.bash-powerline.sh
 
-export LC_ALL=en_US
+#export LC_ALL=en_US
 
 source "$DOTFILES_DIRECTORY"/.bash/conda.sh
