@@ -86,3 +86,6 @@ alias iremove='git diff --name-only --cached | pick | xargs -I{} echo "$(git rev
 
 # Remove an untracked file from repository
 alias iclean='git ls-files --other --exclude-standard | pick | xargs -I{} rm {}'
+
+# Aliases for git flow
+alias gff="git flow feature"
