@@ -57,6 +57,7 @@ alias gdiff='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 # Nice git log
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 # A wall with git log information
+# We need --decorate because the pipe will remove the decoration, see https://stackoverflow.com/a/56694974/9942979
 alias gwall="watch --color git log --oneline --graph --all --decorate --color=always"
 
 # Most used command line tools
