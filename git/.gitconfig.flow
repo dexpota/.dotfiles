@@ -1,0 +1,4 @@
+[alias]
+	# Alias to be used with git-flow
+	ff = flow feature
+	fc = flow feature checkout
