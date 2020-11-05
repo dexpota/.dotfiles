@@ -45,6 +45,7 @@
     # Advanced stashing: https://stackoverflow.com/a/44824475/9942979
     stash-staged = '!bash -c "git stash --keep-index; git stash push -m "staged" --keep-index; git stash pop stash@{1}"'
     move-staged = '!bash -c "git stash-staged;git commit -m "temp"; git stash; git reset --hard HEAD^; git stash pop"'
+    logtags = log --tags --no-walk --pretty="format:%ci %an %d"
 
 [push]
     # Defines the action git push should take if no refspec is given on the command line,
