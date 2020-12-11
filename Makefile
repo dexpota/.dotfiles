@@ -12,7 +12,7 @@ git-submodule:
 
 ycm:
 	@echo "Compiling ycm"
-	cd ${MAKEFILE_DIR}/vim/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.py --clang-completer --rust-completer
+	cd ${MAKEFILE_DIR}/vim/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && python3 ./install.py --clang-completer --rust-completer
 # TODO this is not sufficient in archlinux, libtinfo.so.5 is missing and can be
 # found inside ncurses5-compat-libs AUR package
 
