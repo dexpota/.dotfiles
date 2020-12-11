@@ -18,7 +18,9 @@ ycm:
 
 .PHONY: vim
 vim: ycm git-submodule ## Install vim configuration files
-	mkdir -p ~/.vim/backup ~/.vim/swp ~/.vim/undo
+	mkdir -p ~/.vim/backup ~/.vim/swp ~/.vim/undo ~/.vim/autoload
+	# Install pathogen
+	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 	stow vim
 
 .PHONY: bash
