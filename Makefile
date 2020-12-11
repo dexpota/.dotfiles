@@ -18,9 +18,7 @@ ycm:
 
 .PHONY: vim
 vim: ycm git-submodule ## Install vim configuration files
-	mkdir ~/.vim/backup
-	mkdir ~/.vim/swp
-	mkdir ~/.vim/undo
+	mkdir -p ~/.vim/backup ~/.vim/swp ~/.vim/undo
 	stow vim
 
 .PHONY: bash
