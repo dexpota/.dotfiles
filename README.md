@@ -56,6 +56,7 @@ You can try out this configuration by using a virtual machine easily thanks to V
 
 - **vim**: Check vim installation to make it easier, now to install vim
   configuration files you need to execute these commands:
+- **stow**: checkout the command line argument --dotfiles for stow command;
 
 ```bash
 cd ~/.dotfiles
