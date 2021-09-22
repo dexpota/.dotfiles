@@ -117,7 +117,7 @@ conda_prompt_command() {
 
 PROMPT_COMMAND=conda_prompt_command
 
-source $HOME/.bash-powerline.sh
+#source $HOME/.bash-powerline.sh
 
 #export LC_ALL=en_US
 
