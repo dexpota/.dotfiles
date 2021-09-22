@@ -23,15 +23,17 @@ vim: ycm git-submodule ## Install vim configuration files
 	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 	stow vim
 
+BASH_CONFIG_FILES=$(shell find ./bash/ -type f)
+
 .PHONY: bash
 # this rule doesn't produce any files but it depends on files inside bash
 # directory
-bash: $(shell find ./bash/ -type f) ## Install bash configuration files
+bash: $(BASH_CONFIG_FILES)  ## Install bash configuration files
 	stow bash || echo "Remove all bash configuration files by running make bash-rm"
 
 .PHONY: bash-rm
 bash-rm:  ## Remove bash configuration files
-	@rm -f ~/.bashrc
+	@rm -f $(BASH_CONFIG_FILES)
 	@echo "All bash configuration files removed"
 
 .PHONY: newsboat
