@@ -18,8 +18,12 @@ fi
 alias ls="ls -h ${colorflag}"
 # List in long format
 alias l="ls -l"
-# List in long format and shows almost all files.
+# List in long format and shows almost all files
 alias ll='ls -lA'
+# List in long format and order by size
+alias lss='ls -lS'
+# List in long format and order by the time the file was last modified (mtime)
+alias lst='ls -lt --full-time'
 
 alias ..="cd .."
 alias ...="cd ../.."
