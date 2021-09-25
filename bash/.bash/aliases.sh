@@ -25,7 +25,7 @@ alias lss='ls -lS'
 # List in long format and order by the time the file was last modified (mtime)
 alias lst='ls -lt --full-time'
 # Rank the files in the current directory by its size
-alias srank='ls -A | xargs du -sh | sort -h'
+alias srank='ls -A | xargs du -sh 2>/dev/null | sort -h'
 
 alias ..="cd .."
 alias ...="cd ../.."
