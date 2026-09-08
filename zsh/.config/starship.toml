@@ -1,0 +1,119 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = false
+command_timeout = 750
+scan_timeout = 30
+
+# Keep directory and Git information on the left, contextual information on
+# the right, and the command prompt on its own line.
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$status\
+$cmd_duration\
+$jobs\
+$direnv\
+$python\
+$nodejs\
+$terraform\
+$kubernetes\
+$aws\
+$azure\
+$gcloud\
+$username\
+$hostname\
+$time\
+$line_break\
+$character"""
+
+[fill]
+symbol = " "
+style = ""
+
+[directory]
+style = "bold cyan"
+truncation_length = 5
+truncate_to_repo = false
+
+[git_branch]
+symbol = " "
+style = "bold green"
+format = "[$symbol$branch(:$remote_branch)]($style) "
+
+[git_status]
+style = "bold yellow"
+format = "([$all_status$ahead_behind]($style) )"
+ignore_submodules = true
+
+[status]
+disabled = false
+symbol = "✘ "
+format = "[$symbol$status]($style) "
+
+[cmd_duration]
+min_time = 3000
+format = "[took $duration]($style) "
+
+[jobs]
+symbol = "✦ "
+format = "[$symbol$number]($style) "
+
+[python]
+symbol = " "
+format = "[${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style) "
+
+[nodejs]
+symbol = " "
+format = "[$symbol($version )]($style) "
+
+[terraform]
+symbol = "󱁢 "
+format = "[$symbol$workspace]($style) "
+
+[kubernetes]
+disabled = false
+symbol = "󱃾 "
+format = "[$symbol$context( \\($namespace\\))]($style) "
+detect_files = ["Chart.yaml", "helmfile.yaml", "kustomization.yaml"]
+detect_folders = ["charts", "k8s", "kubernetes"]
+
+[[kubernetes.contexts]]
+context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>.*)"
+context_alias = "$cluster"
+
+[aws]
+symbol = "󰸏 "
+format = "[$symbol($profile )(\\($region\\) )]($style)"
+
+[azure]
+disabled = false
+symbol = " "
+format = "[$symbol($subscription)]($style) "
+
+[gcloud]
+symbol = "󰊭 "
+format = "[$symbol$account( \\($project\\))]($style) "
+
+[direnv]
+disabled = false
+
+[username]
+format = "[$user]($style)"
+
+[hostname]
+format = "[@$hostname]($style) "
+
+[time]
+disabled = false
+time_format = "%H:%M:%S"
+format = "[$time]($style)"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"
+vimcmd_replace_one_symbol = "[❮](bold purple)"
+vimcmd_replace_symbol = "[❮](bold purple)"
+vimcmd_visual_symbol = "[❮](bold yellow)"

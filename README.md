@@ -43,6 +43,18 @@ configurations file with this command.
 make git
 ```
 
+Shell configuration files can be installed in the same way:
+
+```bash
+make bash
+make zsh
+```
+
+The Zsh target installs the Starship prompt in `~/.local/bin` when it is
+missing, then links both the shell and Starship configuration files with GNU
+Stow. The installer supports both macOS and Linux and requires either `curl`
+or `wget`.
+
 ## Try the configuration with Vagrant
 
 You can try out this configuration by using a virtual machine easily thanks to Vagrant. Follow these steps to create the virtual machine:

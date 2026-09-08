@@ -36,6 +36,43 @@ bash-rm:  ## Remove bash configuration files
 	@(cd .. && rm -f $(BASH_CONFIG_FILES))
 	@echo "All bash configuration files removed"
 
+.PHONY: starship
+starship:  ## Install the Starship prompt when missing
+	@set -e; \
+	if ! command -v starship >/dev/null 2>&1; then \
+		case "$$(uname -s)" in \
+			Darwin|Linux) ;; \
+			*) echo "Starship installation is supported only on macOS and Linux." >&2; exit 1 ;; \
+		esac; \
+		install_dir="$$HOME/.local/bin"; \
+		mkdir -p "$$install_dir"; \
+		installer="$$(mktemp "$${TMPDIR:-/tmp}/starship-install.XXXXXX")"; \
+		trap 'rm -f "$$installer"' 0; \
+		trap 'exit 1' HUP INT TERM; \
+		if command -v curl >/dev/null 2>&1; then \
+			curl --fail --silent --show-error --location \
+				https://starship.rs/install.sh --output "$$installer"; \
+		elif command -v wget >/dev/null 2>&1; then \
+			wget --quiet --output-document="$$installer" \
+				https://starship.rs/install.sh; \
+		else \
+			echo "Installing Starship requires curl or wget." >&2; \
+			exit 1; \
+		fi; \
+		sh "$$installer" --yes --bin-dir "$$install_dir"; \
+	fi
+
+.PHONY: zsh
+zsh: starship $(shell find ./zsh/ -type f)  ## Install Zsh configuration files
+	@stow zsh || { \
+		echo "Remove conflicting Zsh configuration files and run make zsh again" >&2; \
+		exit 1; \
+	}
+
+.PHONY: zsh-rm
+zsh-rm:  ## Remove Zsh configuration links
+	@stow --delete zsh
+
 .PHONY: newsboat
 newsboat: ## Install newsboat configuration files.
 	stow newsboat
