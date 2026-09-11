@@ -14,5 +14,6 @@ Installation targets can change files under `$HOME` or download tools. Inspect t
 - `bats tests/git-commands/git-purge-ignored/*.bats` runs the current shell-command tests.
 - `pre-commit run --all-files` checks whitespace, final newlines, shell naming, executable shebangs, and Makefile syntax.
 - `make -n <target>` previews many Make recipes, although commands containing recursive Make or shell-side effects still require review.
+- `bats tests/git-commands/git-branch-align/test.bats` runs the alignment command's safety and behavior tests.
 
 Run checks relevant to the changed files. For shell behavior, run its Bats suite; for Ansible changes, run the syntax check; before handing off a broad change, run all configured pre-commit hooks.
