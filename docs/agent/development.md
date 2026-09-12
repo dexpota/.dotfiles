@@ -15,6 +15,6 @@ Installation targets can change files under `$HOME` or download tools. Inspect t
 - `pre-commit run --all-files` checks whitespace, final newlines, shell naming, executable shebangs, and Makefile syntax.
 - `make -n <target>` previews many Make recipes, although commands containing recursive Make or shell-side effects still require review.
 
-GitHub Actions runs the complete Bats suite on every push and pull request. The CI environment adds `git/.git-commands` and `scripts` to `PATH` so tests can invoke repository commands and the bundled `docopts` executable.
+GitHub Actions runs the complete Bats suite on every push and pull request. The CI environment adds `git/.git-commands` to `PATH` so tests can invoke repository commands.
 
 Run checks relevant to the changed files. For shell behavior, run its Bats suite; for Ansible changes, run the syntax check; before handing off a broad change, run all configured pre-commit hooks.

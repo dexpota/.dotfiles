@@ -149,5 +149,59 @@ main() {
 	done
 }
 
-eval "$(docopts -h "$(usage)" : "$@")"
+verbose=false
+debug=false
+ldpi=false
+mdpi=false
+hdpi=false
+xhdpi=false
+xxhdpi=false
+xxxhdpi=false
+generate_dpi=""
+drawable=""
+density_count=0
+
+while [ "$#" -gt 0 ]; do
+	case "$1" in
+		--ldpi|--mdpi|--hdpi|--xhdpi|--xxhdpi|--xxxhdpi)
+			density=${1#--}
+			printf -v "$density" '%s' true
+			density_count=$((density_count + 1))
+			;;
+		--generate-dpi=*) generate_dpi=${1#*=} ;;
+		--generate-dpi)
+			if [ "$#" -lt 2 ]; then
+				usage >&2
+				exit 2
+			fi
+			shift
+			generate_dpi=$1
+			;;
+		-v|--verbose) verbose=true ;;
+		-d|--debug) debug=true ;;
+		-h|--help)
+			usage
+			exit 0
+			;;
+		-*)
+			echo "Unknown option: $1" >&2
+			usage >&2
+			exit 2
+			;;
+		*)
+			if [ -n "$drawable" ]; then
+				usage >&2
+				exit 2
+			fi
+			drawable=$1
+			;;
+	esac
+	shift
+done
+
+if [ -z "$drawable" ] || [ "$density_count" -ne 1 ]; then
+	usage >&2
+	exit 2
+fi
+
 main

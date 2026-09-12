@@ -19,20 +19,22 @@ EOU
 }
 
 
-if ! command -v docopts >/dev/null 2>&1; then
-	echo "This script require docopts to be installed, please install docopts."
-	exit -1
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+	usage
+	exit 0
 fi
 
-# processing arguments
-eval "$(docopts -h "$(usage)" : "$@")"
-
-if $list; then
+if [ "$#" -eq 1 ] && [ "$1" = "list" ]; then
 	curl -s https://api.github.com/licenses | jq -r ".[] | [.key, .name] | @csv"
-elif $description; then
-	curl -s https://api.github.com/licenses/$license | jq -r ".description"
-else
+elif [ "$#" -eq 2 ] && [ "$1" = "description" ]; then
+	license=$2
+	curl -s "https://api.github.com/licenses/$license" | jq -r ".description"
+elif [ "$#" -eq 1 ]; then
+	license=$1
 	# TODO with some licenses you have to modify the body, see mit.
-	body=$(curl -s https://api.github.com/licenses/$license | jq -r '.body')
+	body=$(curl -s "https://api.github.com/licenses/$license" | jq -r '.body')
 	echo "$body"
+else
+	usage >&2
+	exit 2
 fi

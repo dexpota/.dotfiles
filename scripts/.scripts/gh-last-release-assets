@@ -38,8 +38,16 @@ main() {
 	fi
 }
 
-# check if script is being executed
-if [[ $_ == $0 ]]; then
-	eval "$(docopts -h "$(usage)" : "$@")"
-	main
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+	usage
+	exit 0
 fi
+
+if [ "$#" -ne 2 ]; then
+	usage >&2
+	exit 2
+fi
+
+github_repository=$1
+target_directory=$2
+main

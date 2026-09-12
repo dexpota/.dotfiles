@@ -64,8 +64,36 @@ main() {
 	fi
 }
 
-# check if script is being executed
-if [[ $_ == $0 ]]; then
-	eval "$(docopts -h "$(usage)" : "$@")"
-	main
+verbose=false
+debug=false
+github_repository=""
+
+for argument in "$@"; do
+	case "$argument" in
+		-v|--verbose) verbose=true ;;
+		-d|--debug) debug=true ;;
+		-h|--help)
+			usage
+			exit 0
+			;;
+		-*)
+			echo "Unknown option: $argument" >&2
+			usage >&2
+			exit 2
+			;;
+		*)
+			if [ -n "$github_repository" ]; then
+				usage >&2
+				exit 2
+			fi
+			github_repository=$argument
+			;;
+	esac
+done
+
+if [ -z "$github_repository" ]; then
+	usage >&2
+	exit 2
 fi
+
+main

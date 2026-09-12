@@ -13,13 +13,19 @@ Arguments
 EOU
 }
 
-if ! command -v docopts >/dev/null 2>&1; then
-	echo "docopts is not installed"
-	exit -1
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+	usage
+	exit 0
 fi
 
-# processing arguments
-eval "$(docopts -h "$(usage)" : "$@")"
+if [ "$#" -lt 2 ]; then
+	usage >&2
+	exit 2
+fi
+
+repository=$1
+shift
+dirs=("$@")
 
 working_directory="$(pwd)"
 temp_directory=$(mktemp -d)

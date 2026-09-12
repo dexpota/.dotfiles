@@ -15,13 +15,15 @@ Examples
 EOU
 }
 
-if ! command -v docopts >/dev/null 2>&1; then
-	echo "docopts is not installed."
-	exit -1
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+	usage
+	exit 0
 fi
 
-# processing arguments
-eval "$(docopts -h "$(usage)" : "$@")"
+if [ "$#" -ne 0 ]; then
+	usage >&2
+	exit 2
+fi
 
 if [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1 ; then 
 	files=$(git check-ignore --no-index $(git ls-files))

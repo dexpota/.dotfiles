@@ -23,7 +23,6 @@ jobs:
       - name: Configure test environment
         run: |
           echo "$GITHUB_WORKSPACE/git/.git-commands" >> "$GITHUB_PATH"
-          echo "$GITHUB_WORKSPACE/scripts" >> "$GITHUB_PATH"
           git config --global user.name "Test User"
           git config --global user.email "test@example.com"
 

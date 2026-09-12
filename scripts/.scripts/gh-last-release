@@ -99,8 +99,36 @@ main() {
 	fi
 }
 
-# check if script is being executed
-if [[ $_ == $0 ]]; then
-	eval "$(docopts -h "$(usage)" : "$@")"
-	main
+zip=false
+tar=false
+verbose=false
+debug=false
+positionals=()
+
+for argument in "$@"; do
+	case "$argument" in
+		-z|--zip) zip=true ;;
+		-t|--tar) tar=true ;;
+		-v|--verbose) verbose=true ;;
+		-d|--debug) debug=true ;;
+		-h|--help)
+			usage
+			exit 0
+			;;
+		-*)
+			echo "Unknown option: $argument" >&2
+			usage >&2
+			exit 2
+			;;
+		*) positionals+=("$argument") ;;
+	esac
+done
+
+if [ "${#positionals[@]}" -lt 1 ] || [ "${#positionals[@]}" -gt 2 ] || { "$zip" && "$tar"; }; then
+	usage >&2
+	exit 2
 fi
+
+github_repository=${positionals[0]}
+target_directory=${positionals[1]:-}
+main

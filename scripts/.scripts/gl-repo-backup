@@ -47,11 +47,35 @@ verify() {
 }
 
 configure
-eval "$(docopts -h "$(usage)" : "$@")"
+verbose=false
+debug=false
+positionals=()
+
+for argument in "$@"; do
+    case "$argument" in
+        -v|--verbose) verbose=true ;;
+        -d|--debug) debug=true ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        -*)
+            echo "Unknown option: $argument" >&2
+            usage >&2
+            exit 2
+            ;;
+        *) positionals+=("$argument") ;;
+    esac
+done
+
+if [ "${#positionals[@]}" -ne 2 ]; then
+    usage >&2
+    exit 2
+fi
 
 # read script arguments
-backup_directory=${backup_target_directory:-}
-filename=${archive_prefix:-}
+backup_directory=${positionals[0]}
+filename=${positionals[1]}
 
 config_file=~/.gitlab
 

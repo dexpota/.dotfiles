@@ -16,15 +16,39 @@ EOU
 }
 
 
-if ! command -v docopts >/dev/null 2>&1; then
-	echo "docopts is not installed."
-	exit -1
+all=false
+directory=""
+
+for argument in "$@"; do
+	case "$argument" in
+		-a|--all)
+			all=true
+			;;
+		-h|--help)
+			usage
+			exit 0
+			;;
+		-*)
+			echo "Unknown option: $argument" >&2
+			usage >&2
+			exit 2
+			;;
+		*)
+			if [ -n "$directory" ]; then
+				usage >&2
+				exit 2
+			fi
+			directory=$argument
+			;;
+	esac
+done
+
+if [ -z "$directory" ]; then
+	usage >&2
+	exit 2
 fi
 
-# processing arguments
-eval "$(docopts -h "$(usage)" : "$@")"
-
-if $all; then
+if "$all"; then
 	GLOBIGNORE=".:.."
 fi
 

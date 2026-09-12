@@ -15,13 +15,18 @@ Usage:
 EOU
 }
 
-if ! command -v docopts >/dev/null 2>&1; then
-	echo "docopts is not installed."
-	exit -1
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+	usage
+	exit 0
 fi
 
-# processing arguments
-eval "$(docopts -h "$(usage)" : "$@")"
+if [ "$#" -ne 2 ]; then
+	usage >&2
+	exit 2
+fi
+
+folders=$1
+configs=$2
 
 # Shell rc file (i.e. bash vs. zsh, etc.)
 shellrc="$HOME/.bashrc"

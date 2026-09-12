@@ -15,7 +15,19 @@ Usage:
 EOU
 }
 
-eval "$(docopts -h "$(usage)" : "$@")"
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+	usage
+	exit 0
+fi
+
+if [ "$#" -ne 3 ]; then
+	usage >&2
+	exit 2
+fi
+
+github_path=$1
+regex=$2
+target_directory=$3
 
 github_api_endpoint="https://api.github.com/repos/$github_path/contents/"
 

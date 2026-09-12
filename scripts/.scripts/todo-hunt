@@ -53,8 +53,46 @@ main() {
 	done
 }
 
-# check if script is being executed
-if [[ $_ == $0 ]]; then
-	eval "$(docopts -h "$(usage)" : "$@")"
-	main
+todo=false
+bug=false
+fix_me=false
+hack=false
+undone=false
+verbose=false
+debug=false
+directory=""
+
+for argument in "$@"; do
+	case "$argument" in
+		-t|--todo) todo=true ;;
+		-b|--bug) bug=true ;;
+		-f|--fix-me) fix_me=true ;;
+		-h|--hack) hack=true ;;
+		-u|--undone) undone=true ;;
+		-v|--verbose) verbose=true ;;
+		-d|--debug) debug=true ;;
+		--help)
+			usage
+			exit 0
+			;;
+		-*)
+			echo "Unknown option: $argument" >&2
+			usage >&2
+			exit 2
+			;;
+		*)
+			if [ -n "$directory" ]; then
+				usage >&2
+				exit 2
+			fi
+			directory=$argument
+			;;
+	esac
+done
+
+if [ -z "$directory" ]; then
+	usage >&2
+	exit 2
 fi
+
+main
