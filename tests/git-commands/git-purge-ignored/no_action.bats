@@ -8,6 +8,7 @@ setup() {
 	cd "$repository_directory"
 
 	create_git_repository_2
+	git add -f .
 	git commit -m "Test commit."
 }
 

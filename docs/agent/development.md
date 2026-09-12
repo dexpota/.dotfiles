@@ -11,9 +11,10 @@ Installation targets can change files under `$HOME` or download tools. Inspect t
 ## Validation
 
 - `ansible-playbook --syntax-check local.yml` validates the main playbook without provisioning a machine.
-- `bats tests/git-commands/git-purge-ignored/*.bats` runs the current shell-command tests.
+- `bats --recursive tests` runs every Bats suite in the repository.
 - `pre-commit run --all-files` checks whitespace, final newlines, shell naming, executable shebangs, and Makefile syntax.
 - `make -n <target>` previews many Make recipes, although commands containing recursive Make or shell-side effects still require review.
-- `bats tests/git-commands/git-branch-align/test.bats` runs the alignment command's safety and behavior tests.
+
+GitHub Actions runs the complete Bats suite on every push and pull request. The CI environment adds `git/.git-commands` and `scripts` to `PATH` so tests can invoke repository commands and the bundled `docopts` executable.
 
 Run checks relevant to the changed files. For shell behavior, run its Bats suite; for Ansible changes, run the syntax check; before handing off a broad change, run all configured pre-commit hooks.
