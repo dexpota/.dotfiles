@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+usage() {
+	cat <<'EOF'
+Usage: split-link-headers <headers-file> <relation>...
+
+Print URLs from HTTP Link headers. Supported relations are prev, next,
+first, and last.
+EOF
+}
+
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+	usage
+	exit 0
+fi
+
+if [ "$#" -lt 2 ]; then
+	usage >&2
+	exit 2
+fi
+
+headers_file=$1
+shift
+
+if [ ! -r "$headers_file" ]; then
+	echo "Cannot read headers file: $headers_file" >&2
+	exit 1
+fi
+
+links=$(sed -n 's/^[Ll]ink:[[:space:]]*//p' "$headers_file" | tr ',' '\n')
+
+for relation in "$@"; do
+	case "$relation" in
+		prev|next|first|last)
+			;;
+		*)
+			echo "Unsupported relation: $relation" >&2
+			exit 2
+			;;
+	esac
+
+	printf '%s\n' "$links" | awk -v relation="$relation" '
+		$0 ~ ("rel=\"" relation "\"") && match($0, /<[^>]+>/) {
+			print substr($0, RSTART + 1, RLENGTH - 2)
+			exit
+		}
+	'
+done

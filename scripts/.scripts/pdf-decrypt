@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+usage() {
+	cat <<'EOF'
+Usage: pdf-decrypt <input.pdf> <output.pdf>
+
+Create an unencrypted copy of a password-protected PDF.
+EOF
+}
+
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+	usage
+	exit 0
+fi
+
+if [ "$#" -ne 2 ]; then
+	usage >&2
+	exit 2
+fi
+
+if ! command -v qpdf >/dev/null 2>&1; then
+	echo "pdf-decrypt requires qpdf." >&2
+	exit 1
+fi
+
+input=$1
+output=$2
+
+printf "Password to decrypt the PDF: " > /dev/tty
+IFS= read -r -s password < /dev/tty
+printf "\n" > /dev/tty
+trap 'unset password' EXIT
+
+printf '%s\n' "$password" | qpdf --password-file=- --decrypt "$input" "$output"
