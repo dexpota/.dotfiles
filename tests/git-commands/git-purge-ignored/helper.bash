@@ -1,6 +1,7 @@
 create_git_repository_2() {
 	git init
 
+	mkdir ".hidden"
 	touch ".hidden/goo"
 	
 	mkdir "subdirectory"
