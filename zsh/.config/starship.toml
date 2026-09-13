@@ -15,7 +15,6 @@ $status\
 $cmd_duration\
 $jobs\
 $direnv\
-$python\
 $nodejs\
 $terraform\
 $kubernetes\
@@ -60,10 +59,6 @@ format = "[took $duration]($style) "
 symbol = "✦ "
 format = "[$symbol$number]($style) "
 
-[python]
-symbol = " "
-format = "[${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style) "
-
 [nodejs]
 symbol = " "
 format = "[$symbol($version )]($style) "
@@ -84,15 +79,17 @@ context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>.*)"
 context_alias = "$cluster"
 
 [aws]
+disabled = true
 symbol = "󰸏 "
 format = "[$symbol($profile )(\\($region\\) )]($style)"
 
 [azure]
-disabled = false
+disabled = true
 symbol = " "
 format = "[$symbol($subscription)]($style) "
 
 [gcloud]
+disabled = true
 symbol = "󰊭 "
 format = "[$symbol$account( \\($project\\))]($style) "
 
