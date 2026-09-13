@@ -1,3 +1,0 @@
-- name: Compiling YCM with rust and c-like languages.
-  shell: cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer --rust-completer
-  tags: youcompleteme

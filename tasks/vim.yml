@@ -1,8 +1,0 @@
-- name: Creating directories for vim
-  file: path={{item}} state=directory
-  with_items:
-    - "~/.vim/backup"
-    - "~/.vim/swp"
-    - "~/.vim/undo"
-  become: no
-  tags: vim

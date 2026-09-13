@@ -3,7 +3,7 @@
 This repository manages personal Linux and macOS configuration with GNU Stow, Make, and Ansible.
 
 - `bash/`, `zsh/`, `git/`, `vim/`, and `config/` are Stow packages whose contents mirror paths in the home directory.
-- `local.yml` is the main Ansible playbook. Reusable provisioning steps live in `tasks/`, with supporting values in `vars/`.
+- `local.yml` is the main Ansible playbook. Reusable provisioning steps and the macOS, Ubuntu, and Arch package inventory live in `tasks/`.
 - `scripts/.scripts/` contains everyday commands exposed under `~/.scripts/` by Stow.
 - `scripts/installation/` contains one-time setup helpers; do not expose these commands through the user's `PATH`.
 - `scripts/.stow-local-ignore` makes Stow ignore everything in the package except the `.scripts/` directory.

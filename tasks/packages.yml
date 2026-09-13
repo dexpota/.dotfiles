@@ -1,81 +1,49 @@
-- name: Installing packages
-  package: name={{item}}
-  with_items:
-    # stardict, command line dictionary
-    - sdcv
-    # manage your library
-    - calibre
-    # package manager
-    - snap
-    - curl
-    - blender
-    # Music Player
-    - cmus
-    # Utility to parallelize shell commands
-    - parallel
-    - vim
-    - git
-    - inotify-tools
-    - stow
-    # Gnome color picker
-    - gpick
-    # A simple PDF viewer
-    - zathura
-    # Terminal file manager
-    - ranger
-    # This is used by ranger to highlight code inside the preview
-    - highlight
-    # A new vim
-    - neovim
-    # EDA electronic design automation software
-    - kicad
-    # Dependencies for YouCompleteMe
-    # - build-essential
-    - cmake
-    # - python-dev
-    # - python3-dev
-    # A simple image viewer
-    - feh
-    - gimp
-    - neofetch
-    - jq
-    - unzip
-    # with i3
-    - compton
-    # manage your tasks
-    - taskwarrior
-    - ruby
-  become: yes
+- name: Install retained packages
+  vars:
+    common_packages:
+      - sdcv
+      - curl
+      - cmus
+      - parallel
+      - vim
+      - git
+      - git-lfs
+      - stow
+      - ranger
+      - highlight
+      - neovim
+      - cmake
+      - jq
+      - unzip
+    platform_packages:
+      Darwin:
+        - python
+        - task
+      Ubuntu:
+        - build-essential
+        - python3-dev
+        - python3-pip
+        - inotify-tools
+        - taskwarrior
+      Archlinux:
+        - base-devel
+        - python
+        - python-pip
+        - inotify-tools
+        - task
+        - timew
+        - cronie
   tags: packages
+  block:
+    - name: Install macOS packages with Homebrew
+      community.general.homebrew:
+        name: "{{ common_packages + platform_packages['Darwin'] }}"
+        state: present
+      when: ansible_facts['system'] == 'Darwin'
 
-- name: Installing arch packages
-  package: name={{item}}
-  with_items:
-    - python3
-    - python2
-    - python2-pip
-    - python-pip
-    - base-devel
-    # with i3
-    - compton
-    # manage your task
-    - task
-    # keeps track of how much time each task takes
-    - timew
-    - cronie
-  when: ansible_distribution == 'Archlinux'
-  become: yes
-  tags: packages
-
-- name: Installing ubuntu or debian packages
-  package: name={{item}}
-  with_items:
-    - build-essential
-    - python-dev
-    - python3-dev
-    - python-pip
-    - python3-pip
-    - ruby-dev
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  become: yes
-  tags: packages
+    - name: Install Linux packages with the native package manager
+      ansible.builtin.package:
+        name: "{{ common_packages + platform_packages[ansible_facts['distribution']] }}"
+        state: present
+      become: true
+      when: ansible_facts['distribution'] in ['Ubuntu', 'Archlinux']

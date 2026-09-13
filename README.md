@@ -3,22 +3,23 @@
 > One repo to rule your machine.
 
 This repository is a collection of configuration files and Ansible tasks I use
-to setup my machine. These files are mainly targeted to work with Ubuntu and
-Arch. Although these configurations are tailored for me, you can still find
+to setup my machine. The package inventory targets macOS, Ubuntu, and Arch.
+Although these configurations are tailored for me, you can still find
 some inspiration in them.
 
 ## Prerequisites
 
-To start using the configurations in this repository you will need: ansible (at
-least 2.5.5), make and git. The following instructions shows how to install
-them on Ubuntu.
+To use the configurations you need Make, Git, and GNU Stow. Provisioning also
+requires a current Ansible installation with the `community.general` collection.
+On macOS, install Homebrew and the Xcode Command Line Tools first. Homebrew and
+user configuration run without sudo; Linux package installation uses sudo.
+
+On Ubuntu:
 
 ```bash
-# installing ansible
-sudo apt-add-repository ppa:ansible/ansible
-sudo apt-get update && sudo apt-get install ansible
-# installing git and make
-sudo apt-get install git make
+sudo apt-get update
+sudo apt-get install ansible git make stow
+ansible-galaxy collection install community.general
 ```
 
 ## Installation and usage.
@@ -33,6 +34,18 @@ Then pull all submodules.
 ```bash
 make git-submodule
 ```
+
+Install the retained packages and basic user setup:
+
+```bash
+# Ubuntu / Arch (refresh the native package manager's indexes first)
+ansible-playbook local.yml --ask-become-pass --tags packages,bash,git-lfs
+# macOS
+ansible-playbook local.yml --tags packages,bash,git-lfs
+```
+
+See [the provisioning inventory](docs/provisioning.md) for retained packages,
+removed components, and remaining installer migration work.
 
 After cloning the repository you can install the configuration files for your
 program by using the `make` utility. For example you can install `git`'s
@@ -55,23 +68,13 @@ missing, then links both the shell and Starship configuration files with GNU
 Stow. The installer supports both macOS and Linux and requires either `curl`
 or `wget`.
 
-## Try the configuration with Vagrant
+## Vim
 
-You can try out this configuration by using a virtual machine easily thanks to Vagrant. Follow these steps to create the virtual machine:
-
-1. Create a directory where the Vagrant files will be saved;
-2. Choose a box and create the Vagrant configuration file `vagrant init ubuntu/bionic64`;
-3. Start the virtual machine `vagrant up`;
-4. Log-on to the machine `vagrant ssh`;
-
-## Todo
-
-- **vim**: Check vim installation to make it easier, now to install vim
-  configuration files you need to execute these commands:
-- **stow**: checkout the command line argument --dotfiles for stow command;
+Make owns Vim directory creation, Pathogen installation, and YouCompleteMe
+compilation. Install the Python 3/CMake build prerequisites above and a Rust
+toolchain before running:
 
 ```bash
 cd ~/.dotfiles
-ansible-playbook local.yml --tags=pathogen,vim
 make vim
 ```
