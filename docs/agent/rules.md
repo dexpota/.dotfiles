@@ -13,7 +13,7 @@ These rules apply to every repository change.
 
 - Use tabs for Make recipe lines and spaces for YAML indentation.
 - Start executable shell scripts with an appropriate shebang and quote variable expansions.
-- Give shell commands descriptive lowercase, hyphen-separated names, such as `git-delete-stale.sh`.
+- Give shell commands descriptive lowercase, hyphen-separated names, such as `git-branch-prune.sh`.
 - Use `.sh` or `.bash` for non-executable shell libraries. Follow the existing convention in a directory for executable commands.
 - Keep each Ansible task file focused on one tool or service and use lowercase kebab-case filenames.
 - Preserve final newlines and remove trailing whitespace.
