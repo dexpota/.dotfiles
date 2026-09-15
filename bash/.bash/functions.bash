@@ -1,5 +1,14 @@
 # vim: set filetype=sh:
 
+function cless() {
+    if ! command -v ccat >/dev/null 2>&1; then
+        printf '%s\n' 'cless: ccat is required' >&2
+        return 127
+    fi
+
+    ccat -C always -- "$@" | less -R
+}
+
 # Infect a git repository with a vim plugin, this command is supposed to work with a .dotfiles
 # repository
 #
