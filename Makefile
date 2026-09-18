@@ -73,6 +73,10 @@ zsh: starship $(shell find ./zsh/ -type f)  ## Install Zsh configuration files
 zsh-rm:  ## Remove Zsh configuration links
 	@stow --delete zsh
 
+.PHONY: codex-toolbelt
+codex-toolbelt: $(shell find ./codex-toolbelt/ -type f)  ## Install the Codex system-helper profile
+	@stow codex-toolbelt
+
 .PHONY: newsboat
 newsboat: ## Install newsboat configuration files.
 	stow newsboat

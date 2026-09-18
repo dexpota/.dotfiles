@@ -9,6 +9,13 @@ function cless() {
     ccat -C always -- "$@" | less -R
 }
 
+# Start the system-configuration Codex profile from the home directory.
+function codex-toolbelt() {
+    CODEX_HOME="$HOME/.codex-toolbelt" command codex --cd "$HOME" "$@"
+}
+
+alias ctb='codex-toolbelt'
+
 # Infect a git repository with a vim plugin, this command is supposed to work with a .dotfiles
 # repository
 #
