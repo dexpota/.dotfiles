@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 #
 # @author Fabrizio Destro (dexpota@github)
 # @copyright 2019

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 #
 # @author 		Fabrizio Destro
 # @copyright	Copyright 2018, Fabrizio Destro
@@ -40,7 +40,7 @@ response_code=$(echo "$response" | tail -1)
 # one
 # target_directory="."
 
-if [[ $response_code == 200 ]]; then
+if [ "$response_code" = 200 ]; then
 	echo "$response_body" | \
 		jq -r ".[] | \"\(.path) \(.download_url)\"" | \
 		sed -n "/$regex/p" \

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 usage() {
 	cat <<EOU
@@ -48,11 +48,7 @@ if [ -z "$directory" ]; then
 	exit 2
 fi
 
-if "$all"; then
-	GLOBIGNORE=".:.."
-fi
-
-if [[ -d "$directory" ]]; then
+if [ -d "$directory" ]; then
 	cd "$directory"
 	for d in */; do
 		cd "$d"
@@ -63,26 +59,26 @@ if [[ -d "$directory" ]]; then
 
 		git diff --quiet --exit-code
 		unstaged_changes=$?
-		if [[ $unstaged_changes -eq 1 ]]; then
+		if [ "$unstaged_changes" -eq 1 ]; then
 			printf "[${YELLOW}%s${RST}]" "Local unstaged changes"
 		fi
 
 		git diff --cached --quiet --exit-code
 		staged_not_committed=$?
-		if [[ $staged_not_committed -eq 1 ]]; then
+		if [ "$staged_not_committed" -eq 1 ]; then
 			printf "[${YELLOW}%s${RST}]" "Local changes not committed"
 		fi
 
 		git diff origin/master..HEAD --quiet --exit-code
 		commit_not_pushed=$?
-		if [[ $commit_not_pushed -ne 0 ]]; then
+		if [ "$commit_not_pushed" -ne 0 ]; then
 			printf "[${YELLOW}%s${RST}]" "Local commit not pushed."
 		fi
 
-		if [[ $staged_not_commited -ne 1 && $unstaged_changes -ne 1 ]]; then
+		if [ "$staged_not_committed" -ne 1 ] && [ "$unstaged_changes" -ne 1 ]; then
 			printf "[${GREEN}%s${RST}]" "Everything up-to-date"
 		fi
-		printf " %s\n" $(pwd)
+		printf " %s\n" "$(pwd)"
 		cd ..
 	done
 else

@@ -1,17 +1,18 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 
-function is_integer() {
+is_integer() {
 	if [ "$#" -ne 1 ]; then
 		echo "Wrong number of arguments for function is_integer" >&2
 		exit -1
 	fi
 
-	re="^[0-9]+$"
-	if ! [[ "$1" =~ "$re" ]]; then
+	case "$1" in
+		''|*[!0-9]*)
 		echo "$1 is not a valid integer value." >&2
 		exit -1
-	fi
+		;;
+	esac
 }
 
 if [ "$#" -ne 3 ]; then
@@ -30,5 +31,5 @@ is_integer "$end_line_no"
 sed -n "${start_line_no},${end_line_no}p" "$filepath" | boxes
 commented_text="$(sed -n "${start_line_no},${end_line_no}p" "$filepath" | boxes)"
 
-gsed -i "${start_line_no},${end_line_no}{r /dev/stdin
-d}" "$filepath" <<< "$commented_text"
+printf '%s\n' "$commented_text" | gsed -i "${start_line_no},${end_line_no}{r /dev/stdin
+d}" "$filepath"
