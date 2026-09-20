@@ -66,7 +66,8 @@ make zsh
 The Zsh target installs the Starship prompt in `~/.local/bin` when it is
 missing, then links both the shell and Starship configuration files with GNU
 Stow. The installer supports both macOS and Linux and requires either `curl`
-or `wget`.
+or `wget`. The first prompt in each Zsh session shows its configuration
+startup time.
 
 ## Vim
 

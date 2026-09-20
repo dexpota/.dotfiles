@@ -7,6 +7,7 @@ scan_timeout = 30
 # Keep directory and Git information on the left, contextual information on
 # the right, and the command prompt on its own line.
 format = """
+$custom\
 $directory\
 $git_branch\
 $git_status\
@@ -54,6 +55,12 @@ format = "[$symbol$status]($style) "
 [cmd_duration]
 min_time = 3000
 format = "[took $duration]($style) "
+
+[custom.shell_startup]
+command = 'printf "󰔛 %s" "$STARSHIP_SHELL_STARTUP_TIME"'
+when = 'test -n "$STARSHIP_SHELL_STARTUP_TIME"'
+format = "[$output]($style) "
+style = "bold cyan"
 
 [jobs]
 symbol = "✦ "
