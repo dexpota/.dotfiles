@@ -18,7 +18,7 @@ jobs:
       - name: Install Bats
         run: |
           sudo apt-get update
-          sudo apt-get install --yes bats
+          sudo apt-get install --yes bats zsh
 
       - name: Configure test environment
         run: |
