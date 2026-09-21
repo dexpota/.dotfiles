@@ -70,6 +70,48 @@ Stow. The installer supports both macOS and Linux and requires either `curl`
 or `wget`. The first prompt in each Zsh session shows its configuration
 startup time.
 
+## Git tree
+
+`git tree` shows all branches with a colored terminal graph, labels for HEAD,
+local branches, remote branches and tags, and commit hashes beside the graph dots.
+Commit nodes use a small `•` bullet, with `│` for vertical graph lines.
+Long subjects and labels are truncated to fit the terminal. Python 3 is required;
+there are no additional Python dependencies. Rounded labels and curved graph
+lines from graphical Git clients are approximated with terminal text and colors.
+
+```bash
+git tree -20
+git tree --icons -20
+git tree --since='2 weeks ago'
+git tree --width=120 --color=always --no-pager
+git tree -- src/
+```
+
+History filters, revisions and paths are forwarded to `git log`; options that
+change its output format, such as `--pretty`, `--stat` and `-p`, are unsupported.
+As with the previous alias, `--all --full-history` is enabled by default.
+Interactive output uses Git's configured pager; redirected output omits color.
+`NO_COLOR` disables automatic coloring, and `COLUMNS` overrides terminal width.
+
+`--icons` adds a flag for HEAD, a branch symbol for local branches, a cloud for
+remotes, and a tag symbol for tags. Colored labels also use Powerline rounded
+caps to form pill-shaped badges; caps are omitted when color is disabled.
+Configure your terminal to use a Nerd Font
+Mono face so these glyphs occupy one character cell. Font support is not
+auto-detected; icons are off by default and `--no-icons` explicitly disables them.
+Ref names remain visible with icons enabled, including when color is disabled.
+When icons are enabled, the pager receives a default `LESSUTFCHARDEF` declaring
+the icon glyphs printable, preventing `less` from showing codes like `<U+F0C2>`.
+An existing `LESSUTFCHARDEF` is preserved; `--no-pager` bypasses the pager entirely.
+
+The old `tree` alias has been removed from the repository configuration so Git
+can find the new command in `~/.git-commands`. For an existing installation,
+run `stow git` from this repository and ensure `~/.git-commands` is on `PATH`.
+If your Git configuration is a separate copy, remove its old alias with
+`git config --global --unset alias.tree` after linking the command. A conflicting
+copied configuration must be reconciled before Stow can link it.
+Preview without installing using `./git/.git-commands/git-tree -20`.
+
 ## Vim
 
 Make owns Vim directory creation, Pathogen installation, and YouCompleteMe

@@ -32,7 +32,6 @@
     bcheckout = checkout -b
     # shallow clone of repositor# shallow clone of repositoryy
     shallow = clone --depth=1
-    tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
     size = count-objects -vH
     # commit and amend without modify the last commit message
     amend=commit --amend --no-edit
