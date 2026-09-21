@@ -1,5 +1,6 @@
-# .dotfiles
+![.dotfiles](.github/banner.png)
 
+# .dotfiles
 > One repo to rule your machine.
 
 This repository is a collection of configuration files and Ansible tasks I use
