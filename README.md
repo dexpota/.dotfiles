@@ -122,3 +122,7 @@ toolchain before running:
 cd ~/.dotfiles
 make vim
 ```
+
+Vim selects the matching `flattened_dark` or `flattened_light` colorscheme
+from the macOS appearance or the GNOME interface theme. It checks again when
+the editor regains focus, so running sessions follow appearance changes.

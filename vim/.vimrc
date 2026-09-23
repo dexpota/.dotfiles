@@ -87,7 +87,40 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-colorscheme flattown
+function! s:os_uses_dark_theme() abort
+  if has('macunix') && executable('defaults')
+    return system('defaults read -g AppleInterfaceStyle 2>/dev/null') =~? 'dark'
+  endif
+
+  if has('unix') && executable('gsettings')
+    let l:color_scheme = system(
+          \ 'gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null')
+    if v:shell_error == 0 && l:color_scheme =~? 'dark'
+      return 1
+    endif
+
+    let l:gtk_theme = system(
+          \ 'gsettings get org.gnome.desktop.interface gtk-theme 2>/dev/null')
+    return v:shell_error == 0 && l:gtk_theme =~? 'dark'
+  endif
+
+  return 1
+endfunction
+
+function! s:sync_colorscheme_with_os() abort
+  let l:colorscheme = s:os_uses_dark_theme()
+        \ ? 'flattened_dark'
+        \ : 'flattened_light'
+  if get(g:, 'colors_name', '') !=# l:colorscheme
+    execute 'colorscheme ' . l:colorscheme
+  endif
+endfunction
+
+call s:sync_colorscheme_with_os()
+augroup os_theme
+  autocmd!
+  autocmd FocusGained * call <SID>sync_colorscheme_with_os()
+augroup END
 
 set tabstop=4
 set shiftwidth=4
