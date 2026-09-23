@@ -10,18 +10,11 @@ git-submodule:
 	git submodule init
 	git pull --recurse-submodules
 
-ycm:
-	@echo "Compiling ycm"
-	cd ${MAKEFILE_DIR}/vim/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && python3 ./install.py --clang-completer --rust-completer
-# TODO this is not sufficient in archlinux, libtinfo.so.5 is missing and can be
-# found inside ncurses5-compat-libs AUR package
-
 .PHONY: vim
-vim: ycm git-submodule ## Install vim configuration files
-	mkdir -p ~/.vim/backup ~/.vim/swp ~/.vim/undo ~/.vim/autoload
-	# Install pathogen
-	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-	stow vim
+vim: ## Install vim configuration files and pinned native packages
+	git -C "$(MAKEFILE_DIR)" submodule update --init --recursive -- vim/.vim/pack/plugins/start
+	mkdir -p "$$HOME/.vim/backup" "$$HOME/.vim/swp" "$$HOME/.vim/undo"
+	stow --restow --dir="$(MAKEFILE_DIR)" --target="$$HOME" vim
 
 BASH_CONFIG_FILES=$(shell find ./bash/ -type f -printf "%P\n")
 

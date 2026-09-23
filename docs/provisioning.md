@@ -13,7 +13,7 @@ entry point for now; Make and GNU Stow own dotfile installation.
 - User setup: LS_COLORS and Git LFS initialization.
 - Existing Python CLI inventory: flake8, cheat, grip, pipenv, pipenv-pipes,
   virtualenvwrapper, coala-bears.
-- Rust toolchain setup and Make-based YouCompleteMe compilation.
+- Rust toolchain setup (independent of Vim).
 
 ## Removed
 
@@ -25,11 +25,14 @@ entry point for now; Make and GNU Stow own dotfile installation.
 - Neofetch and the old PPA inventory, including KiCad 4 and OpenJDK.
 - Autofs tasks and example mounts; the unused sky2 suspend workaround.
 - Python 2 packages and duplicate Vim/Pathogen/YouCompleteMe Ansible tasks.
+- Make-based YouCompleteMe compilation and Pathogen installation. Vim now uses
+  five native plugin packages; its setup no longer needs compiler prerequisites.
 - The standalone Blender compilation helper and Vagrant testing instructions.
 
 These changes remove installation recipes, not installed software, repositories,
 mounts, or configuration on any existing machine. Removed tracked files remain
-recoverable from Git history. Existing Make and shell configuration are preserved.
+recoverable from Git history. Shell configuration is preserved; the Vim Make
+target initializes pinned native packages and restows the configuration.
 
 ## Remaining migration work
 

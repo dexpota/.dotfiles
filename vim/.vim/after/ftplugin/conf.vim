@@ -1,6 +1,5 @@
-" This command aligns all values of a configuration file into a single column
-command! -buffer Format Tabularize /\v(^#.*)@<!((".*")\zs|(\S*>)\zs)
-
-" Undo the commands defined by this plugin when the buffer changes its
-" filetype
-let b:undo_ftplugin = ":delcommand Format"
+" Explicitly align configuration values with Tabular.
+if exists(':Tabularize') == 2
+  command! -buffer Format Tabularize /\v(^#.*)@<!((".*")\zs|(\S*>)\zs)
+  let b:undo_ftplugin = get(b:, 'undo_ftplugin', '') . '|silent! delcommand -buffer Format'
+endif

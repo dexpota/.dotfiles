@@ -1,4 +1,6 @@
-# This directory is create by Ansible when installing pathogen and setting up vim.
+# Legacy plugin checkouts are preserved locally but no longer loaded by Vim.
+vim/.vim/bundle/
+# Ignore the old Pathogen installation and Vim's runtime state.
 vim/.vim/autoload/
 vim/.vim/backup/
 vim/.vim/swp

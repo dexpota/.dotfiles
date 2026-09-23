@@ -114,11 +114,37 @@ Preview without installing using `./git/.git-commands/git-tree -20`.
 
 ## Vim
 
-Make owns Vim directory creation, Pathogen installation, and YouCompleteMe
-compilation. Install the Python 3/CMake build prerequisites above and a Rust
-toolchain before running:
+Vim 8 or newer uses native packages for Surround, Tabular, Goyo, Pencil, and
+the existing `flattown` color scheme. Make initializes their pinned submodules,
+creates backup/swap/undo directories, and links the configuration with Stow.
+Vim setup no longer requires Pathogen, YouCompleteMe, Python/CMake build tools,
+or a Rust toolchain. On macOS or Linux, run:
 
 ```bash
 cd ~/.dotfiles
 make vim
 ```
+
+For an existing installation, close Vim and run `make vim` again to link the
+new `~/.vim/pack/` directory, then restart Vim. Reloading `.vimrc` in an old
+session does not unload plugins. Retired checkouts under `vim/.vim/bundle/`
+and the old Pathogen file may remain on disk; they are ignored and no longer
+loaded. Local changes in those checkouts are preserved. Do not delete them
+until any wanted work has been recovered. The retained submodules keep their
+original Git section names so existing submodule repositories remain usable.
+
+Use `:buffers`, `:buffer`, `:find`, `:oldfiles`, `:grep`, and quickfix for
+navigation. Space is the leader: `<Space>d` opens Vim's directory browser and
+`<Space>z` toggles a fold. `<C-h/j/k/l>` switches splits. Built-in filetype
+indentation is enabled, including for Python; completion is manual through
+Vim's insert-mode completion keys, and no diagnostics run while editing.
+
+Markdown keeps its physical lines and trailing spaces on save. `<Space>f`
+toggles Goyo in Markdown buffers; `:Pencil` enables soft wrapping explicitly.
+`:Tabularize` and `gq` are deliberate formatting operations. Use
+`:TrimWhitespace` to remove trailing whitespace when wanted; run project
+formatters, linters, and `shellcheck` from the terminal.
+
+Validate the configuration with `bats tests/vim` and preview installation with
+`make -n vim`. Package integration tests require the retained submodules to be
+initialized; the core checks also run without them.

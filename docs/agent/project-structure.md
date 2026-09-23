@@ -10,6 +10,8 @@ This repository manages personal Linux and macOS configuration with GNU Stow, Ma
 - `git/git-commands/` contains custom Git subcommands.
 - `tests/` contains Bats tests grouped by the command under test.
 - `.hooks/` and `.pre-commit-config.yaml` define repository checks.
-- Git submodules under `vim/.vim/bundle/` provide third-party plugins.
+- Git submodules under `vim/.vim/pack/plugins/start/` provide native Vim
+  packages. Ignored legacy checkouts under `vim/.vim/bundle/` may contain local
+  work; they are not loaded and must not be deleted without inspecting them.
 
 Place new files beside the feature they support. Add shell-command tests under a matching path in `tests/`; add provisioning logic as a focused task in `tasks/` and include it from `local.yml` when needed.

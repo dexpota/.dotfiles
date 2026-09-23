@@ -1,75 +1,20 @@
 [submodule "vim/.vim/bundle/colorschemes"]
-	path = vim/.vim/bundle/colorschemes
+	path = vim/.vim/pack/plugins/start/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
 	ignore = dirty
-[submodule "vim/.vim/bundle/vim-airline"]
-	path = vim/.vim/bundle/vim-airline
-	url = https://github.com/vim-airline/vim-airline
-	ignore = dirty
-[submodule "vim/.vim/bundle/YouCompleteMe"]
-	path = vim/.vim/bundle/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe.git
-	ignore = dirty
-[submodule "vim/.vim/bundle/syntastic"]
-	path = vim/.vim/bundle/syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
-	ignore = dirty
-[submodule "vim/.vim/bundle/vim-flake8"]
-	path = vim/.vim/bundle/vim-flake8
-	url = https://github.com/nvie/vim-flake8.git
-	ignore = dirty
-[submodule "vim/.vim/bundle/vim-nerdtree-tabs"]
-	path = vim/.vim/bundle/vim-nerdtree-tabs
-	url = https://github.com/jistr/vim-nerdtree-tabs.git
-	ignore = dirty
-[submodule "vim/.vim/bundle/SimpylFold"]
-	path = vim/.vim/bundle/SimpylFold
-	url = https://github.com/tmhedberg/SimpylFold.git
-	ignore = dirty
-
-[submodule "vim/.vim/bundle/vim-markdown-preview"]
-	path = vim/.vim/bundle/vim-markdown-preview
-	url = https://github.com/JamshedVesuna/vim-markdown-preview.git
-[submodule "vim/.vim/bundle/python-mode"]
-	path = vim/.vim/bundle/python-mode
-	url = https://github.com/python-mode/python-mode.git
-[submodule "vim/.vim/bundle/ctrlp.vim"]
-	path = vim/.vim/bundle/ctrlp.vim
-	url = https://github.com/ctrlpvim/ctrlp.vim.git
-[submodule "vim/.vim/bundle/vim-autoformat"]
-	path = vim/.vim/bundle/vim-autoformat
-	url = https://github.com/Chiel92/vim-autoformat.git
-[submodule "vim/.vim/bundle/nerdtree"]
-	path = vim/.vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/.vim/bundle/vim-markdown"]
-	path = vim/.vim/bundle/vim-markdown
-	url = https://github.com/plasticboy/vim-markdown.git
-[submodule "vim/.vim/bundle/kotlin-vim"]
-	path = vim/.vim/bundle/kotlin-vim
-	url = https://github.com/udalov/kotlin-vim
 [submodule "vim/.vim/bundle/tabular"]
-	path = vim/.vim/bundle/tabular
-	url = git://github.com/godlygeek/tabular.git
+	path = vim/.vim/pack/plugins/start/tabular
+	url = https://github.com/godlygeek/tabular.git
 [submodule "config/.config/kitty/kitty-themes"]
 	path = config/.config/kitty/kitty-themes
 	url = https://github.com/dexpota/kitty-themes
 	branch = master
 [submodule "vim/.vim/bundle/goyo"]
-	path = vim/.vim/bundle/goyo
+	path = vim/.vim/pack/plugins/start/goyo
 	url = https://github.com/junegunn/goyo.vim.git
 [submodule "vim/.vim/bundle/vim-pencil"]
-	path = vim/.vim/bundle/vim-pencil
+	path = vim/.vim/pack/plugins/start/vim-pencil
 	url = https://github.com/reedes/vim-pencil.git
 [submodule "vim/.vim/bundle/vim-surround"]
-	path = vim/.vim/bundle/vim-surround
+	path = vim/.vim/pack/plugins/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "vim/.vim/bundle/auto-pairs"]
-	path = vim/.vim/bundle/auto-pairs
-	url = git://github.com/jiangmiao/auto-pairs.git
-[submodule "vim/.vim/bundle/nerdcommenter"]
-	path = vim/.vim/bundle/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "vim/.vim/bundle/vim-indentwise"]
-	path = vim/.vim/bundle/vim-indentwise
-	url = git://github.com/jeetsukumaran/vim-indentwise.git
