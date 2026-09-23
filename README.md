@@ -70,6 +70,9 @@ Stow. The installer supports both macOS and Linux and requires either `curl`
 or `wget`. The first prompt in each Zsh session shows its configuration
 startup time.
 
+Git completion uses the completion script installed beside Git directly, which
+avoids Homebrew's slow lookup the first time a branch is completed.
+
 ## Git tree
 
 `git tree` shows all branches with a colored terminal graph, labels for HEAD,
