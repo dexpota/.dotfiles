@@ -18,13 +18,30 @@ jobs:
       - name: Install Bats
         run: |
           sudo apt-get update
-          sudo apt-get install --yes bats
+          sudo apt-get install --yes bats zsh
 
       - name: Configure test environment
         run: |
           echo "$GITHUB_WORKSPACE/git/.git-commands" >> "$GITHUB_PATH"
           git config --global user.name "Test User"
           git config --global user.email "test@example.com"
+
+      - name: Validate Bash and Zsh syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          while IFS= read -r script; do
+            case "$(head -n 1 "$script")" in
+              *sh)
+                bash -n "$script"
+                zsh -n "$script"
+                ;;
+            esac
+          done < <(find git/git-commands git/.git-commands scripts -type f)
+
+          bash -n bash/.bashrc bash/.bash_profile bash/.bash/* shell/.shell/functions.sh
+          zsh -n zsh/.zshrc zsh/.zprofile zsh/.zsh/*.zsh shell/.shell/functions.sh
 
       - name: Run Bats tests
         run: bats --recursive tests

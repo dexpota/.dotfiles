@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 usage() {
 	cat << EOU
@@ -25,7 +25,6 @@ fi
 
 repository=$1
 shift
-dirs=("$@")
 
 working_directory="$(pwd)"
 temp_directory=$(mktemp -d)
@@ -35,10 +34,12 @@ target_directory="${working_directory}/${repository_name}"
 cd "$temp_directory"
 
 git init --quiet
-git remote add origin $repository
+git remote add origin "$repository"
 git config core.sparseCheckout true
 
-printf "%s\n" "${dirs[@]}" > .git/info/sparse-checkout
+for directory in "$@"; do
+	printf '%s\n' "$directory"
+done > .git/info/sparse-checkout
 git pull --depth 1 origin master
 
 mkdir "${target_directory}"

@@ -1,8 +1,6 @@
-function cless() {
-    if [ -x "$(command -v ccat)" ]; then
-        ccat -C always $1 | less -R
-    else
-        echo "Missing ccat command." >&2
-        return 1
-    fi
-}
+# Compatibility entry point for existing Zsh configurations.
+if [[ -r "$HOME/.shell/functions.sh" ]]; then
+    source "$HOME/.shell/functions.sh"
+else
+    source "${${(%):-%N}:A:h}/../../shell/.shell/functions.sh"
+fi
