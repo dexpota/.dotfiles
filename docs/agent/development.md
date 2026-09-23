@@ -17,6 +17,9 @@ Installation targets can change files under `$HOME` or download tools. Inspect t
 - `bats tests/vim` checks Vim startup, filetypes, mappings, whitespace, and undo
   persistence in a temporary configuration. Package integration checks run when
   the retained submodules are initialized; Vim 8 or newer is required.
+  Filetype checks use emitted diagnostics and Vim's exit status: built-in
+  runtime scripts can leave `v:errmsg` populated after intentionally suppressed
+  cleanup errors. Regression cases cover both suppressed and visible errors.
 - `pre-commit run --all-files` checks whitespace, final newlines, shell naming, executable shebangs, and Makefile syntax.
 - `make -n <target>` previews many Make recipes, although commands containing recursive Make or shell-side effects still require review.
 

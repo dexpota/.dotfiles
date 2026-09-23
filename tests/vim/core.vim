@@ -1,12 +1,10 @@
 set nomore
-call assert_equal('', v:errmsg, 'startup')
 for [s:name, s:type] in [['sample.py', 'python'], ['sample.sh', 'sh'], ['sample.yaml', 'yaml'], ['sample.json', 'json'], ['sample.html', 'html'], ['sample.md', 'markdown'], ['sample.rb', 'ruby'], ['Jenkinsfile', 'groovy']]
   execute 'edit' fnameescape($VIM_TEST_DIRECTORY . '/' . s:name)
   call assert_equal(s:type, &filetype, s:name)
   if index(['markdown', 'groovy'], s:type) < 0
     call assert_notequal('', &indentexpr, s:name . ' has built-in indentation')
   endif
-  call assert_equal('', v:errmsg, s:name)
 endfor
 
 edit sample.yaml
@@ -37,6 +35,8 @@ call assert_equal(2, &shiftwidth)
 set filetype=text
 call assert_equal(4, &shiftwidth, 'filetype overrides cleaned up')
 
+" silent! cleanup in built-in filetype scripts can leave v:errmsg populated.
+" Check emitted diagnostics; the Bats helper also checks Vim's exit status.
 call assert_equal('', execute('silent messages'), 'no diagnostics')
 if !empty(v:errors)
   call writefile(v:errors, $VIM_TEST_DIRECTORY . '/errors')

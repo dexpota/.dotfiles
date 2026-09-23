@@ -10,6 +10,22 @@ setup() {
 	run_vim_checks core.vim
 }
 
+@test "Vim tolerates errors explicitly suppressed by filetype scripts" {
+	cp "$BATS_TEST_DIRNAME/fixtures/suppressed-error.vim" "$VIM_TEST_RUNTIME/after/ftplugin/sh.vim"
+	run_vim_checks core.vim
+}
+
+@test "Vim rejects unsuppressed filetype errors" {
+	cp "$BATS_TEST_DIRNAME/fixtures/unsuppressed-error.vim" "$VIM_TEST_RUNTIME/after/ftplugin/sh.vim"
+	if run_vim_checks core.vim; then
+		echo "Expected the filetype error to fail validation" >&2
+		return 1
+	fi
+	run grep -F 'E184' "$vim_test_directory/errors"
+	[ "$status" -eq 0 ]
+	[[ "$output" == *"ShFoldIfDoFor"* ]]
+}
+
 @test "Vim preserves whitespace on save and persists undo across sessions" {
 	run_vim_checks save.vim
 	run_vim_checks undo.vim
