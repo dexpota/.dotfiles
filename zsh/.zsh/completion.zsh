@@ -1,8 +1,8 @@
 # Keep pyenv completion available before the first explicit pyenv command.
-source /opt/homebrew/opt/pyenv/completions/pyenv.zsh
+[[ -r /opt/homebrew/opt/pyenv/completions/pyenv.zsh ]] && source /opt/homebrew/opt/pyenv/completions/pyenv.zsh
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/fabrizio/.docker/completions $fpath)
+[[ -d "$HOME/.docker/completions" ]] && fpath=("$HOME/.docker/completions" $fpath)
 # End of Docker CLI completions
 
 # Avoid repeated completion searches when tools add the same directory.
@@ -25,6 +25,6 @@ else
 fi
 
 # The next line enables shell command completion for gcloud.
-if [[ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]]; then
-    source "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"
+if [[ -f "$HOME/.local/share/google-cloud-sdk/completion.zsh.inc" ]]; then
+    source "$HOME/.local/share/google-cloud-sdk/completion.zsh.inc"
 fi
