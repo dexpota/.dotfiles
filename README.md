@@ -70,6 +70,13 @@ Stow. The installer supports both macOS and Linux and requires either `curl`
 or `wget`. The first prompt in each Zsh session shows its configuration
 startup time.
 
+Interactive Zsh features are split into files under `~/.zsh/plugins/`; login
+shell setup lives under `~/.zsh/login-plugins/`. Each directory loads readable
+`*.zsh` files in filename order. Add or remove a file to enable or disable a
+feature, and optional integrations check for their tools or directories before
+changing the shell. For example, the Docker PATH plugin adds `~/.docker/bin`
+only when that directory exists.
+
 Git completion uses the completion script installed beside Git directly, which
 avoids Homebrew's slow lookup the first time a branch is completed.
 

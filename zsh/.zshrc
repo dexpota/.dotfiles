@@ -1,12 +1,12 @@
-# Load the interactive configuration in dependency order.
+# Load optional interactive plugins in filename order.
 zmodload zsh/datetime
 typeset -gF 3 _zsh_startup_started_at="$EPOCHREALTIME"
 
-config_directory="${${(%):-%N}:A:h}/.zsh"
-for config_file in "$config_directory"/{environment,functions,tools,completion,prompt}.zsh; do
-    [[ -r "$config_file" ]] && source "$config_file"
+plugin_directory="${${(%):-%N}:A:h}/.zsh/plugins"
+for plugin_file in "$plugin_directory"/*.zsh(N); do
+    [[ -r "$plugin_file" ]] && source "$plugin_file"
 done
-unset config_file config_directory
+unset plugin_file plugin_directory
 
 typeset -gF 3 _zsh_startup_elapsed=$((EPOCHREALTIME - _zsh_startup_started_at))
 export STARSHIP_SHELL_STARTUP_TIME="${_zsh_startup_elapsed}s"
