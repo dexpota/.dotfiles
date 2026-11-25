@@ -73,6 +73,16 @@ startup time.
 Git completion uses the completion script installed beside Git directly, which
 avoids Homebrew's slow lookup the first time a branch is completed.
 
+## Git worktrees
+
+`git worktrees` lists registered worktrees with their branch, local changes,
+and commits ahead of each branch's configured upstream. It reports staged,
+unstaged, and untracked files separately and does not fetch from remotes.
+
+```bash
+git worktrees
+```
+
 ## Git tree
 
 `git tree` shows all branches with a colored terminal graph, labels for HEAD,

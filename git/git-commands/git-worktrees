@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+if ! git rev-parse --git-dir >/dev/null 2>&1; then
+	echo "Current directory is not a Git repository." >&2
+	exit 1
+fi
+
+worktree_path=""
+worktree_branch=""
+worktree_detached=false
+
+summarize_worktree() {
+	[ -n "$worktree_path" ] || return 0
+
+	if [ "$worktree_detached" = true ]; then
+		branch_label="detached at $(git -C "$worktree_path" rev-parse --short HEAD)"
+	else
+		branch_label="${worktree_branch#refs/heads/}"
+	fi
+
+	status=$(git -C "$worktree_path" status --short)
+	if [ -z "$status" ]; then
+		change_summary="clean"
+	else
+		staged=$(printf '%s\n' "$status" | awk 'substr($0, 1, 1) != " " && substr($0, 1, 1) != "?" { count++ } END { print count + 0 }')
+		unstaged=$(printf '%s\n' "$status" | awk 'substr($0, 2, 1) != " " && substr($0, 1, 2) != "??" { count++ } END { print count + 0 }')
+		untracked=$(printf '%s\n' "$status" | awk 'substr($0, 1, 2) == "??" { count++ } END { print count + 0 }')
+		change_summary=""
+		[ "$staged" -eq 0 ] || change_summary="${change_summary}${staged} staged"
+		[ "$unstaged" -eq 0 ] || change_summary="${change_summary}${change_summary:+, }${unstaged} unstaged"
+		[ "$untracked" -eq 0 ] || change_summary="${change_summary}${change_summary:+, }${untracked} untracked"
+	fi
+
+	if [ "$worktree_detached" = true ]; then
+		push_summary="no branch/upstream"
+	else
+		upstream=$(git -C "$worktree_path" rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null || true)
+		if [ -z "$upstream" ]; then
+			push_summary="no upstream"
+		elif ! git -C "$worktree_path" rev-parse --verify --quiet "${upstream}^{commit}" >/dev/null; then
+			push_summary="upstream missing: $upstream"
+		else
+			ahead=$(git -C "$worktree_path" rev-list --count "${upstream}..HEAD")
+			push_summary="$ahead to push"
+		fi
+	fi
+
+	printf '%s\n  Branch: %s\n  Changes: %s\n  Push: %s\n' "$worktree_path" "$branch_label" "$change_summary" "$push_summary"
+}
+
+while IFS= read -r line || [ -n "$line" ]; do
+	if [ -z "$line" ]; then
+		summarize_worktree
+		worktree_path=""
+		worktree_branch=""
+		worktree_detached=false
+		continue
+	fi
+
+	case "$line" in
+		"worktree "*) worktree_path=${line#worktree } ;;
+		"branch "*) worktree_branch=${line#branch } ;;
+		"detached") worktree_detached=true ;;
+	esac
+done < <(git worktree list --porcelain)
+
+summarize_worktree
