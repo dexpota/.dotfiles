@@ -62,6 +62,7 @@ Shell configuration files can be installed in the same way:
 ```bash
 make bash
 make zsh
+make kitty
 ```
 
 The Zsh target installs the Starship prompt in `~/.local/bin` when it is
@@ -80,6 +81,9 @@ Zsh shell integration so cwd-aware splits can use the current directory.
 
 Git completion uses the completion script installed beside Git directly, which
 avoids Homebrew's slow lookup the first time a branch is completed.
+
+`make kitty` links this repository's Kitty configuration into
+`~/.config/kitty/`; use `make kitty-rm` to remove the links.
 
 ## Git worktrees
 

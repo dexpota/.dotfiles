@@ -4,7 +4,7 @@
 
 - `make help` lists documented installation targets.
 - `make git-submodule` initializes and updates Git submodules.
-- `make bash`, `make zsh`, or `make git` installs a Stow package. `make git` requires `GITHUB_AUTHOR_NAME` and `GITHUB_AUTHOR_EMAIL`.
+- `make bash`, `make zsh`, `make git`, or `make kitty` installs a Stow package. `make git` requires `GITHUB_AUTHOR_NAME` and `GITHUB_AUTHOR_EMAIL`.
 
 Installation targets can change files under `$HOME` or download tools. Inspect the relevant Make recipe before running one.
 

@@ -77,6 +77,17 @@ zsh-rm:  ## Remove Zsh configuration links
 newsboat: ## Install newsboat configuration files.
 	stow newsboat
 
+.PHONY: kitty
+kitty: $(shell find ./config/.config/kitty -type f)  ## Install Kitty configuration files
+	@stow --dir="config/.config" --target="$$HOME/.config/kitty" kitty || { \
+		echo "Remove conflicting Kitty configuration files and run make kitty again" >&2; \
+		exit 1; \
+	}
+
+.PHONY: kitty-rm
+kitty-rm:  ## Remove Kitty configuration links
+	@stow --delete --dir="config/.config" --target="$$HOME/.config/kitty" kitty
+
 .PHONY: git
 git: ## Install git configuration files
 	@test -n "$(GITHUB_AUTHOR_NAME)" || (echo "GITHUB_AUTHOR_NAME is undefined." && exit 1)
