@@ -83,7 +83,8 @@ Git completion uses the completion script installed beside Git directly, which
 avoids Homebrew's slow lookup the first time a branch is completed.
 
 `make kitty` links this repository's Kitty configuration into
-`~/.config/kitty/`; use `make kitty-rm` to remove the links.
+`~/.config/kitty/`; use `make kitty-rm` to remove the links. Inactive panes
+blend toward a fixed gray, leaving the active pane's theme colors unchanged.
 
 ## Git worktrees
 
